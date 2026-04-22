@@ -634,9 +634,17 @@
         </div>
 
         <div id="view-stats" class="stats-view" style="display:none">
-            <button class="btn-load-stats" onclick="importStatsFile()">
-                📂 JSONファイルを読込む
-            </button>
+            <div id="file-bar" style="margin-bottom:12px;">
+                <button class="btn-load-stats" id="btn-open-file" onclick="openJsonFile()">
+                    📂 JSONファイルを開く
+                </button>
+                <div id="file-status" style="display:none; padding:10px 14px; background:#fff; border-radius:12px; border:1px solid var(--slate-200); font-size:11px; color:var(--slate-600); margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+                    <span style="font-size:16px;">📄</span>
+                    <span id="file-name-display" style="font-weight:700; flex:1;"></span>
+                    <button onclick="openJsonFile()" style="padding:4px 10px; border-radius:8px; border:1px solid var(--slate-300); background:transparent; font-size:10px; font-weight:700; cursor:pointer; color:var(--slate-500);">変更</button>
+                    <button onclick="saveToJsonFile()" id="btn-save-json" style="padding:4px 12px; border-radius:8px; border:none; background:var(--emerald-600); color:#fff; font-size:10px; font-weight:900; cursor:pointer;">💾 保存</button>
+                </div>
+            </div>
             <div id="import-info" style="display:none"></div>
             <div class="stat-card">
                 <div class="stat-card-title">Cumulative Trend</div>
@@ -684,6 +692,121 @@
             baseFee: parseFloat(localStorage.getItem('mj-base-fee') || '0')
         };
         state.activePlayers = state.members.slice(0, state.totalPlayers);
+
+        /* ── File System Access API ── */
+        let _fileHandle = null;   // 開いているファイルハンドル
+        let _jsonData = null;     // 読み込んだJSONのオリジナルデータ（members等を保持）
+        const FS_SUPPORTED = 'showOpenFilePicker' in window;
+
+        function updateFileStatusUI(fileName) {
+            const btnOpen = document.getElementById('btn-open-file');
+            const statusDiv = document.getElementById('file-status');
+            const nameSpan = document.getElementById('file-name-display');
+            if (fileName) {
+                if (btnOpen) btnOpen.style.display = 'none';
+                if (statusDiv) { statusDiv.style.display = 'flex'; }
+                if (nameSpan) nameSpan.textContent = fileName;
+            } else {
+                if (btnOpen) btnOpen.style.display = 'flex';
+                if (statusDiv) statusDiv.style.display = 'none';
+            }
+        }
+
+        async function openJsonFile() {
+            if (!FS_SUPPORTED) {
+                // フォールバック: 通常のfile input
+                importStatsFileFallback();
+                return;
+            }
+            try {
+                const [handle] = await window.showOpenFilePicker({
+                    types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
+                    multiple: false
+                });
+                _fileHandle = handle;
+                await loadFromFileHandle();
+            } catch (e) {
+                if (e.name !== 'AbortError') alert('ファイルを開けませんでした: ' + e.message);
+            }
+        }
+
+        async function loadFromFileHandle() {
+            if (!_fileHandle) return;
+            const file = await _fileHandle.getFile();
+            const text = await file.text();
+            try {
+                const data = JSON.parse(text);
+                _jsonData = data;
+                const newArchives = data.archives || [];
+                const newMembers = data.members || [];
+
+                // Merge archives
+                const existingIds = new Set(state.archives.map(a => a.id));
+                let addedCount = 0;
+                newArchives.forEach(arc => {
+                    if (!existingIds.has(arc.id)) { state.archives.push(arc); addedCount++; }
+                });
+                state.archives.sort((a, b) => new Date(b.id) - new Date(a.id));
+
+                if (newMembers.length > 0) {
+                    state.members = [...newMembers];
+                    state.activePlayers = newMembers.slice(0, state.totalPlayers);
+                }
+                save();
+                updateFileStatusUI(file.name);
+
+                // Show summary
+                const infoDiv = document.getElementById('import-info');
+                const totalRounds = newArchives.reduce((s, a) => s + a.history.length, 0);
+                infoDiv.style.display = 'block';
+                infoDiv.innerHTML = `
+                    <div class="stat-card" style="border-left:4px solid var(--emerald-500);padding:14px 16px;">
+                        <div style="font-size:11px;font-weight:800;color:var(--emerald-700);margin-bottom:6px;">✅ ${file.name} を読込みました</div>
+                        <div style="font-size:10px;color:var(--slate-500);line-height:1.8;">
+                            📅 セッション数: <b>${newArchives.length}</b>件（新規: <b>${addedCount}</b>件）<br>
+                            🀄 総半荘数: <b>${totalRounds}</b>回<br>
+                            👥 プレイヤー: ${[...new Set(newArchives.flatMap(a => a.players))].join(', ')}
+                        </div>
+                    </div>`;
+
+                render();
+                drawTrendChart();
+            } catch (e) {
+                alert('JSONの解析に失敗しました: ' + e.message);
+            }
+        }
+
+        async function saveToJsonFile() {
+            if (!_fileHandle) {
+                alert('先にJSONファイルを開いてください。');
+                return;
+            }
+            try {
+                // 元のJSONデータ構造を維持しつつarchivesとmembersを更新
+                const saveData = _jsonData ? { ..._jsonData } : {};
+                saveData.archives = [...state.archives].sort((a, b) => new Date(a.id) - new Date(b.id));
+                saveData.members = state.members;
+
+                const writable = await _fileHandle.createWritable();
+                await writable.write(JSON.stringify(saveData, null, 4));
+                await writable.close();
+
+                const btn = document.getElementById('btn-save-json');
+                if (btn) {
+                    btn.textContent = '✅ 保存済み';
+                    btn.style.background = 'var(--emerald-700)';
+                    setTimeout(() => { btn.textContent = '💾 保存'; btn.style.background = 'var(--emerald-600)'; }, 2000);
+                }
+            } catch (e) {
+                if (e.name === 'NotAllowedError') {
+                    // 権限が失効した場合は再リクエスト
+                    const perm = await _fileHandle.requestPermission({ mode: 'readwrite' });
+                    if (perm === 'granted') { saveToJsonFile(); }
+                } else {
+                    alert('保存に失敗しました: ' + e.message);
+                }
+            }
+        }
 
         function save() {
             localStorage.setItem('mj-members', JSON.stringify(state.members));
@@ -753,13 +876,13 @@
             render();
         }
 
-        function archiveSession() {
+        async function archiveSession() {
             if (!confirm("セッションを終了して保存しますか？（現在の履歴はリセットされます）")) return;
 
             const session = {
                 id: new Date().toISOString(),
                 date: new Date().toLocaleDateString('ja-JP'),
-                players: [...state.members],
+                players: [...state.activePlayers],
                 history: [...state.history],
                 chips: { ...state.chips },
                 mults: { s: state.scoreMult, c: state.chipMult }
@@ -770,6 +893,21 @@
             state.chips = {};
             save();
             switchTab('stats');
+
+            // JSONファイルが開かれていれば自動保存
+            if (_fileHandle) {
+                await saveToJsonFile();
+            } else {
+                // ファイルが開かれていない場合はダウンロードで保存
+                const saveData = { members: state.members, archives: [...state.archives].sort((a,b)=>new Date(a.id)-new Date(b.id)) };
+                const blob = new Blob([JSON.stringify(saveData, null, 4)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `yar_result_${new Date().toISOString().slice(0,10)}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+            }
         }
 
         /* ── Rendering ── */
@@ -1427,39 +1565,24 @@
 
         /* ── IO ── */
         function exportData() {
-            const blob = new Blob([JSON.stringify(state)], { type: 'application/json' });
+            const saveData = _jsonData ? { ..._jsonData } : {};
+            saveData.archives = [...state.archives].sort((a, b) => new Date(a.id) - new Date(b.id));
+            saveData.members = state.members;
+            const blob = new Blob([JSON.stringify(saveData, null, 4)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
-            a.href = url; a.download = `mj_score_backup_${new Date().toISOString().slice(0, 10)}.json`;
+            a.href = url;
+            a.download = `yar_result_${new Date().toISOString().slice(0, 10)}.json`;
             a.click();
+            URL.revokeObjectURL(url);
         }
 
         function importData() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = '.json';
-            input.onchange = e => {
-                const file = e.target.files[0];
-                if (!file) return;
-                const reader = new FileReader();
-                reader.onload = () => {
-                    try {
-                        const data = JSON.parse(reader.result);
-                        state.archives = data.archives || [];
-                        state.members = data.members || state.members;
-                        save();
-                        alert('データをインポートしました。');
-                        location.reload();
-                    } catch (err) {
-                        alert('JSONファイルの読込に失敗しました: ' + err.message);
-                    }
-                };
-                reader.readAsText(file);
-            };
-            input.click();
+            openJsonFile();
         }
 
-        function importStatsFile() {
+        // フォールバック用（File System Access API非対応時）
+        function importStatsFileFallback() {
             const input = document.createElement('input');
             input.type = 'file';
             input.accept = '.json';
@@ -1470,6 +1593,7 @@
                 reader.onload = () => {
                     try {
                         const data = JSON.parse(reader.result);
+                        _jsonData = data;
                         const newArchives = data.archives || [];
                         const newMembers = data.members || [];
 
@@ -1478,45 +1602,32 @@
                             return;
                         }
 
-                        // Merge: add new archives that don't already exist (by id)
                         const existingIds = new Set(state.archives.map(a => a.id));
                         let addedCount = 0;
                         newArchives.forEach(arc => {
-                            if (!existingIds.has(arc.id)) {
-                                state.archives.push(arc);
-                                addedCount++;
-                            }
+                            if (!existingIds.has(arc.id)) { state.archives.push(arc); addedCount++; }
                         });
-
-                        // Sort archives by date descending
                         state.archives.sort((a, b) => new Date(b.id) - new Date(a.id));
 
-                        // Replace members with JSON members (overwrite ENTRY panel names)
                         if (newMembers.length > 0) {
                             state.members = [...newMembers];
-                            state.activePlayers = newMembers.slice(0, 4);
+                            state.activePlayers = newMembers.slice(0, state.totalPlayers);
                         }
-
                         save();
+                        updateFileStatusUI(file.name);
 
-                        // Show import summary
                         const infoDiv = document.getElementById('import-info');
-                        const totalRounds = newArchives.reduce((sum, a) => sum + a.history.length, 0);
+                        const totalRounds = newArchives.reduce((s, a) => s + a.history.length, 0);
                         infoDiv.style.display = 'block';
                         infoDiv.innerHTML = `
-                            <div class="stat-card" style="border-left: 4px solid var(--emerald-500); padding: 14px 16px;">
-                                <div style="font-size:11px; font-weight:800; color:var(--emerald-700); margin-bottom:6px;">
-                                    ✅ ${file.name} を読込みました
-                                </div>
-                                <div style="font-size:10px; color:var(--slate-500); line-height:1.8;">
-                                    📅 セッション数: <b>${newArchives.length}</b>件
-                                    （新規追加: <b>${addedCount}</b>件）<br>
+                            <div class="stat-card" style="border-left:4px solid var(--emerald-500);padding:14px 16px;">
+                                <div style="font-size:11px;font-weight:800;color:var(--emerald-700);margin-bottom:6px;">✅ ${file.name} を読込みました（※ブラウザ制限により上書き保存不可）</div>
+                                <div style="font-size:10px;color:var(--slate-500);line-height:1.8;">
+                                    📅 セッション数: <b>${newArchives.length}</b>件（新規: <b>${addedCount}</b>件）<br>
                                     🀄 総半荘数: <b>${totalRounds}</b>回<br>
                                     👥 プレイヤー: ${[...new Set(newArchives.flatMap(a => a.players))].join(', ')}
                                 </div>
-                            </div>
-                        `;
-
+                            </div>`;
                         render();
                         drawTrendChart();
                     } catch (err) {
