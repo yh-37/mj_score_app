@@ -464,6 +464,96 @@
             letter-spacing: 1px;
         }
 
+        /* ── URL Loader ── */
+        .url-loader-card {
+            background: #fff;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--slate-200);
+            padding: 14px 16px;
+            margin-bottom: 12px;
+        }
+
+        .url-loader-title {
+            font-size: 9px;
+            font-weight: 900;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .url-preset-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .url-preset-btn {
+            padding: 5px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--slate-200);
+            background: var(--slate-50);
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--slate-600);
+            cursor: pointer;
+            transition: all .15s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .url-preset-btn:hover,
+        .url-preset-btn.selected {
+            background: var(--emerald-50);
+            border-color: var(--emerald-400);
+            color: var(--emerald-700);
+        }
+
+        .url-input-row {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .url-input {
+            flex: 1;
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--slate-200);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--slate-700);
+            background: var(--slate-50);
+            outline: none;
+            font-family: 'JetBrains Mono', monospace;
+            min-width: 0;
+        }
+
+        .url-input:focus {
+            border-color: var(--emerald-400);
+            background: var(--emerald-50);
+        }
+
+        .btn-fetch {
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: none;
+            background: var(--emerald-600);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 900;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background .15s;
+        }
+
+        .btn-fetch:disabled {
+            background: var(--slate-300);
+            cursor: not-allowed;
+        }
+
         /* ── Player Detail Modal ── */
         .modal-overlay {
             position: fixed;
@@ -635,10 +725,27 @@
 
         <div id="view-stats" class="stats-view" style="display:none">
             <div id="file-bar" style="margin-bottom:12px;">
-                <button class="btn-load-stats" id="btn-open-file" onclick="openJsonFile()">
-                    📂 JSONファイルを開く
+
+                <!-- URL から読み込む（iPhone対応メイン機能） -->
+                <div class="url-loader-card">
+                    <div class="url-loader-title">📡 JSONファイルを読み込む</div>
+                    <div class="url-preset-list" id="url-preset-list">
+                        <!-- JSで生成 -->
+                    </div>
+                    <div class="url-input-row">
+                        <input type="url" class="url-input" id="json-url-input"
+                            placeholder="URLまたは相対パス (例: result/yar_result.json)"
+                            inputmode="url" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                        <button class="btn-fetch" id="btn-fetch-url" onclick="fetchJsonFromUrl()">読み込む</button>
+                    </div>
+                </div>
+
+                <!-- デスクトップ向け: File System Access API / ファイル選択 -->
+                <button class="btn-load-stats" id="btn-open-file" onclick="openJsonFile()"
+                    style="font-size:11px; padding:12px 16px;">
+                    📂 端末内のファイルを選択（PC/Androidのみ）
                 </button>
-                <div id="file-status" style="display:none; padding:10px 14px; background:#fff; border-radius:12px; border:1px solid var(--slate-200); font-size:11px; color:var(--slate-600); margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+                <div id="file-status" style="display:none; padding:10px 14px; background:#fff; border-radius:12px; border:1px solid var(--slate-200); font-size:11px; color:var(--slate-600); margin-bottom:12px; align-items:center; gap:8px;">
                     <span style="font-size:16px;">📄</span>
                     <span id="file-name-display" style="font-weight:700; flex:1;"></span>
                     <button onclick="openJsonFile()" style="padding:4px 10px; border-radius:8px; border:1px solid var(--slate-300); background:transparent; font-size:10px; font-weight:700; cursor:pointer; color:var(--slate-500);">変更</button>
@@ -697,6 +804,96 @@
         let _fileHandle = null;   // 開いているファイルハンドル
         let _jsonData = null;     // 読み込んだJSONのオリジナルデータ（members等を保持）
         const FS_SUPPORTED = 'showOpenFilePicker' in window;
+
+        /* ── URL Presets ── */
+        const JSON_PRESETS = [
+            { label: 'yar_result.json', url: 'result/yar_result.json' }
+        ];
+
+        function initUrlLoader() {
+            const list = document.getElementById('url-preset-list');
+            if (!list) return;
+            list.innerHTML = '';
+            JSON_PRESETS.forEach(preset => {
+                const btn = document.createElement('button');
+                btn.className = 'url-preset-btn';
+                btn.id = 'preset-btn-' + preset.label.replace(/[^a-z0-9]/gi, '_');
+                btn.innerHTML = `📄 ${preset.label}`;
+                btn.onclick = () => {
+                    document.getElementById('json-url-input').value = preset.url;
+                    document.querySelectorAll('.url-preset-btn').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                };
+                list.appendChild(btn);
+            });
+            // 最初のプリセットをデフォルト入力に設定
+            if (JSON_PRESETS.length > 0) {
+                const input = document.getElementById('json-url-input');
+                if (input && !input.value) input.value = JSON_PRESETS[0].url;
+            }
+        }
+
+        async function fetchJsonFromUrl(urlArg) {
+            const input = document.getElementById('json-url-input');
+            const url = urlArg || (input ? input.value.trim() : '');
+            if (!url) { alert('URLまたはファイルパスを入力してください。'); return; }
+
+            const btn = document.getElementById('btn-fetch-url');
+            if (btn) { btn.disabled = true; btn.textContent = '読み込み中…'; }
+
+            try {
+                const res = await fetch(url + '?_t=' + Date.now()); // キャッシュ回避
+                if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+                const data = await res.json();
+
+                _jsonData = data;
+                const newArchives = data.archives || [];
+                const newMembers = data.members || [];
+
+                const existingIds = new Set(state.archives.map(a => a.id));
+                let addedCount = 0;
+                newArchives.forEach(arc => {
+                    if (!existingIds.has(arc.id)) { state.archives.push(arc); addedCount++; }
+                });
+                state.archives.sort((a, b) => new Date(b.id) - new Date(a.id));
+
+                if (newMembers.length > 0) {
+                    state.members = [...newMembers];
+                    state.activePlayers = newMembers.slice(0, state.totalPlayers);
+                }
+                save();
+
+                // ファイル名表示（URL最後のパス部分）
+                const fileName = url.split('/').pop().split('?')[0];
+                updateFileStatusUI(fileName + ' (URL)');
+
+                // 読み込み情報バナー
+                const infoDiv = document.getElementById('import-info');
+                const totalRounds = newArchives.reduce((s, a) => s + a.history.length, 0);
+                infoDiv.style.display = 'block';
+                infoDiv.innerHTML = `
+                    <div class="stat-card" style="border-left:4px solid var(--emerald-500);padding:14px 16px;">
+                        <div style="font-size:11px;font-weight:800;color:var(--emerald-700);margin-bottom:6px;">✅ ${fileName} を読込みました</div>
+                        <div style="font-size:10px;color:var(--slate-500);line-height:1.8;">
+                            📅 セッション数: <b>${newArchives.length}</b>件（新規: <b>${addedCount}</b>件）<br>
+                            🀄 総半荘数: <b>${totalRounds}</b>回<br>
+                            👥 プレイヤー: ${[...new Set(newArchives.flatMap(a => a.players))].join(', ')}
+                        </div>
+                    </div>`;
+
+                render();
+                drawTrendChart();
+
+                if (btn) { btn.textContent = '✅ 完了'; btn.style.background = 'var(--emerald-700)'; }
+                setTimeout(() => {
+                    if (btn) { btn.disabled = false; btn.textContent = '読み込む'; btn.style.background = ''; }
+                }, 2000);
+
+            } catch (e) {
+                alert('読み込みに失敗しました:\n' + e.message + '\n\nGitHub Pages等のURLか、同一サーバー上のパスを指定してください。');
+                if (btn) { btn.disabled = false; btn.textContent = '読み込む'; }
+            }
+        }
 
         function updateFileStatusUI(fileName) {
             const btnOpen = document.getElementById('btn-open-file');
@@ -829,7 +1026,10 @@
             document.getElementById('tab-game').classList.toggle('active', view === 'game');
             document.getElementById('tab-stats').classList.toggle('active', view === 'stats');
             render();
-            if (view === 'stats') drawTrendChart();
+            if (view === 'stats') {
+                drawTrendChart();
+                initUrlLoader();
+            }
         }
 
         /* ── Core Logic ── */
@@ -1641,6 +1841,8 @@
 
         // Init
         render();
+        // STATSタブが最初から表示されている場合にURLローダーを初期化
+        if (state.view === 'stats') initUrlLoader();
 
         // Service Worker 登録（PWA対応）
         if ('serviceWorker' in navigator) {
