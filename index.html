@@ -807,7 +807,8 @@
 
         /* ── URL Presets ── */
         const JSON_PRESETS = [
-            { label: 'yar_result.json', url: 'result/yar_result.json' }
+            { label: 'yar_result.json', url: 'result/yar_result.json' },
+            { label: 'comy_result.json', url: 'result/comy_result.json' }
         ];
 
         function initUrlLoader() {
@@ -1343,7 +1344,7 @@
                 a.history.forEach(round => {
                     round.forEach(p => {
                         if (!totalScores[p.name]) totalScores[p.name] = { score: 0, games: 0, wins: 0, chips: 0 };
-                        if (p.raw !== undefined) {
+                        if (p.rank !== undefined) {
                             totalScores[p.name].score += p.finalScore;
                             totalScores[p.name].games++;
                             if (p.rank === 1) totalScores[p.name].wins++;
@@ -1394,7 +1395,7 @@
                 const resCont = card.querySelector('.history-results');
                 arc.players.forEach(p => {
                     const total = arc.history.reduce((sum, r) => sum + (r.find(e => e.name === p)?.finalScore || 0), 0);
-                    if (total === 0 && !arc.history.some(r => r.some(e => e.name === p && e.raw !== undefined))) return;
+                    if (total === 0 && !arc.history.some(r => r.some(e => e.name === p && e.rank !== undefined))) return;
                     const b = document.createElement('span');
                     b.className = 'res-badge';
                     b.style.color = total > 0 ? 'var(--orange-400)' : 'var(--blue-400)';
@@ -1499,7 +1500,7 @@
             state.activePlayers = round.filter(r => r.raw !== undefined).map(r => r.name);
             state.currentPoints = {};
             round.forEach(r => { if (r.raw !== undefined) state.currentPoints[r.name] = r.raw; });
-            render();
+            render(); // editRound uses raw for currentPoints (score input), keep as-is
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1519,13 +1520,13 @@
             state.archives.forEach(arc => {
                 let sessionScore = 0;
                 arc.history.forEach(round => {
-                    const p = round.find(r => r.name === name && r.raw !== undefined);
+                    const p = round.find(r => r.name === name && r.rank !== undefined);
                     if (p) {
                         rounds.push({ finalScore: p.finalScore, rank: p.rank, date: arc.date });
                         sessionScore += p.finalScore;
                     }
                 });
-                if (arc.history.some(r => r.some(p => p.name === name && p.raw !== undefined))) {
+                if (arc.history.some(r => r.some(p => p.name === name && p.rank !== undefined))) {
                     sessionTotals.push({ date: arc.date, score: sessionScore });
                 }
                 chipTotal += Number(arc.chips?.[name] || 0);
@@ -1559,7 +1560,7 @@
             content.innerHTML = `
                 <div style="margin-bottom:20px;">
                     <div style="font-size:22px; font-weight:900; letter-spacing:-1px; margin-bottom:4px;">${name}</div>
-                    <div style="font-size:12px; color:rgba(255,255,255,0.4);">${games}戦 / ${state.archives.filter(a => a.history.some(r => r.some(p => p.name === name && p.raw !== undefined))).length}セッション</div>
+                    <div style="font-size:12px; color:rgba(255,255,255,0.4);">${games}戦 / ${state.archives.filter(a => a.history.some(r => r.some(p => p.name === name && p.rank !== undefined))).length}セッション</div>
                 </div>
                 <div class="modal-stat-grid">
                     <div class="modal-stat-item">

@@ -2531,21 +2531,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -56,
+                        "raw": 3700,
                         "rank": 4
                     },
                     {
                         "name": "まりお",
                         "finalScore": 57,
+                        "raw": 37900,
                         "rank": 1
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -13,
+                        "raw": 26800,
                         "rank": 3
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 12,
+                        "raw": 31600,
                         "rank": 2
                     }
                 ],
@@ -2553,21 +2557,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 94,
+                        "raw": 74300,
                         "rank": 1
                     },
                     {
                         "name": "まりお",
                         "finalScore": -21,
+                        "raw": 19100,
                         "rank": 3
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -77,
+                        "raw": -16900,
                         "rank": 4
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 4,
+                        "raw": 23500,
                         "rank": 2
                     }
                 ],
@@ -2575,21 +2583,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 84,
+                        "raw": 64200,
                         "rank": 1
                     },
                     {
                         "name": "まりお",
                         "finalScore": -28,
+                        "raw": 11600,
                         "rank": 3
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -60,
+                        "raw": -300,
                         "rank": 4
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 4,
+                        "raw": 24400,
                         "rank": 2
                     }
                 ],
@@ -2597,21 +2609,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -41,
+                        "raw": 18700,
                         "rank": 4
                     },
                     {
                         "name": "まりお",
                         "finalScore": 6,
+                        "raw": 25600,
                         "rank": 2
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -16,
+                        "raw": 23800,
                         "rank": 3
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 51,
+                        "raw": 31900,
                         "rank": 1
                     }
                 ],
@@ -2619,21 +2635,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 82,
+                        "raw": 61300,
                         "rank": 1
                     },
                     {
                         "name": "まりお",
                         "finalScore": -30,
+                        "raw": 9700,
                         "rank": 3
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 8,
+                        "raw": 28300,
                         "rank": 2
                     },
                     {
                         "name": "わぽ",
                         "finalScore": -60,
+                        "raw": -300,
                         "rank": 4
                     }
                 ],
@@ -2641,21 +2661,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -17,
+                        "raw": 22800,
                         "rank": 3
                     },
                     {
                         "name": "まりお",
                         "finalScore": 64,
+                        "raw": 44400,
                         "rank": 1
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -50,
+                        "raw": 9900,
                         "rank": 4
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 3,
+                        "raw": 22900,
                         "rank": 2
                     }
                 ],
@@ -2663,21 +2687,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 1,
+                        "raw": 20800,
                         "rank": 2
                     },
                     {
                         "name": "まりお",
                         "finalScore": -47,
+                        "raw": 12700,
                         "rank": 4
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 66,
+                        "raw": 46400,
                         "rank": 1
                     },
                     {
                         "name": "わぽ",
                         "finalScore": -20,
+                        "raw": 20100,
                         "rank": 3
                     }
                 ],
@@ -2685,21 +2713,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 6,
+                        "raw": 26000,
                         "rank": 2
                     },
                     {
                         "name": "まりお",
                         "finalScore": 72,
+                        "raw": 50800,
                         "rank": 1
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -19,
+                        "raw": 21100,
                         "rank": 3
                     },
                     {
                         "name": "わぽ",
                         "finalScore": -59,
+                        "raw": 1100,
                         "rank": 4
                     }
                 ]
@@ -2726,6 +2758,7 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -76,
+                        "raw": -15700,
                         "rank": 4
                     },
                     {
@@ -2735,16 +2768,19 @@
                     {
                         "name": "れいら",
                         "finalScore": -26,
+                        "raw": 13600,
                         "rank": 3
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 91,
+                        "raw": 71000,
                         "rank": 1
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 11,
+                        "raw": 31100,
                         "rank": 2
                     }
                 ],
@@ -2752,21 +2788,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 100,
+                        "raw": 79900,
                         "rank": 1
                     },
                     {
                         "name": "まりお",
                         "finalScore": -6,
+                        "raw": 13600,
                         "rank": 3
                     },
                     {
                         "name": "れいら",
                         "finalScore": -60,
+                        "raw": 0,
                         "rank": 4
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -34,
+                        "raw": 6500,
                         "rank": 3
                     },
                     {
@@ -2778,11 +2818,13 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 17,
+                        "raw": 36500,
                         "rank": 2
                     },
                     {
                         "name": "まりお",
                         "finalScore": -30,
+                        "raw": 10600,
                         "rank": 3
                     },
                     {
@@ -2792,11 +2834,13 @@
                     {
                         "name": "ちょろQ",
                         "finalScore": 68,
+                        "raw": 47300,
                         "rank": 1
                     },
                     {
                         "name": "わぽ",
                         "finalScore": -55,
+                        "raw": 5600,
                         "rank": 4
                     }
                 ],
@@ -2804,16 +2848,19 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -30,
+                        "raw": 9400,
                         "rank": 3
                     },
                     {
                         "name": "まりお",
                         "finalScore": 5,
+                        "raw": 25100,
                         "rank": 2
                     },
                     {
                         "name": "れいら",
                         "finalScore": -60,
+                        "raw": 900,
                         "rank": 4
                     },
                     {
@@ -2823,6 +2870,7 @@
                     {
                         "name": "わぽ",
                         "finalScore": 85,
+                        "raw": 64600,
                         "rank": 1
                     }
                 ],
@@ -2834,21 +2882,25 @@
                     {
                         "name": "まりお",
                         "finalScore": -18,
+                        "raw": 21800,
                         "rank": 3
                     },
                     {
                         "name": "れいら",
                         "finalScore": 3,
+                        "raw": 22700,
                         "rank": 2
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -44,
+                        "raw": 16200,
                         "rank": 4
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 59,
+                        "raw": 39300,
                         "rank": 1
                     }
                 ],
@@ -2856,16 +2908,19 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 59,
+                        "raw": 38200,
                         "rank": 1
                     },
                     {
                         "name": "まりお",
                         "finalScore": 9,
+                        "raw": 29400,
                         "rank": 2
                     },
                     {
                         "name": "れいら",
                         "finalScore": -14,
+                        "raw": 26000,
                         "rank": 3
                     },
                     {
@@ -2875,6 +2930,7 @@
                     {
                         "name": "わぽ",
                         "finalScore": -54,
+                        "raw": 6400,
                         "rank": 4
                     }
                 ],
@@ -2882,11 +2938,13 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 10,
+                        "raw": 29800,
                         "rank": 2
                     },
                     {
                         "name": "まりお",
                         "finalScore": -20,
+                        "raw": 20200,
                         "rank": 3
                     },
                     {
@@ -2896,11 +2954,13 @@
                     {
                         "name": "ちょろQ",
                         "finalScore": -51,
+                        "raw": 8800,
                         "rank": 4
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 61,
+                        "raw": 41200,
                         "rank": 1
                     }
                 ],
@@ -2908,21 +2968,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -47,
+                        "raw": 12800,
                         "rank": 4
                     },
                     {
                         "name": "まりお",
                         "finalScore": 57,
+                        "raw": 36400,
                         "rank": 1
                     },
                     {
                         "name": "れいら",
                         "finalScore": -25,
+                        "raw": 15500,
                         "rank": 3
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 15,
+                        "raw": 35300,
                         "rank": 2
                     },
                     {
@@ -2938,21 +3002,25 @@
                     {
                         "name": "まりお",
                         "finalScore": 73,
+                        "raw": 53100,
                         "rank": 1
                     },
                     {
                         "name": "れいら",
                         "finalScore": 18,
+                        "raw": 38200,
                         "rank": 2
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -31,
+                        "raw": 8700,
                         "rank": 3
                     },
                     {
                         "name": "わぽ",
                         "finalScore": -60,
+                        "raw": 0,
                         "rank": 4
                     }
                 ],
@@ -2960,6 +3028,7 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -27,
+                        "raw": 12400,
                         "rank": 3
                     },
                     {
@@ -2969,16 +3038,19 @@
                     {
                         "name": "れいら",
                         "finalScore": 73,
+                        "raw": 52200,
                         "rank": 1
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -72,
+                        "raw": -12100,
                         "rank": 4
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 26,
+                        "raw": 46500,
                         "rank": 2
                     }
                 ]
@@ -3010,21 +3082,25 @@
                     {
                         "name": "まりお",
                         "finalScore": -22,
+                        "raw": 18200,
                         "rank": 3
                     },
                     {
                         "name": "れいら",
                         "finalScore": 61,
+                        "raw": 40900,
                         "rank": 1
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 5,
+                        "raw": 25100,
                         "rank": 2
                     },
                     {
                         "name": "わぽ",
                         "finalScore": -44,
+                        "raw": 15800,
                         "rank": 4
                     }
                 ],
@@ -3032,16 +3108,19 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 88,
+                        "raw": 67300,
                         "rank": 1
                     },
                     {
                         "name": "まりお",
                         "finalScore": -33,
+                        "raw": 7000,
                         "rank": 3
                     },
                     {
                         "name": "れいら",
                         "finalScore": -82,
+                        "raw": -21800,
                         "rank": 4
                     },
                     {
@@ -3051,6 +3130,7 @@
                     {
                         "name": "わぽ",
                         "finalScore": 27,
+                        "raw": 47500,
                         "rank": 2
                     }
                 ],
@@ -3058,11 +3138,13 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 3,
+                        "raw": 23400,
                         "rank": 2
                     },
                     {
                         "name": "まりお",
                         "finalScore": -59,
+                        "raw": 700,
                         "rank": 4
                     },
                     {
@@ -3072,11 +3154,13 @@
                     {
                         "name": "ちょろQ",
                         "finalScore": 75,
+                        "raw": 54500,
                         "rank": 1
                     },
                     {
                         "name": "わぽ",
                         "finalScore": -19,
+                        "raw": 21400,
                         "rank": 3
                     }
                 ],
@@ -3084,21 +3168,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -17,
+                        "raw": 12700,
                         "rank": 3
                     },
                     {
                         "name": "まりお",
                         "finalScore": -71,
+                        "raw": -11100,
                         "rank": 4
                     },
                     {
                         "name": "れいら",
                         "finalScore": -17,
+                        "raw": 12700,
                         "rank": 3
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 105,
+                        "raw": 85700,
                         "rank": 1
                     },
                     {
@@ -3110,6 +3198,7 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -45,
+                        "raw": -15100,
                         "rank": 4
                     },
                     {
@@ -3119,16 +3208,19 @@
                     {
                         "name": "れいら",
                         "finalScore": -17,
+                        "raw": 23500,
                         "rank": 3
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 52,
+                        "raw": 31700,
                         "rank": 1
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 10,
+                        "raw": 29700,
                         "rank": 2
                     }
                 ],
@@ -3140,21 +3232,25 @@
                     {
                         "name": "まりお",
                         "finalScore": -21,
+                        "raw": 19400,
                         "rank": 3
                     },
                     {
                         "name": "れいら",
                         "finalScore": 66,
+                        "raw": 44800,
                         "rank": 1
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -58,
+                        "raw": 2500,
                         "rank": 4
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 13,
+                        "raw": 33200,
                         "rank": 2
                     }
                 ],
@@ -3162,6 +3258,7 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -17,
+                        "raw": 22600,
                         "rank": 3
                     },
                     {
@@ -3171,16 +3268,19 @@
                     {
                         "name": "れいら",
                         "finalScore": 50,
+                        "raw": 30500,
                         "rank": 1
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -41,
+                        "raw": 19000,
                         "rank": 4
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 8,
+                        "raw": 27900,
                         "rank": 2
                     }
                 ],
@@ -3188,16 +3288,19 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -56,
+                        "raw": 3900,
                         "rank": 4
                     },
                     {
                         "name": "まりお",
                         "finalScore": 70,
+                        "raw": 50200,
                         "rank": 1
                     },
                     {
                         "name": "れいら",
                         "finalScore": -20,
+                        "raw": 19800,
                         "rank": 3
                     },
                     {
@@ -3207,6 +3310,7 @@
                     {
                         "name": "わぽ",
                         "finalScore": 6,
+                        "raw": 27900,
                         "rank": 2
                     }
                 ],
@@ -3214,11 +3318,13 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 4,
+                        "raw": 24000,
                         "rank": 2
                     },
                     {
                         "name": "まりお",
                         "finalScore": -49,
+                        "raw": 11200,
                         "rank": 4
                     },
                     {
@@ -3228,11 +3334,13 @@
                     {
                         "name": "ちょろQ",
                         "finalScore": -25,
+                        "raw": 15200,
                         "rank": 3
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 70,
+                        "raw": 49600,
                         "rank": 1
                     }
                 ],
@@ -3240,21 +3348,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 70,
+                        "raw": 48600,
                         "rank": 1
                     },
                     {
                         "name": "まりお",
                         "finalScore": -27,
+                        "raw": 13100,
                         "rank": 3
                     },
                     {
                         "name": "れいら",
                         "finalScore": -53,
+                        "raw": 7800,
                         "rank": 4
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 10,
+                        "raw": 30500,
                         "rank": 2
                     },
                     {
@@ -3266,21 +3378,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -57,
+                        "raw": 3300,
                         "rank": 4
                     },
                     {
                         "name": "まりお",
                         "finalScore": 59,
+                        "raw": 37600,
                         "rank": 1
                     },
                     {
                         "name": "れいら",
                         "finalScore": -14,
+                        "raw": 26300,
                         "rank": 3
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 12,
+                        "raw": 31800,
                         "rank": 2
                     },
                     {
@@ -3292,16 +3408,19 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 11,
+                        "raw": 31300,
                         "rank": 2
                     },
                     {
                         "name": "まりお",
                         "finalScore": -50,
+                        "raw": 0,
                         "rank": 4
                     },
                     {
                         "name": "れいら",
                         "finalScore": 59,
+                        "raw": 47200,
                         "rank": 1
                     },
                     {
@@ -3311,6 +3430,7 @@
                     {
                         "name": "わぽ",
                         "finalScore": -20,
+                        "raw": 20500,
                         "rank": 3
                     }
                 ]
@@ -3337,21 +3457,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 89,
+                        "raw": 68900,
                         "rank": 1
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 22,
+                        "raw": 41600,
                         "rank": 2
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -27,
+                        "raw": 13500,
                         "rank": 3
                     },
                     {
                         "name": "あーじゅ",
                         "finalScore": -84,
+                        "raw": -24000,
                         "rank": 4
                     }
                 ],
@@ -3359,21 +3483,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -22,
+                        "raw": 18400,
                         "rank": 3
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 72,
+                        "raw": 50100,
                         "rank": 1
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 0,
+                        "raw": 19600,
                         "rank": 2
                     },
                     {
                         "name": "あーじゅ",
                         "finalScore": -50,
+                        "raw": 9900,
                         "rank": 4
                     }
                 ],
@@ -3381,21 +3509,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -2,
+                        "raw": 18400,
                         "rank": 2
                     },
                     {
                         "name": "わぽ",
                         "finalScore": -49,
+                        "raw": 10600,
                         "rank": 4
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 74,
+                        "raw": 53900,
                         "rank": 1
                     },
                     {
                         "name": "あーじゅ",
                         "finalScore": -23,
+                        "raw": 17100,
                         "rank": 3
                     }
                 ],
@@ -3403,21 +3535,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 4,
+                        "raw": 23600,
                         "rank": 2
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 66,
+                        "raw": 46700,
                         "rank": 1
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -18,
+                        "raw": 21600,
                         "rank": 3
                     },
                     {
                         "name": "あーじゅ",
                         "finalScore": -52,
+                        "raw": 8100,
                         "rank": 4
                     }
                 ],
@@ -3425,21 +3561,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 12,
+                        "raw": 32400,
                         "rank": 2
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 55,
+                        "raw": 34900,
                         "rank": 1
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -48,
+                        "raw": 11700,
                         "rank": 4
                     },
                     {
                         "name": "あーじゅ",
                         "finalScore": -19,
+                        "raw": 21000,
                         "rank": 3
                     }
                 ],
@@ -3447,21 +3587,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": 58,
+                        "raw": 37700,
                         "rank": 1
                     },
                     {
                         "name": "わぽ",
                         "finalScore": 3,
+                        "raw": 23200,
                         "rank": 2
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": -18,
+                        "raw": 22400,
                         "rank": 3
                     },
                     {
                         "name": "あーじゅ",
                         "finalScore": -43,
+                        "raw": 16700,
                         "rank": 4
                     }
                 ],
@@ -3469,21 +3613,25 @@
                     {
                         "name": "あろんそ",
                         "finalScore": -26,
+                        "raw": 13800,
                         "rank": 3
                     },
                     {
                         "name": "わぽ",
                         "finalScore": -57,
+                        "raw": 2600,
                         "rank": 4
                     },
                     {
                         "name": "ちょろQ",
                         "finalScore": 62,
+                        "raw": 42600,
                         "rank": 1
                     },
                     {
                         "name": "あーじゅ",
                         "finalScore": 21,
+                        "raw": 41000,
                         "rank": 2
                     }
                 ]
