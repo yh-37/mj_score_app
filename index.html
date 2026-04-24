@@ -1330,6 +1330,25 @@
             render();
         }
 
+        /* ── Archives内の全プレイヤーを重複なしで返す（members空の場合に使用） ── */
+        function getStatsPlayers() {
+            if (state.members && state.members.length > 0) return state.members;
+            // archives の history から全プレイヤーを順序保持で抽出
+            const seen = new Set();
+            const players = [];
+            [...state.archives].reverse().forEach(arc => {
+                arc.history.forEach(round => {
+                    round.forEach(p => {
+                        if (p.rank !== undefined && !seen.has(p.name)) {
+                            seen.add(p.name);
+                            players.push(p.name);
+                        }
+                    });
+                });
+            });
+            return players;
+        }
+
         function renderStats() {
             const summary = document.getElementById('stats-summary-container');
             summary.innerHTML = '<div class="stat-card"><div class="stat-card-title">Lifetime Stats</div><div class="stat-grid" id="stats-grid"></div></div>';
@@ -1358,7 +1377,7 @@
                 });
             });
 
-            state.members.forEach(name => {
+            getStatsPlayers().forEach(name => {
                 const s = totalScores[name] || { score: 0, games: 0, wins: 0 };
                 const avg = s.games > 0 ? (s.score / s.games).toFixed(2) : '0.00';
                 const rate = s.games > 0 ? Math.round((s.wins / s.games) * 100) : 0;
@@ -1434,7 +1453,7 @@
 
             if (state.archives.length === 0) return;
 
-            const players = state.members;
+            const players = getStatsPlayers();
             const colors = ['#fb923c', '#60a5fa', '#34d399', '#a78bfa', '#f43f5e', '#fbbf24'];
 
             // Calculate cumulative points over sessions
