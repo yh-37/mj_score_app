@@ -797,6 +797,32 @@
                         "raw": 18000,
                         "rank": 3
                     }
+                ],
+                [
+                    {
+                        "name": "あろんそ",
+                        "finalScore": 62,
+                        "raw": 42000,
+                        "rank": 1
+                    },
+                    {
+                        "name": "まりお",
+                        "finalScore": -24,
+                        "raw": 16000,
+                        "rank": 3
+                    },
+                    {
+                        "name": "れいら",
+                        "finalScore": -46,
+                        "raw": 14000,
+                        "rank": 4
+                    },
+                    {
+                        "name": "わぽ",
+                        "finalScore": 8,
+                        "raw": 28000,
+                        "rank": 2
+                    }
                 ]
             ],
             "chips": {
@@ -2481,32 +2507,6 @@
                         "finalScore": 10,
                         "raw": 29800,
                         "rank": 2
-                    }
-                ],
-                [
-                    {
-                        "name": "あろんそ",
-                        "finalScore": -35,
-                        "raw": 5000,
-                        "rank": 4
-                    },
-                    {
-                        "name": "ちょろQ",
-                        "finalScore": -12,
-                        "raw": 23000,
-                        "rank": 3
-                    },
-                    {
-                        "name": "れいら",
-                        "finalScore": 6,
-                        "raw": 31000,
-                        "rank": 2
-                    },
-                    {
-                        "name": "わぽ",
-                        "finalScore": 41,
-                        "raw": 41000,
-                        "rank": 1
                     }
                 ]
             ],
