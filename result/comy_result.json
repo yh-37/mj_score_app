@@ -1,0 +1,1670 @@
+{
+    "view": "stats",
+    "members": [],
+    "history": [],
+    "chips": {},
+    "archives": [
+        {
+            "id": "2025-04-13T00:00:00.000Z",
+            "date": "2025/4/13",
+            "players": [
+                "Takahashi",
+                "Yamagen",
+                "Hamada",
+                "Shioya"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 47,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 1,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -21,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -27,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 53,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 2,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -21,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -34,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 39,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 10,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -16,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -33,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 33,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 1,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -12,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -22,
+                        "rank": 4
+                    }
+                ]
+            ]
+        },
+        {
+            "id": "2025-05-31T00:00:00.000Z",
+            "date": "2025/5/31",
+            "players": [
+                "Hamada",
+                "Yamagen",
+                "Shioya",
+                "Takahashi"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 42,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 3,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -11,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -34,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Shioya",
+                        "finalScore": 71,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 0,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -21,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -50,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 51,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 3,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -8,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -46,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 51,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 2,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -10,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -43,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 30,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 1,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -10,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -21,
+                        "rank": 4
+                    }
+                ]
+            ]
+        },
+        {
+            "id": "2025-06-28T00:00:00.000Z",
+            "date": "2025/6/28",
+            "players": [
+                "Yamagen",
+                "Shioya",
+                "Takahashi",
+                "Hamada"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 38,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 9,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -17,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -30,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 38,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 0,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -12,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -26,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 67,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -4,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -27,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -36,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 38,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 10,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -18,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -30,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 54,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 3,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -25,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -32,
+                        "rank": 4
+                    }
+                ]
+            ]
+        },
+        {
+            "id": "2025-07-05T00:00:00.000Z",
+            "date": "2025/7/5",
+            "players": [
+                "Shioya",
+                "Takahashi",
+                "Nakano",
+                "Hamada"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Shioya",
+                        "finalScore": 45,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 1,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Nakano",
+                        "finalScore": -13,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -33,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 40,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 4,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Nakano",
+                        "finalScore": -18,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -26,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 48,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 14,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -14,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Nakano",
+                        "finalScore": -48,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 58,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 16,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Nakano",
+                        "finalScore": -25,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -49,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Shioya",
+                        "finalScore": 99,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 0,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -46,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Nakano",
+                        "finalScore": -53,
+                        "rank": 4
+                    }
+                ]
+            ]
+        },
+        {
+            "id": "2025-08-30T00:00:00.000Z",
+            "date": "2025/8/30",
+            "players": [
+                "Yamagen",
+                "Hamada",
+                "Takahashi",
+                "Shioya"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 31,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 2,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -13,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -20,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 40,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 7,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -20,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -27,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 45,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 14,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -25,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -34,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 40,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 5,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -19,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -26,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 33,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -2,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -13,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -18,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Shioya",
+                        "finalScore": 36,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -2,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -12,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -22,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 35,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 6,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -16,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -25,
+                        "rank": 4
+                    }
+                ]
+            ]
+        },
+        {
+            "id": "2025-10-18T00:00:00.000Z",
+            "date": "2025/10/18",
+            "players": [
+                "Hamada",
+                "Shioya",
+                "Takahashi",
+                "Yamagen"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 35,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 4,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -13,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -26,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 40,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 9,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -19,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -30,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 49,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 8,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -17,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -40,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 37,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 0,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -15,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -22,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 38,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 9,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -2,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -45,
+                        "rank": 4
+                    }
+                ]
+            ]
+        },
+        {
+            "id": "2025-11-08T00:00:00.000Z",
+            "date": "2025/11/8",
+            "players": [
+                "Takahashi",
+                "Tanaka",
+                "Shioya",
+                "Hamada"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 52,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": -1,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -18,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -33,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Tanaka",
+                        "finalScore": 49,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 9,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -23,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -35,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 36,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 5,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": -17,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -24,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Tanaka",
+                        "finalScore": 43,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 14,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 2,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -59,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 44,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 8,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -22,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": -30,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 60,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": 7,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -29,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -38,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 47,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 16,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": -26,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -37,
+                        "rank": 4
+                    }
+                ]
+            ]
+        },
+        {
+            "id": "2025-12-13T00:00:00.000Z",
+            "date": "2025/12/13",
+            "players": [
+                "Takahashi",
+                "Tanaka",
+                "Hamada",
+                "Shioya"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 48,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": 5,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -6,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -47,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Tanaka",
+                        "finalScore": 45,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 7,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -21,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -31,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 51,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": 8,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -12,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -47,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 48,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": 9,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -6,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -51,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 45,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 10,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -5,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": -50,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 79,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": -12,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -29,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -38,
+                        "rank": 4
+                    }
+                ]
+            ]
+        },
+        {
+            "id": "2026-01-17T00:00:00.000Z",
+            "date": "2026/1/17",
+            "players": [
+                "Kozu",
+                "Hamada",
+                "Takahashi",
+                "Shioya"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Kozu",
+                        "finalScore": 67,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 4,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -25,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -46,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 44,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Kozu",
+                        "finalScore": 2,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -18,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -28,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 40,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Kozu",
+                        "finalScore": -3,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -16,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -21,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 35,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 5,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -10,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Kozu",
+                        "finalScore": -30,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 53,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 2,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -13,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Kozu",
+                        "finalScore": -42,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 42,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Kozu",
+                        "finalScore": 8,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -11,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -39,
+                        "rank": 4
+                    }
+                ]
+            ]
+        },
+        {
+            "id": "2026-02-07T00:00:00.000Z",
+            "date": "2026/2/7",
+            "players": [
+                "Kozu",
+                "Shioya",
+                "Takahashi",
+                "Hamada"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Kozu",
+                        "finalScore": 44,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 10,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -16,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -38,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 57,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 10,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -27,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Kozu",
+                        "finalScore": -40,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 64,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 16,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Kozu",
+                        "finalScore": -24,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -56,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 54,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Kozu",
+                        "finalScore": 18,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -29,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -43,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Kozu",
+                        "finalScore": 56,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 11,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -16,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -51,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Shioya",
+                        "finalScore": 50,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 15,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -16,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Kozu",
+                        "finalScore": -49,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 61,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Kozu",
+                        "finalScore": 6,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -21,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -46,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 80,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -9,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -29,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Kozu",
+                        "finalScore": -42,
+                        "rank": 4
+                    }
+                ]
+            ]
+        },
+        {
+            "id": "2026-02-28T00:00:00.000Z",
+            "date": "2026/2/28",
+            "players": [
+                "Yamagen",
+                "Hamada",
+                "Takahashi",
+                "Shioya"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 63,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 2,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -27,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -38,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Shioya",
+                        "finalScore": 46,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": 10,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -11,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -45,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 59,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 19,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Yamagen",
+                        "finalScore": -3,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -75,
+                        "rank": 4
+                    }
+                ]
+            ]
+        },
+        {
+            "id": "2026-03-28T00:00:00.000Z",
+            "date": "2026/3/28",
+            "players": [
+                "Takahashi",
+                "Shioya",
+                "Tanaka",
+                "Hamada"
+            ],
+            "history": [
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 94,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 5,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": -33,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -66,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 59,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": 7,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -23,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -43,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Tanaka",
+                        "finalScore": 60,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 9,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -11,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -58,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 49,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 6,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": -15,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": -40,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Tanaka",
+                        "finalScore": 70,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Hamada",
+                        "finalScore": 11,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -10,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -71,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 69,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 8,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": -26,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -51,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 61,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": 19,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": -28,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": -52,
+                        "rank": 4
+                    }
+                ],
+                [
+                    {
+                        "name": "Hamada",
+                        "finalScore": 56,
+                        "rank": 1
+                    },
+                    {
+                        "name": "Takahashi",
+                        "finalScore": 12,
+                        "rank": 2
+                    },
+                    {
+                        "name": "Shioya",
+                        "finalScore": -23,
+                        "rank": 3
+                    },
+                    {
+                        "name": "Tanaka",
+                        "finalScore": -45,
+                        "rank": 4
+                    }
+                ]
+            ]
+        }
+    ]
+}
