@@ -702,6 +702,56 @@
             }
         }
 
+        /* ── 新規: プレイヤーセレクター ── */
+        .player-selector-card {
+            background: #fff;
+            border-radius: var(--radius-2xl);
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .player-selector-label {
+            font-size: 9px;
+            font-weight: 900;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .player-selector-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .player-pill {
+            padding: 7px 14px;
+            border-radius: 20px;
+            border: 1.5px solid var(--slate-200);
+            background: var(--slate-50);
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--slate-500);
+            cursor: pointer;
+            transition: all .18s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .player-pill:hover {
+            border-color: var(--emerald-400);
+            color: var(--emerald-700);
+            background: var(--emerald-50);
+        }
+
+        .player-pill.active {
+            background: var(--emerald-600);
+            border-color: var(--emerald-600);
+            color: #fff;
+            box-shadow: 0 3px 8px rgba(5,150,105,.25);
+        }
+
         /* ── 新規: 直近アラートカード ── */
         .recent-alert-card {
             background: #fff;
@@ -945,6 +995,9 @@
                 </div>
             </div>
             <div id="import-info" style="display:none"></div>
+
+            <!-- プレイヤー選択 -->
+            <div id="player-selector-container"></div>
 
             <!-- 直近20局 調子サマリー -->
             <div id="recent-stats-container"></div>
@@ -2004,17 +2057,49 @@
                 </div>`;
         }
 
-        /** renderStats 呼び出し時に新規ウィジェットを描画（最初のメンバーを対象） */
-        function renderNewWidgets() {
+        /** 現在選択中のプレイヤー名を保持（永続化しない） */
+        let _selectedStatsPlayer = null;
+
+        /** プレイヤー選択ピルUIを描画し、各ウィジェットを指定プレイヤーで更新 */
+        function renderNewWidgets(selectedName) {
             const players = getStatsPlayers();
+            const selectorCont = document.getElementById('player-selector-container');
+
             if (!players || players.length === 0) {
+                if (selectorCont) selectorCont.innerHTML = '';
                 document.getElementById('recent-stats-container').innerHTML = '';
                 document.getElementById('monthly-chart-container').innerHTML = '';
                 document.getElementById('daily-summary-container').innerHTML = '';
+                _selectedStatsPlayer = null;
                 return;
             }
-            // デフォルトは最初のプレイヤー（自分）
-            const target = players[0];
+
+            // 選択プレイヤー決定（引数 > 保持値 > 先頭）
+            if (selectedName && players.includes(selectedName)) {
+                _selectedStatsPlayer = selectedName;
+            } else if (!_selectedStatsPlayer || !players.includes(_selectedStatsPlayer)) {
+                _selectedStatsPlayer = players[0];
+            }
+
+            const target = _selectedStatsPlayer;
+
+            // ── プレイヤー選択ピルを描画 ──
+            if (selectorCont) {
+                const pills = players.map(name => {
+                    const active = name === target ? 'active' : '';
+                    return `<button class="player-pill ${active}" onclick="renderNewWidgets('${name.replace(/'/g, "\\'")}')">
+                        ${name}
+                    </button>`;
+                }).join('');
+
+                selectorCont.innerHTML = `
+                    <div class="player-selector-card">
+                        <div class="player-selector-label">👤 Select Player</div>
+                        <div class="player-selector-pills">${pills}</div>
+                    </div>`;
+            }
+
+            // ── 各ウィジェット描画 ──
             renderRecentStats(target);
             renderMonthlyChart(target);
             renderDailySummary(target);
