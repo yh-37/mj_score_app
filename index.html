@@ -701,6 +701,198 @@
                 transform: translateY(0);
             }
         }
+
+        /* ── 新規: 直近アラートカード ── */
+        .recent-alert-card {
+            background: #fff;
+            border-radius: var(--radius-2xl);
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .recent-alert-title {
+            font-size: 10px;
+            font-weight: 900;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .alert-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .alert-badge.hot {
+            background: rgba(251, 146, 60, 0.15);
+            color: var(--orange-500);
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+
+        .alert-badge.cold {
+            background: rgba(96, 165, 250, 0.15);
+            color: var(--blue-500);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .alert-badge.neutral {
+            background: var(--slate-100);
+            color: var(--slate-500);
+            border: 1px solid var(--slate-200);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.75; }
+        }
+
+        .recent-rank-dots {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .rank-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 900;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .rank-dot.r1 { background: rgba(251,146,60,0.18); color: var(--orange-500); }
+        .rank-dot.r2 { background: rgba(96,165,250,0.15); color: var(--blue-500); }
+        .rank-dot.r3 { background: rgba(148,163,184,0.15); color: var(--slate-500); }
+        .rank-dot.r4 { background: rgba(71,85,105,0.15); color: var(--slate-600); }
+
+        .recent-mini-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .recent-mini-item {
+            background: var(--slate-50);
+            border-radius: 12px;
+            padding: 10px 8px;
+            text-align: center;
+        }
+
+        .recent-mini-val {
+            font-family: 'JetBrains Mono';
+            font-weight: 700;
+            font-size: 15px;
+            display: block;
+        }
+
+        .recent-mini-label {
+            font-size: 8px;
+            color: var(--slate-400);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ── 新規: 月別グラフカード ── */
+        .monthly-chart-card {
+            background: #fff;
+            border-radius: var(--radius-2xl);
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .monthly-chart-title {
+            font-size: 10px;
+            font-weight: 900;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .monthly-chart-wrap {
+            width: 100%;
+            height: 180px;
+            position: relative;
+        }
+
+        /* ── 新規: 日別集計テーブル ── */
+        .daily-summary-card {
+            background: #fff;
+            border-radius: var(--radius-2xl);
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .daily-summary-title {
+            font-size: 10px;
+            font-weight: 900;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .daily-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        .daily-table th {
+            font-size: 8px;
+            font-weight: 900;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 8px;
+            border-bottom: 2px solid var(--slate-100);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .daily-table th:first-child { text-align: left; }
+
+        .daily-table td {
+            padding: 8px;
+            border-bottom: 1px solid var(--slate-100);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .daily-table td:first-child {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 10px;
+            color: var(--slate-600);
+            text-align: left;
+        }
+
+        .daily-table tr:last-child td { border-bottom: none; }
+
+        .daily-table .score-pos { color: var(--orange-500); font-weight: 700; }
+        .daily-table .score-neg { color: var(--blue-500); font-weight: 700; }
+        .daily-table .score-zero { color: var(--slate-400); }
     </style>
 </head>
 
@@ -753,6 +945,16 @@
                 </div>
             </div>
             <div id="import-info" style="display:none"></div>
+
+            <!-- 直近20局 調子サマリー -->
+            <div id="recent-stats-container"></div>
+
+            <!-- 月別スコア推移グラフ -->
+            <div id="monthly-chart-container"></div>
+
+            <!-- 日別集計テーブル -->
+            <div id="daily-summary-container"></div>
+
             <div class="stat-card">
                 <div class="stat-card-title">Cumulative Trend</div>
                 <div class="chart-wrap">
@@ -1029,6 +1231,7 @@
             render();
             if (view === 'stats') {
                 drawTrendChart();
+                renderNewWidgets();
                 initUrlLoader();
             }
         }
@@ -1440,6 +1643,9 @@
                 });
                 arcList.appendChild(card);
             });
+
+            // 新規ウィジェットを描画
+            renderNewWidgets();
         }
 
         /* ── Canvas Chart (No Libraries) ── */
@@ -1494,6 +1700,324 @@
                 });
                 ctx.stroke();
             });
+        }
+
+        /* ══════════════════════════════════════════
+           § 5.1 新規可視化機能 – データ集計ロジック
+        ══════════════════════════════════════════ */
+
+        /** 対象プレイヤーの全対局レコードを時系列順（古→新）で返す */
+        function getPlayerRounds(name) {
+            const rounds = [];
+            [...state.archives].reverse().forEach(arc => {
+                arc.history.forEach(round => {
+                    const p = round.find(r => r.name === name && r.rank !== undefined);
+                    if (p) rounds.push({ finalScore: p.finalScore, rank: p.rank, date: arc.date, arcId: arc.id });
+                });
+            });
+            return rounds;
+        }
+
+        /**
+         * aggregateByDate(name) – 日付ごとに集計
+         * 返値: [{ date, games, total, avg, tops, avgRank }]（新しい日付順）
+         */
+        function aggregateByDate(name) {
+            const map = new Map();
+            [...state.archives].reverse().forEach(arc => {
+                const dateKey = arc.date;
+                if (!map.has(dateKey)) map.set(dateKey, { date: dateKey, games: 0, total: 0, tops: 0, rankSum: 0 });
+                const entry = map.get(dateKey);
+                arc.history.forEach(round => {
+                    const p = round.find(r => r.name === name && r.rank !== undefined);
+                    if (p) {
+                        entry.games++;
+                        entry.total += p.finalScore;
+                        entry.rankSum += p.rank;
+                        if (p.rank === 1) entry.tops++;
+                    }
+                });
+            });
+            return [...map.values()]
+                .filter(e => e.games > 0)
+                .map(e => ({ ...e, avg: e.games > 0 ? e.total / e.games : 0, avgRank: e.games > 0 ? e.rankSum / e.games : 0 }))
+                .reverse(); // 新しい日付順
+        }
+
+        /**
+         * aggregateByMonth(name) – 月ごとに合計スコアを集計
+         * 返値: [{ month:'YYYY/MM', total, games }]（古い月順）
+         */
+        function aggregateByMonth(name) {
+            const map = new Map();
+            [...state.archives].reverse().forEach(arc => {
+                // arc.date は "YYYY/M/D" 形式を想定
+                const parts = arc.date.replace(/\//g, '-').split('-');
+                const month = `${parts[0]}/${String(parts[1]).padStart(2, '0')}`;
+                if (!map.has(month)) map.set(month, { month, total: 0, games: 0 });
+                const entry = map.get(month);
+                arc.history.forEach(round => {
+                    const p = round.find(r => r.name === name && r.rank !== undefined);
+                    if (p) { entry.total += p.finalScore; entry.games++; }
+                });
+            });
+            return [...map.values()].filter(e => e.games > 0);
+        }
+
+        /**
+         * getRecentStats(name, count=20) – 直近 count 局の統計・アラート判定
+         */
+        function getRecentStats(name, count = 20) {
+            const all = getPlayerRounds(name);
+            const recent = all.slice(-count);
+            if (recent.length === 0) return null;
+
+            const total = recent.reduce((s, r) => s + r.finalScore, 0);
+            const avg = total / recent.length;
+            const tops = recent.filter(r => r.rank === 1).length;
+            const lasts = recent.filter(r => r.rank === 4).length;
+            const avgRank = recent.reduce((s, r) => s + r.rank, 0) / recent.length;
+
+            // 連続トップ / 連続ラス判定
+            let consecTop = 0, consecLast = 0;
+            for (let i = recent.length - 1; i >= 0; i--) {
+                if (recent[i].rank === 1) consecTop++; else break;
+            }
+            for (let i = recent.length - 1; i >= 0; i--) {
+                if (recent[i].rank === 4) consecLast++; else break;
+            }
+
+            return { recent, total, avg, tops, lasts, avgRank, consecTop, consecLast };
+        }
+
+        /* ══════════════════════════════════════════
+           § 5.1 新規可視化機能 – レンダリング関数
+        ══════════════════════════════════════════ */
+
+        /** 直近20局の調子サマリーカードを描画 */
+        function renderRecentStats(name) {
+            const cont = document.getElementById('recent-stats-container');
+            if (!cont) return;
+
+            const stats = getRecentStats(name, 20);
+            if (!stats || stats.length === 0) { cont.innerHTML = ''; return; }
+
+            const { recent, avg, tops, lasts, avgRank, consecTop, consecLast } = stats;
+
+            // アラートバッジ判定
+            let badge = '';
+            if (consecTop >= 3) {
+                badge = `<div class="alert-badge hot">🔥 ${consecTop}連続トップ中！ 絶好調です</div>`;
+            } else if (consecTop === 2) {
+                badge = `<div class="alert-badge hot">🔥 2連続トップ！ 好調です</div>`;
+            } else if (consecLast >= 3) {
+                badge = `<div class="alert-badge cold">🧊 ${consecLast}連続ラス… 要注意</div>`;
+            } else if (consecLast === 2) {
+                badge = `<div class="alert-badge cold">🧊 2連続ラス。 流れに気をつけて</div>`;
+            } else if (avgRank <= 2.0) {
+                badge = `<div class="alert-badge hot">📈 直近の平均順位 ${avgRank.toFixed(2)} 位 – 好調キープ</div>`;
+            } else if (avgRank >= 3.0) {
+                badge = `<div class="alert-badge cold">📉 直近の平均順位 ${avgRank.toFixed(2)} 位 – 苦しい展開</div>`;
+            } else {
+                badge = `<div class="alert-badge neutral">📊 直近 ${recent.length} 局 平均順位 ${avgRank.toFixed(2)} 位</div>`;
+            }
+
+            // 順位ドット（直近の古い方から並べる）
+            const dots = recent.map(r => `<div class="rank-dot r${r.rank}">${r.rank}</div>`).join('');
+
+            const avgColor = avg >= 0 ? 'var(--orange-500)' : 'var(--blue-500)';
+            const topRate = recent.length > 0 ? Math.round((tops / recent.length) * 100) : 0;
+            const lastRate = recent.length > 0 ? Math.round((lasts / recent.length) * 100) : 0;
+
+            cont.innerHTML = `
+                <div class="recent-alert-card">
+                    <div class="recent-alert-title">⚡ Recent ${recent.length} Games · ${name}</div>
+                    ${badge}
+                    <div class="recent-rank-dots">${dots}</div>
+                    <div class="recent-mini-stats">
+                        <div class="recent-mini-item">
+                            <span class="recent-mini-val" style="color:${avgColor}">${avg >= 0 ? '+' : ''}${avg.toFixed(2)}</span>
+                            <span class="recent-mini-label">Avg/Game</span>
+                        </div>
+                        <div class="recent-mini-item">
+                            <span class="recent-mini-val" style="color:var(--orange-500)">${topRate}%</span>
+                            <span class="recent-mini-label">Top Rate</span>
+                        </div>
+                        <div class="recent-mini-item">
+                            <span class="recent-mini-val" style="color:var(--blue-500)">${lastRate}%</span>
+                            <span class="recent-mini-label">Last Rate</span>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        /** 月別スコア推移棒グラフをCanvasで描画 */
+        function renderMonthlyChart(name) {
+            const cont = document.getElementById('monthly-chart-container');
+            if (!cont) return;
+
+            const monthlyData = aggregateByMonth(name);
+            if (monthlyData.length === 0) { cont.innerHTML = ''; return; }
+
+            cont.innerHTML = `
+                <div class="monthly-chart-card">
+                    <div class="monthly-chart-title">📅 Monthly Score · ${name}</div>
+                    <div class="monthly-chart-wrap">
+                        <canvas id="chart-monthly"></canvas>
+                    </div>
+                </div>`;
+
+            requestAnimationFrame(() => {
+                const canvas = document.getElementById('chart-monthly');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                const dpr = window.devicePixelRatio || 2;
+                const w = canvas.offsetWidth;
+                const h = canvas.offsetHeight;
+                canvas.width = w * dpr;
+                canvas.height = h * dpr;
+                ctx.scale(dpr, dpr);
+
+                const n = monthlyData.length;
+                const values = monthlyData.map(d => d.total);
+                const maxV = Math.max(...values, 1);
+                const minV = Math.min(...values, -1);
+                const absMax = Math.max(Math.abs(maxV), Math.abs(minV));
+
+                const padL = 4, padR = 4, padT = 20, padB = 30;
+                const chartW = w - padL - padR;
+                const chartH = h - padT - padB;
+                const barW = Math.max(4, Math.floor(chartW / n) - 4);
+                const gap = (chartW - barW * n) / (n + 1);
+
+                // ゼロライン Y座標
+                const zeroY = padT + chartH / 2 + (absMax > 0 ? 0 : 0);
+                const toBarH = v => absMax > 0 ? Math.abs(v) / absMax * (chartH / 2 - 4) : 2;
+
+                // グリッド（ゼロライン）
+                ctx.strokeStyle = 'rgba(100,116,139,0.2)';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([4, 3]);
+                ctx.beginPath();
+                ctx.moveTo(padL, zeroY); ctx.lineTo(w - padR, zeroY);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // 棒グラフ描画
+                monthlyData.forEach((d, i) => {
+                    const x = padL + gap + i * (barW + gap);
+                    const bh = Math.max(2, toBarH(d.total));
+                    const isPos = d.total >= 0;
+                    const y = isPos ? zeroY - bh : zeroY;
+
+                    // グラデーション
+                    const grad = ctx.createLinearGradient(0, y, 0, y + bh);
+                    if (isPos) {
+                        grad.addColorStop(0, 'rgba(16,185,129,0.9)');
+                        grad.addColorStop(1, 'rgba(16,185,129,0.4)');
+                    } else {
+                        grad.addColorStop(0, 'rgba(96,165,250,0.4)');
+                        grad.addColorStop(1, 'rgba(96,165,250,0.9)');
+                    }
+                    ctx.fillStyle = grad;
+
+                    // 角丸バー
+                    const r = Math.min(4, barW / 2);
+                    ctx.beginPath();
+                    if (isPos) {
+                        ctx.moveTo(x + r, y);
+                        ctx.lineTo(x + barW - r, y);
+                        ctx.quadraticCurveTo(x + barW, y, x + barW, y + r);
+                        ctx.lineTo(x + barW, y + bh);
+                        ctx.lineTo(x, y + bh);
+                        ctx.lineTo(x, y + r);
+                        ctx.quadraticCurveTo(x, y, x + r, y);
+                    } else {
+                        ctx.moveTo(x, y);
+                        ctx.lineTo(x + barW, y);
+                        ctx.lineTo(x + barW, y + bh - r);
+                        ctx.quadraticCurveTo(x + barW, y + bh, x + barW - r, y + bh);
+                        ctx.lineTo(x + r, y + bh);
+                        ctx.quadraticCurveTo(x, y + bh, x, y + bh - r);
+                        ctx.lineTo(x, y);
+                    }
+                    ctx.closePath();
+                    ctx.fill();
+
+                    // 値ラベル（バーの上/下）
+                    ctx.fillStyle = isPos ? '#059669' : '#3b82f6';
+                    ctx.font = `bold 8px JetBrains Mono, monospace`;
+                    ctx.textAlign = 'center';
+                    const label = (isPos ? '+' : '') + d.total.toFixed(0);
+                    const labelY = isPos ? y - 3 : y + bh + 10;
+                    ctx.fillText(label, x + barW / 2, labelY);
+
+                    // 月ラベル（X軸）
+                    ctx.fillStyle = '#94a3b8';
+                    ctx.font = `700 7px Inter, sans-serif`;
+                    // "YYYY/MM" → "MM月" 表示
+                    const mLabel = d.month.split('/')[1] + '月';
+                    ctx.fillText(mLabel, x + barW / 2, h - padB + 14);
+                });
+            });
+        }
+
+        /** 日別集計テーブルを描画 */
+        function renderDailySummary(name) {
+            const cont = document.getElementById('daily-summary-container');
+            if (!cont) return;
+
+            const daily = aggregateByDate(name);
+            if (daily.length === 0) { cont.innerHTML = ''; return; }
+
+            const rows = daily.map(d => {
+                const scoreClass = d.total > 0 ? 'score-pos' : d.total < 0 ? 'score-neg' : 'score-zero';
+                const avgClass = d.avg > 0 ? 'score-pos' : d.avg < 0 ? 'score-neg' : 'score-zero';
+                return `<tr>
+                    <td>${d.date}</td>
+                    <td>${d.games}</td>
+                    <td class="${scoreClass}">${d.total > 0 ? '+' : ''}${d.total.toFixed(1)}</td>
+                    <td class="${avgClass}">${d.avg > 0 ? '+' : ''}${d.avg.toFixed(2)}</td>
+                    <td>${d.tops}</td>
+                    <td>${d.avgRank.toFixed(2)}</td>
+                </tr>`;
+            }).join('');
+
+            cont.innerHTML = `
+                <div class="daily-summary-card">
+                    <div class="daily-summary-title">📋 Session Summary · ${name}</div>
+                    <div style="overflow-x:auto;">
+                        <table class="daily-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Games</th>
+                                    <th>Total</th>
+                                    <th>Avg</th>
+                                    <th>🥇</th>
+                                    <th>Avg Rank</th>
+                                </tr>
+                            </thead>
+                            <tbody>${rows}</tbody>
+                        </table>
+                    </div>
+                </div>`;
+        }
+
+        /** renderStats 呼び出し時に新規ウィジェットを描画（最初のメンバーを対象） */
+        function renderNewWidgets() {
+            const players = getStatsPlayers();
+            if (!players || players.length === 0) {
+                document.getElementById('recent-stats-container').innerHTML = '';
+                document.getElementById('monthly-chart-container').innerHTML = '';
+                document.getElementById('daily-summary-container').innerHTML = '';
+                return;
+            }
+            // デフォルトは最初のプレイヤー（自分）
+            const target = players[0];
+            renderRecentStats(target);
+            renderMonthlyChart(target);
+            renderDailySummary(target);
         }
 
         /* ── Helpers ── */
