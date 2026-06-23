@@ -7,15 +7,12 @@
                     "れいら",
                     "まりお",
                     "あーじゅ",
-                    "かね",
-                    "P5",
-                    "P6"
+                    "かね"
                 ],
     "history":  [
 
                 ],
     "chips":  {
-
               },
     "archives":  [
                      {
@@ -4291,14 +4288,6 @@
                                                  "finalScore":  14,
                                                  "raw":  34000,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4325,14 +4314,6 @@
                                                  "finalScore":  13,
                                                  "raw":  33100,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4359,14 +4340,6 @@
                                                  "finalScore":  9,
                                                  "raw":  28800,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4393,14 +4366,6 @@
                                                  "finalScore":  10,
                                                  "raw":  29600,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4427,14 +4392,6 @@
                                                  "finalScore":  0,
                                                  "raw":  20200,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4461,14 +4418,6 @@
                                                  "finalScore":  68,
                                                  "raw":  48200,
                                                  "rank":  1
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4495,14 +4444,6 @@
                                                  "finalScore":  -69,
                                                  "raw":  -8700,
                                                  "rank":  4
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4529,14 +4470,6 @@
                                                  "finalScore":  5,
                                                  "raw":  24700,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4563,14 +4496,6 @@
                                                  "finalScore":  65,
                                                  "raw":  45100,
                                                  "rank":  1
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4597,14 +4522,6 @@
                                                  "finalScore":  -17,
                                                  "raw":  22500,
                                                  "rank":  3
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4631,14 +4548,6 @@
                                                  "finalScore":  11,
                                                  "raw":  30900,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ]
                                      ],
@@ -4687,14 +4596,6 @@
                                                  "finalScore":  -60,
                                                  "raw":  -300,
                                                  "rank":  4
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4715,20 +4616,6 @@
                                                  "finalScore":  -53,
                                                  "raw":  6600,
                                                  "rank":  4
-                                             },
-                                             {
-                                                 "name":  "まりお",
-                                                 "finalScore":  -17,
-                                                 "raw":  23300,
-                                                 "rank":  3
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4755,14 +4642,6 @@
                                                  "finalScore":  10,
                                                  "raw":  29800,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4789,14 +4668,6 @@
                                                  "finalScore":  9,
                                                  "raw":  29200,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4823,14 +4694,6 @@
                                                  "finalScore":  -48,
                                                  "raw":  12200,
                                                  "rank":  4
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4857,14 +4720,6 @@
                                                  "finalScore":  -57,
                                                  "raw":  3000,
                                                  "rank":  4
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4891,14 +4746,6 @@
                                                  "finalScore":  14,
                                                  "raw":  33500,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4925,14 +4772,6 @@
                                                  "finalScore":  -59,
                                                  "raw":  600,
                                                  "rank":  4
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4959,14 +4798,6 @@
                                                  "finalScore":  -52,
                                                  "raw":  7800,
                                                  "rank":  4
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -4993,14 +4824,6 @@
                                                  "finalScore":  17,
                                                  "raw":  36700,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -5027,14 +4850,6 @@
                                                  "finalScore":  -14,
                                                  "raw":  25600,
                                                  "rank":  3
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -5061,14 +4876,6 @@
                                                  "finalScore":  16,
                                                  "raw":  36200,
                                                  "rank":  2
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ],
                                          [
@@ -5095,14 +4902,6 @@
                                                  "finalScore":  -39,
                                                  "raw":  700,
                                                  "rank":  3
-                                             },
-                                             {
-                                                 "name":  "P5",
-                                                 "finalScore":  0
-                                             },
-                                             {
-                                                 "name":  "P6",
-                                                 "finalScore":  0
                                              }
                                          ]
                                      ],
