@@ -15,934 +15,149 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@500;700&display=swap"
         rel="stylesheet">
     <style>
-        /* 既存のスタイルを継承しつつ、新規機能用を追加 */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-            --emerald-50: #ecfdf5;
-            --emerald-100: #d1fae5;
-            --emerald-400: #34d399;
-            --emerald-500: #10b981;
-            --emerald-600: #059669;
-            --emerald-700: #047857;
-            --emerald-800: #065f46;
-            --orange-400: #fb923c;
-            --orange-500: #f97316;
-            --blue-400: #60a5fa;
-            --blue-500: #3b82f6;
-            --slate-50: #f8fafc;
-            --slate-100: #f1f5f9;
-            --slate-200: #e2e8f0;
-            --slate-300: #cbd5e1;
-            --slate-400: #94a3b8;
-            --slate-500: #64748b;
-            --slate-600: #475569;
-            --slate-800: #1e293b;
-            --slate-900: #0f172a;
-            --radius-lg: 16px;
-            --radius-xl: 20px;
-            --radius-2xl: 24px;
+            --emerald-50: #ecfdf5; --emerald-100: #d1fae5; --emerald-400: #34d399;
+            --emerald-500: #10b981; --emerald-600: #059669; --emerald-700: #047857;
+            --emerald-800: #065f46; --orange-400: #fb923c; --orange-500: #f97316;
+            --blue-400: #60a5fa; --blue-500: #3b82f6; --slate-50: #f8fafc;
+            --slate-100: #f1f5f9; --slate-200: #e2e8f0; --slate-300: #cbd5e1;
+            --slate-400: #94a3b8; --slate-500: #64748b; --slate-600: #475569;
+            --slate-800: #1e293b; --slate-900: #0f172a;
+            --radius-lg: 16px; --radius-xl: 20px; --radius-2xl: 24px;
             --shadow-sm: 0 1px 2px rgba(0, 0, 0, .05);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1);
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 8px 10px -6px rgba(0, 0, 0, .1);
         }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--slate-100);
-            color: var(--slate-900);
-            min-height: 100dvh;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-text-size-adjust: 100%;
+            background: var(--slate-100); color: var(--slate-900); min-height: 100dvh;
+            -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;
         }
-
-        .app {
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 16px 16px 100px;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 900;
-            letter-spacing: -1px;
-            font-style: italic;
-            color: var(--emerald-800);
-        }
-
-        /* Tab Navigation */
-        .tab-bar {
-            display: flex;
-            background: #fff;
-            border-radius: var(--radius-xl);
-            padding: 4px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-sm);
-        }
-
+        .app { max-width: 480px; margin: 0 auto; padding: 16px 16px 100px; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .logo { font-size: 22px; font-weight: 900; letter-spacing: -1px; font-style: italic; color: var(--emerald-800); }
+        .tab-bar { display: flex; background: #fff; border-radius: var(--radius-xl); padding: 4px; margin-bottom: 16px; box-shadow: var(--shadow-sm); }
         .tab-btn {
-            flex: 1;
-            padding: 12px 8px;
-            border: none;
-            background: transparent;
-            border-radius: var(--radius-lg);
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--slate-400);
-            cursor: pointer;
-            transition: all .2s;
-            letter-spacing: 1px;
+            flex: 1; padding: 12px 8px; border: none; background: transparent; border-radius: var(--radius-lg);
+            font-size: 12px; font-weight: 800; color: var(--slate-400); cursor: pointer; transition: all .2s; letter-spacing: 1px;
         }
-
-        .tab-btn.active {
-            background: var(--emerald-600);
-            color: #fff;
-            box-shadow: 0 4px 6px rgba(5, 150, 105, .3);
-        }
-
-        /* ── Summary & Panels (Reuse original CSS) ── */
+        .tab-btn.active { background: var(--emerald-600); color: #fff; box-shadow: 0 4px 6px rgba(5, 150, 105, .3); }
         .uma-bar {
-            background: #fff;
-            padding: 10px 16px;
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--slate-200);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            overflow-x: auto;
-        }
-
-        .uma-label {
-            font-size: 10px;
-            font-weight: 900;
-            color: var(--slate-400);
-            text-transform: uppercase;
-        }
-
-        .uma-chips {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .uma-chip {
-            display: flex;
-            align-items: center;
-            background: var(--slate-50);
-            border-radius: 10px;
-            padding: 4px 10px;
-            border: 1px solid var(--slate-100);
-        }
-
-        .uma-chip input {
-            width: 40px;
-            background: transparent;
-            border: none;
-            text-align: center;
-            font-weight: 700;
-            font-size: 13px;
-            color: var(--emerald-700);
-            outline: none;
-        }
-
-        .panel {
-            background: #fff;
-            padding: 24px 20px;
-            border-radius: var(--radius-2xl);
-            box-shadow: var(--shadow-lg);
-            margin-bottom: 24px;
-            border-top: 8px solid var(--emerald-600);
-        }
-
-        .panel-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .panel-title {
-            font-size: 10px;
-            font-weight: 900;
-            color: var(--slate-400);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .player-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 24px;
-        }
-
-        .player-row {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            padding: 8px 10px;
-            border-radius: var(--radius-xl);
-            transition: all .3s;
-        }
-
-        .player-row.active {
-            background: var(--emerald-50);
-            border: 1px solid var(--emerald-100);
-        }
-
-        .player-row.inactive {
-            opacity: .35;
-            filter: grayscale(1);
-        }
-
-        .player-name {
-            width: 72px;
-            background: transparent;
-            border: none;
-            font-size: 14px;
-            font-weight: 700;
-            outline: none;
-        }
-
-        .player-score {
-            flex: 1;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid var(--slate-200);
-            text-align: right;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 18px;
-            outline: none;
-        }
-
-        .btn-confirm {
-            width: 100%;
-            padding: 16px;
-            border-radius: var(--radius-xl);
-            font-size: 12px;
-            font-weight: 900;
-            border: none;
-            cursor: pointer;
-            color: #fff;
-            background: var(--emerald-600);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .btn-confirm:disabled {
-            background: var(--slate-300);
-            box-shadow: none;
-        }
-
-        /* ── Stats View ── */
-        .stats-view {
-            animation: slideIn .3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .stat-card {
-            background: #fff;
-            border-radius: var(--radius-2xl);
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .stat-card-title {
-            font-size: 10px;
-            font-weight: 900;
-            color: var(--slate-400);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-        }
-
-        .chart-wrap {
-            width: 100%;
-            height: 200px;
-            margin-top: 10px;
-            position: relative;
-        }
-
-        canvas {
-            width: 100% !important;
-            height: 100% !important;
-        }
-
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .stat-item {
-            background: var(--slate-50);
-            padding: 12px;
-            border-radius: var(--radius-lg);
-            text-align: center;
-        }
-
-        .stat-val {
-            font-family: 'JetBrains Mono';
-            font-weight: 700;
-            font-size: 18px;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 9px;
-            color: var(--slate-400);
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        /* ── History Cards ── */
-        .history-card {
-            background: var(--slate-900);
-            border-radius: var(--radius-xl);
-            padding: 16px;
-            margin-bottom: 12px;
-            border: 1px solid var(--slate-800);
-            color: #fff;
-        }
-
-        .history-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 11px;
-            font-weight: 800;
-        }
-
-        .history-results {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .res-badge {
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono';
-            font-size: 10px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* ── Table & Final Panel (Styles from your snippet) ── */
-        .summary-panel {
-            background: var(--slate-900);
-            border-radius: var(--radius-2xl);
-            margin-bottom: 24px;
-            overflow: hidden;
-            color: #fff;
-            padding: 16px;
-        }
-
-        .final-panel {
-            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-            border-radius: var(--radius-2xl);
-            padding: 20px;
-            margin-top: 20px;
-            color: #fff;
-        }
-
-        .final-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-        }
-
-        .final-table th {
-            color: rgba(255, 255, 255, 0.5);
-            text-align: right;
-            padding: 8px;
-            font-size: 9px;
-        }
-
-        .final-table td {
-            padding: 8px;
-            text-align: right;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-family: 'JetBrains Mono';
-        }
-
-        .final-table td:first-child {
-            text-align: left;
-            font-family: 'Inter';
-        }
-
-        .btn-save-session {
-            width: 100%;
-            padding: 16px;
-            background: var(--orange-500);
-            color: #fff;
-            border: none;
-            border-radius: var(--radius-xl);
-            font-weight: 900;
-            font-size: 12px;
-            margin-top: 15px;
-            cursor: pointer;
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* ── Import/Export ── */
-        .io-bar {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .btn-io {
-            flex: 1;
-            padding: 12px;
-            border-radius: 12px;
-            border: none;
-            font-size: 10px;
-            font-weight: 800;
-            cursor: pointer;
-            background: var(--slate-200);
-        }
-
-        .btn-load-stats {
-            width: 100%;
-            padding: 18px 16px;
-            border-radius: var(--radius-xl);
-            border: 2px dashed var(--slate-300);
-            background: var(--slate-50);
-            font-size: 13px;
-            font-weight: 800;
-            color: var(--slate-500);
-            cursor: pointer;
-            transition: all .2s;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-load-stats:hover {
-            border-color: var(--emerald-500);
-            color: var(--emerald-700);
-            background: var(--emerald-50);
-        }
-
-        .import-badge {
-            display: inline-block;
-            background: var(--emerald-600);
-            color: #fff;
-            font-size: 9px;
-            font-weight: 900;
-            padding: 3px 8px;
-            border-radius: 6px;
-            margin-left: 8px;
-            letter-spacing: 1px;
-        }
-
-        /* ── URL Loader ── */
-        .url-loader-card {
-            background: #fff;
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--slate-200);
-            padding: 14px 16px;
-            margin-bottom: 12px;
-        }
-
-        .url-loader-title {
-            font-size: 9px;
-            font-weight: 900;
-            color: var(--slate-400);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .url-preset-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 10px;
-        }
-
-        .url-preset-btn {
-            padding: 5px 10px;
-            border-radius: 8px;
-            border: 1px solid var(--slate-200);
-            background: var(--slate-50);
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--slate-600);
-            cursor: pointer;
-            transition: all .15s;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .url-preset-btn:hover,
-        .url-preset-btn.selected {
-            background: var(--emerald-50);
-            border-color: var(--emerald-400);
-            color: var(--emerald-700);
-        }
-
-        .url-input-row {
-            display: flex;
-            gap: 6px;
-            align-items: center;
-        }
-
-        .url-input {
-            flex: 1;
-            padding: 8px 12px;
-            border-radius: 10px;
-            border: 1px solid var(--slate-200);
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--slate-700);
-            background: var(--slate-50);
-            outline: none;
-            font-family: 'JetBrains Mono', monospace;
-            min-width: 0;
-        }
-
-        .url-input:focus {
-            border-color: var(--emerald-400);
-            background: var(--emerald-50);
-        }
-
-        .btn-fetch {
-            padding: 8px 14px;
-            border-radius: 10px;
-            border: none;
-            background: var(--emerald-600);
-            color: #fff;
-            font-size: 10px;
-            font-weight: 900;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: background .15s;
-        }
-
-        .btn-fetch:disabled {
-            background: var(--slate-300);
-            cursor: not-allowed;
-        }
-
-        /* ── Player Detail Modal ── */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.72);
-            z-index: 1000;
-            display: flex;
-            align-items: flex-end;
-            animation: fadeInBg .2s ease;
-        }
-
-        .modal-sheet {
-            background: var(--slate-900);
-            width: 100%;
-            max-height: 90dvh;
-            border-radius: 24px 24px 0 0;
-            overflow-y: auto;
-            padding: 16px 20px 48px;
-            color: #fff;
-            animation: slideUp .3s cubic-bezier(.32, .72, 0, 1);
-        }
-
-        .modal-handle {
-            width: 40px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.18);
-            border-radius: 2px;
-            margin: 0 auto 20px;
-        }
-
-        .modal-section-title {
-            font-size: 9px;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 20px 0 10px;
-        }
-
-        .rank-bar-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .rank-bar-label {
-            font-size: 11px;
-            font-weight: 700;
-            width: 28px;
-            text-align: center;
-        }
-
-        .rank-bar-bg {
-            flex: 1;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .rank-bar-fill {
-            height: 100%;
-            border-radius: 5px;
-            transition: width .6s ease;
-        }
-
-        .rank-bar-count {
-            font-size: 10px;
-            font-family: 'JetBrains Mono';
-            color: rgba(255, 255, 255, 0.5);
-            width: 48px;
-            text-align: right;
-        }
-
-        .modal-stat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 4px;
-        }
-
-        .modal-stat-item {
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 10px 8px;
-            text-align: center;
-        }
-
-        .modal-stat-val {
-            font-family: 'JetBrains Mono';
-            font-weight: 700;
-            font-size: 16px;
-            display: block;
-        }
-
-        .modal-stat-label {
-            font-size: 8px;
-            color: rgba(255, 255, 255, 0.4);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .rank-avg-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-        }
-
-        .rank-avg-table th {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 9px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 6px 8px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .rank-avg-table td {
-            padding: 8px;
-            text-align: center;
-            font-family: 'JetBrains Mono';
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        @keyframes fadeInBg {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        /* ── 新規: プレイヤーセレクター ── */
-        .player-selector-card {
-            background: #fff;
-            border-radius: var(--radius-2xl);
-            padding: 14px 16px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .player-selector-label {
-            font-size: 9px;
-            font-weight: 900;
-            color: var(--slate-400);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .player-selector-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-        }
-
+            background: #fff; padding: 10px 16px; border-radius: var(--radius-xl); box-shadow: var(--shadow-sm);
+            border: 1px solid var(--slate-200); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; overflow-x: auto;
+        }
+        .uma-label { font-size: 10px; font-weight: 900; color: var(--slate-400); text-transform: uppercase; }
+        .uma-chips { display: flex; gap: 8px; align-items: center; }
+        .uma-chip { display: flex; align-items: center; background: var(--slate-50); border-radius: 10px; padding: 4px 10px; border: 1px solid var(--slate-100); }
+        .uma-chip input { width: 40px; background: transparent; border: none; text-align: center; font-weight: 700; font-size: 13px; color: var(--emerald-700); outline: none; }
+        .panel { background: #fff; padding: 24px 20px; border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); margin-bottom: 24px; border-top: 8px solid var(--emerald-600); }
+        .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .panel-title { font-size: 10px; font-weight: 900; color: var(--slate-400); text-transform: uppercase; letter-spacing: 3px; }
+        .player-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+        .player-row { display: flex; gap: 12px; align-items: center; padding: 8px 10px; border-radius: var(--radius-xl); transition: all .3s; }
+        .player-row.active { background: var(--emerald-50); border: 1px solid var(--emerald-100); }
+        .player-row.inactive { opacity: .35; filter: grayscale(1); }
+        .player-name { width: 72px; background: transparent; border: none; font-size: 14px; font-weight: 700; outline: none; }
+        .player-score { flex: 1; background: transparent; border: none; border-bottom: 2px solid var(--slate-200); text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 18px; outline: none; }
+        .btn-confirm { width: 100%; padding: 16px; border-radius: var(--radius-xl); font-size: 12px; font-weight: 900; border: none; cursor: pointer; color: #fff; background: var(--emerald-600); box-shadow: var(--shadow-xl); }
+        .btn-confirm:disabled { background: var(--slate-300); box-shadow: none; }
+        .stats-view { animation: slideIn .3s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .stat-card { background: #fff; border-radius: var(--radius-2xl); padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow-lg); }
+        .stat-card-title { font-size: 10px; font-weight: 900; color: var(--slate-400); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .chart-wrap { width: 100%; height: 200px; margin-top: 10px; position: relative; }
+        canvas { width: 100% !important; height: 100% !important; }
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .stat-item { background: var(--slate-50); padding: 12px; border-radius: var(--radius-lg); text-align: center; }
+        .stat-val { font-family: 'JetBrains Mono'; font-weight: 700; font-size: 18px; display: block; }
+        .stat-label { font-size: 9px; color: var(--slate-400); font-weight: 800; text-transform: uppercase; }
+        .history-card { background: var(--slate-900); border-radius: var(--radius-xl); padding: 16px; margin-bottom: 12px; border: 1px solid var(--slate-800); color: #fff; }
+        .history-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 11px; font-weight: 800; }
+        .history-results { display: flex; gap: 6px; flex-wrap: wrap; }
+        .res-badge { padding: 4px 8px; border-radius: 6px; font-family: 'JetBrains Mono'; font-size: 10px; background: rgba(255, 255, 255, 0.1); }
+        .summary-panel { background: var(--slate-900); border-radius: var(--radius-2xl); margin-bottom: 24px; overflow: hidden; color: #fff; padding: 16px; }
+        .final-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .final-table th { color: rgba(255, 255, 255, 0.5); text-align: right; padding: 8px; font-size: 9px; }
+        .final-table td { padding: 8px; text-align: right; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-family: 'JetBrains Mono'; }
+        .final-table td:first-child { text-align: left; font-family: 'Inter'; }
+        .btn-save-session { width: 100%; padding: 16px; background: var(--orange-500); color: #fff; border: none; border-radius: var(--radius-xl); font-weight: 900; font-size: 12px; margin-top: 15px; cursor: pointer; box-shadow: var(--shadow-lg); }
+        .io-bar { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-io { flex: 1; padding: 12px; border-radius: 12px; border: none; font-size: 10px; font-weight: 800; cursor: pointer; background: var(--slate-200); }
+
+        /* ── CSV Loader Panel ── */
+        .csv-panel-card { background: #fff; border-radius: var(--radius-2xl); padding: 16px 18px; margin-bottom: 16px; box-shadow: var(--shadow-lg); }
+        .csv-panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .csv-btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+        .btn-file-select {
+            padding: 10px 8px; border-radius: 12px; border: 1.5px dashed var(--slate-300); background: var(--slate-50);
+            font-size: 11px; font-weight: 800; color: var(--slate-600); cursor: pointer; text-align: center; transition: all .15s;
+        }
+        .btn-file-select:hover { border-color: var(--emerald-500); background: var(--emerald-50); color: var(--emerald-700); }
+        .btn-direct-load {
+            width: 100%; padding: 12px; border-radius: 12px; border: none; background: var(--emerald-600);
+            color: #fff; font-size: 11px; font-weight: 900; cursor: pointer; box-shadow: 0 4px 10px rgba(5,150,105,.25);
+        }
+
+        /* ── Widgets ── */
+        .group-filter-card { background: #fff; border-radius: var(--radius-2xl); padding: 14px 16px; margin-bottom: 16px; box-shadow: var(--shadow-lg); }
+        .player-selector-card { background: #fff; border-radius: var(--radius-2xl); padding: 14px 16px; margin-bottom: 16px; box-shadow: var(--shadow-lg); }
+        .player-selector-label { font-size: 9px; font-weight: 900; color: var(--slate-400); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .player-selector-pills { display: flex; flex-wrap: wrap; gap: 7px; }
         .player-pill {
-            padding: 7px 14px;
-            border-radius: 20px;
-            border: 1.5px solid var(--slate-200);
-            background: var(--slate-50);
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--slate-500);
-            cursor: pointer;
-            transition: all .18s;
-            font-family: 'Inter', sans-serif;
+            padding: 7px 14px; border-radius: 20px; border: 1.5px solid var(--slate-200); background: var(--slate-50);
+            font-size: 11px; font-weight: 800; color: var(--slate-500); cursor: pointer; transition: all .18s;
         }
-
-        .player-pill:hover {
-            border-color: var(--emerald-400);
-            color: var(--emerald-700);
-            background: var(--emerald-50);
-        }
-
-        .player-pill.active {
-            background: var(--emerald-600);
-            border-color: var(--emerald-600);
-            color: #fff;
-            box-shadow: 0 3px 8px rgba(5,150,105,.25);
-        }
-
-        /* ── 新規: 直近アラートカード ── */
-        .recent-alert-card {
-            background: #fff;
-            border-radius: var(--radius-2xl);
-            padding: 16px 20px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .recent-alert-title {
-            font-size: 10px;
-            font-weight: 900;
-            color: var(--slate-400);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .alert-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .alert-badge.hot {
-            background: rgba(251, 146, 60, 0.15);
-            color: var(--orange-500);
-            border: 1px solid rgba(251, 146, 60, 0.3);
-        }
-
-        .alert-badge.cold {
-            background: rgba(96, 165, 250, 0.15);
-            color: var(--blue-500);
-            border: 1px solid rgba(96, 165, 250, 0.3);
-        }
-
-        .alert-badge.neutral {
-            background: var(--slate-100);
-            color: var(--slate-500);
-            border: 1px solid var(--slate-200);
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.75; }
-        }
-
-        .recent-rank-dots {
-            display: flex;
-            gap: 5px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-
-        .rank-dot {
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: 900;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
+        .player-pill:hover { border-color: var(--emerald-400); color: var(--emerald-700); background: var(--emerald-50); }
+        .player-pill.active { background: var(--emerald-600); border-color: var(--emerald-600); color: #fff; box-shadow: 0 3px 8px rgba(5,150,105,.25); }
+        .recent-alert-card { background: #fff; border-radius: var(--radius-2xl); padding: 16px 20px; margin-bottom: 16px; box-shadow: var(--shadow-lg); }
+        .recent-alert-title { font-size: 10px; font-weight: 900; color: var(--slate-400); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        .alert-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; margin-bottom: 10px; }
+        .alert-badge.hot { background: rgba(251, 146, 60, 0.15); color: var(--orange-500); border: 1px solid rgba(251, 146, 60, 0.3); }
+        .alert-badge.cold { background: rgba(96, 165, 250, 0.15); color: var(--blue-500); border: 1px solid rgba(96, 165, 250, 0.3); }
+        .alert-badge.neutral { background: var(--slate-100); color: var(--slate-500); border: 1px solid var(--slate-200); }
+        .recent-rank-dots { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
+        .rank-dot { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
         .rank-dot.r1 { background: rgba(251,146,60,0.18); color: var(--orange-500); }
         .rank-dot.r2 { background: rgba(96,165,250,0.15); color: var(--blue-500); }
         .rank-dot.r3 { background: rgba(148,163,184,0.15); color: var(--slate-500); }
         .rank-dot.r4 { background: rgba(71,85,105,0.15); color: var(--slate-600); }
-
-        .recent-mini-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .recent-mini-item {
-            background: var(--slate-50);
-            border-radius: 12px;
-            padding: 10px 8px;
-            text-align: center;
-        }
-
-        .recent-mini-val {
-            font-family: 'JetBrains Mono';
-            font-weight: 700;
-            font-size: 15px;
-            display: block;
-        }
-
-        .recent-mini-label {
-            font-size: 8px;
-            color: var(--slate-400);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* ── 新規: 月別グラフカード ── */
-        .monthly-chart-card {
-            background: #fff;
-            border-radius: var(--radius-2xl);
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .monthly-chart-title {
-            font-size: 10px;
-            font-weight: 900;
-            color: var(--slate-400);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .monthly-chart-wrap {
-            width: 100%;
-            height: 180px;
-            position: relative;
-        }
-
-        /* ── 新規: 日別集計テーブル ── */
-        .daily-summary-card {
-            background: #fff;
-            border-radius: var(--radius-2xl);
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-        }
-
-        .daily-summary-title {
-            font-size: 10px;
-            font-weight: 900;
-            color: var(--slate-400);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .daily-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 11px;
-        }
-
-        .daily-table th {
-            font-size: 8px;
-            font-weight: 900;
-            color: var(--slate-400);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 6px 8px;
-            border-bottom: 2px solid var(--slate-100);
-            text-align: center;
-            white-space: nowrap;
-        }
-
+        .recent-mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+        .recent-mini-item { background: var(--slate-50); border-radius: 12px; padding: 10px 8px; text-align: center; }
+        .recent-mini-val { font-family: 'JetBrains Mono'; font-weight: 700; font-size: 15px; display: block; }
+        .recent-mini-label { font-size: 8px; color: var(--slate-400); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .monthly-chart-card { background: #fff; border-radius: var(--radius-2xl); padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow-lg); }
+        .monthly-chart-title { font-size: 10px; font-weight: 900; color: var(--slate-400); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        .monthly-chart-wrap { width: 100%; height: 180px; position: relative; }
+        .daily-summary-card { background: #fff; border-radius: var(--radius-2xl); padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow-lg); overflow: hidden; }
+        .daily-summary-title { font-size: 10px; font-weight: 900; color: var(--slate-400); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        .daily-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        .daily-table th { font-size: 8px; font-weight: 900; color: var(--slate-400); text-transform: uppercase; letter-spacing: 1px; padding: 6px 8px; border-bottom: 2px solid var(--slate-100); text-align: center; white-space: nowrap; }
         .daily-table th:first-child { text-align: left; }
-
-        .daily-table td {
-            padding: 8px;
-            border-bottom: 1px solid var(--slate-100);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        .daily-table td:first-child {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 10px;
-            color: var(--slate-600);
-            text-align: left;
-        }
-
+        .daily-table td { padding: 8px; border-bottom: 1px solid var(--slate-100); font-family: 'JetBrains Mono', monospace; font-size: 11px; text-align: center; white-space: nowrap; }
+        .daily-table td:first-child { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10px; color: var(--slate-600); text-align: left; }
         .daily-table tr:last-child td { border-bottom: none; }
-
         .daily-table .score-pos { color: var(--orange-500); font-weight: 700; }
         .daily-table .score-neg { color: var(--blue-500); font-weight: 700; }
         .daily-table .score-zero { color: var(--slate-400); }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.72); z-index: 1000; display: flex; align-items: flex-end; animation: fadeInBg .2s ease; }
+        .modal-sheet { background: var(--slate-900); width: 100%; max-height: 90dvh; border-radius: 24px 24px 0 0; overflow-y: auto; padding: 16px 20px 48px; color: #fff; animation: slideUp .3s cubic-bezier(.32, .72, 0, 1); }
+        .modal-handle { width: 40px; height: 4px; background: rgba(255, 255, 255, 0.18); border-radius: 2px; margin: 0 auto 20px; }
+        .modal-section-title { font-size: 9px; font-weight: 900; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 2px; margin: 20px 0 10px; }
+        .rank-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .rank-bar-label { font-size: 11px; font-weight: 700; width: 28px; text-align: center; }
+        .rank-bar-bg { flex: 1; height: 10px; background: rgba(255, 255, 255, 0.08); border-radius: 5px; overflow: hidden; }
+        .rank-bar-fill { height: 100%; border-radius: 5px; transition: width .6s ease; }
+        .rank-bar-count { font-size: 10px; font-family: 'JetBrains Mono'; color: rgba(255, 255, 255, 0.5); width: 48px; text-align: right; }
+        .modal-stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 4px; }
+        .modal-stat-item { background: rgba(255, 255, 255, 0.06); border-radius: 12px; padding: 10px 8px; text-align: center; }
+        .modal-stat-val { font-family: 'JetBrains Mono'; font-weight: 700; font-size: 16px; display: block; }
+        .modal-stat-label { font-size: 8px; color: rgba(255, 255, 255, 0.4); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .rank-avg-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .rank-avg-table th { color: rgba(255, 255, 255, 0.4); font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; padding: 6px 8px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .rank-avg-table td { padding: 8px; text-align: center; font-family: 'JetBrains Mono'; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        @keyframes fadeInBg { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
     </style>
 </head>
 
@@ -966,35 +181,33 @@
         </div>
 
         <div id="view-stats" class="stats-view" style="display:none">
-            <div id="file-bar" style="margin-bottom:12px;">
-
-                <!-- URL から読み込む（iPhone対応メイン機能） -->
-                <div class="url-loader-card">
-                    <div class="url-loader-title">📡 JSONファイルを読み込む</div>
-                    <div class="url-preset-list" id="url-preset-list">
-                        <!-- JSで生成 -->
-                    </div>
-                    <div class="url-input-row">
-                        <input type="url" class="url-input" id="json-url-input"
-                            placeholder="URLまたは相対パス (例: result/yar_result.json)"
-                            inputmode="url" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                        <button class="btn-fetch" id="btn-fetch-url" onclick="fetchJsonFromUrl()">読み込む</button>
-                    </div>
+            <!-- CSVインポート・コントロール -->
+            <div class="csv-panel-card">
+                <div class="csv-panel-header">
+                    <span class="player-selector-label" style="margin:0;">📊 CSV データ読込</span>
+                    <span id="load-status-badge" style="font-size:9px; font-weight:800; color:var(--emerald-600);"></span>
                 </div>
+                
+                <div class="csv-btn-grid">
+                    <button class="btn-file-select" onclick="document.getElementById('csv-score-input').click()">
+                        📄 set_res_new.csv<br><span style="font-size:8px;color:var(--slate-400);">対局スコアを選択</span>
+                    </button>
+                    <button class="btn-file-select" onclick="document.getElementById('csv-chip-input').click()">
+                        🪙 chip.csv<br><span style="font-size:8px;color:var(--slate-400);">チップファイルを選択</span>
+                    </button>
+                </div>
+                <input type="file" id="csv-score-input" accept=".csv,.tsv" style="display:none" onchange="importScoreCsv(event)">
+                <input type="file" id="csv-chip-input" accept=".csv,.tsv" style="display:none" onchange="importChipCsv(event)">
 
-                <!-- デスクトップ向け: File System Access API / ファイル選択 -->
-                <button class="btn-load-stats" id="btn-open-file" onclick="openJsonFile()"
-                    style="font-size:11px; padding:12px 16px;">
-                    📂 端末内のファイルを選択（PC/Androidのみ）
+                <button class="btn-direct-load" id="btn-auto-load" onclick="autoLoadBothCsvs()">
+                    🔄 set_res_new.csv &amp; chip.csv を直接読込
                 </button>
-                <div id="file-status" style="display:none; padding:10px 14px; background:#fff; border-radius:12px; border:1px solid var(--slate-200); font-size:11px; color:var(--slate-600); margin-bottom:12px; align-items:center; gap:8px;">
-                    <span style="font-size:16px;">📄</span>
-                    <span id="file-name-display" style="font-weight:700; flex:1;"></span>
-                    <button onclick="openJsonFile()" style="padding:4px 10px; border-radius:8px; border:1px solid var(--slate-300); background:transparent; font-size:10px; font-weight:700; cursor:pointer; color:var(--slate-500);">変更</button>
-                    <button onclick="saveToJsonFile()" id="btn-save-json" style="padding:4px 12px; border-radius:8px; border:none; background:var(--emerald-600); color:#fff; font-size:10px; font-weight:900; cursor:pointer;">💾 保存</button>
-                </div>
             </div>
+
             <div id="import-info" style="display:none"></div>
+
+            <!-- グループ（member）セレクター -->
+            <div id="group-selector-container"></div>
 
             <!-- プレイヤー選択 -->
             <div id="player-selector-container"></div>
@@ -1020,7 +233,6 @@
                 <div id="archive-list"></div>
                 <div class="io-bar">
                     <button class="btn-io" onclick="exportData()">EXPORT JSON</button>
-                    <button class="btn-io" onclick="importData()">IMPORT JSON</button>
                 </div>
             </div>
         </div>
@@ -1040,7 +252,7 @@
             members: JSON.parse(localStorage.getItem('mj-members') || '["P1","P2","P3","P4","P5","P6"]'),
             history: JSON.parse(localStorage.getItem('mj-history') || '[]'),
             chips: JSON.parse(localStorage.getItem('mj-chips') || '{}'),
-            archives: JSON.parse(localStorage.getItem('mj-archives-v5') || '[]'),
+            archives: JSON.parse(localStorage.getItem('mj-archives-v7') || '[]'),
             gameMode: 4,
             uma: { 1: 30, 2: 10, 3: -10, 4: -30 },
             activePlayers: [],
@@ -1051,221 +263,16 @@
             scoreRate: parseFloat(localStorage.getItem('mj-rate-s') || '100'),
             chipRate: parseFloat(localStorage.getItem('mj-rate-c') || '100'),
             totalPlayers: parseInt(localStorage.getItem('mj-total-players') || '6'),
-            baseFee: parseFloat(localStorage.getItem('mj-base-fee') || '0')
+            baseFee: parseFloat(localStorage.getItem('mj-base-fee') || '0'),
+            selectedGroup: 'ALL'
         };
         state.activePlayers = state.members.slice(0, state.totalPlayers);
-
-        /* ── File System Access API ── */
-        let _fileHandle = null;   // 開いているファイルハンドル
-        let _jsonData = null;     // 読み込んだJSONのオリジナルデータ（members等を保持）
-        const FS_SUPPORTED = 'showOpenFilePicker' in window;
-
-        /* ── URL Presets ── */
-        const JSON_PRESETS = [
-            { label: 'yar_result.json', url: 'result/yar_result.json' },
-            { label: 'comy_result.json', url: 'result/comy_result.json' }
-        ];
-
-        function initUrlLoader() {
-            const list = document.getElementById('url-preset-list');
-            if (!list) return;
-            list.innerHTML = '';
-            JSON_PRESETS.forEach(preset => {
-                const btn = document.createElement('button');
-                btn.className = 'url-preset-btn';
-                btn.id = 'preset-btn-' + preset.label.replace(/[^a-z0-9]/gi, '_');
-                btn.innerHTML = `📄 ${preset.label}`;
-                btn.onclick = () => {
-                    document.getElementById('json-url-input').value = preset.url;
-                    document.querySelectorAll('.url-preset-btn').forEach(b => b.classList.remove('selected'));
-                    btn.classList.add('selected');
-                };
-                list.appendChild(btn);
-            });
-            // 最初のプリセットをデフォルト入力に設定
-            if (JSON_PRESETS.length > 0) {
-                const input = document.getElementById('json-url-input');
-                if (input && !input.value) input.value = JSON_PRESETS[0].url;
-            }
-        }
-
-        async function fetchJsonFromUrl(urlArg) {
-            const input = document.getElementById('json-url-input');
-            const url = urlArg || (input ? input.value.trim() : '');
-            if (!url) { alert('URLまたはファイルパスを入力してください。'); return; }
-
-            const btn = document.getElementById('btn-fetch-url');
-            if (btn) { btn.disabled = true; btn.textContent = '読み込み中…'; }
-
-            try {
-                const res = await fetch(url + '?_t=' + Date.now()); // キャッシュ回避
-                if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
-                const data = await res.json();
-
-                _jsonData = data;
-                const newArchives = data.archives || [];
-                const newMembers = data.members || [];
-
-                const existingIds = new Set(state.archives.map(a => a.id));
-                let addedCount = 0;
-                newArchives.forEach(arc => {
-                    if (!existingIds.has(arc.id)) { state.archives.push(arc); addedCount++; }
-                });
-                state.archives.sort((a, b) => new Date(b.id) - new Date(a.id));
-
-                if (newMembers.length > 0) {
-                    state.members = [...newMembers];
-                    state.activePlayers = newMembers.slice(0, state.totalPlayers);
-                }
-                save();
-
-                // ファイル名表示（URL最後のパス部分）
-                const fileName = url.split('/').pop().split('?')[0];
-                updateFileStatusUI(fileName + ' (URL)');
-
-                // 読み込み情報バナー
-                const infoDiv = document.getElementById('import-info');
-                const totalRounds = newArchives.reduce((s, a) => s + a.history.length, 0);
-                infoDiv.style.display = 'block';
-                infoDiv.innerHTML = `
-                    <div class="stat-card" style="border-left:4px solid var(--emerald-500);padding:14px 16px;">
-                        <div style="font-size:11px;font-weight:800;color:var(--emerald-700);margin-bottom:6px;">✅ ${fileName} を読込みました</div>
-                        <div style="font-size:10px;color:var(--slate-500);line-height:1.8;">
-                            📅 セッション数: <b>${newArchives.length}</b>件（新規: <b>${addedCount}</b>件）<br>
-                            🀄 総半荘数: <b>${totalRounds}</b>回<br>
-                            👥 プレイヤー: ${[...new Set(newArchives.flatMap(a => a.players))].join(', ')}
-                        </div>
-                    </div>`;
-
-                render();
-                drawTrendChart();
-
-                if (btn) { btn.textContent = '✅ 完了'; btn.style.background = 'var(--emerald-700)'; }
-                setTimeout(() => {
-                    if (btn) { btn.disabled = false; btn.textContent = '読み込む'; btn.style.background = ''; }
-                }, 2000);
-
-            } catch (e) {
-                alert('読み込みに失敗しました:\n' + e.message + '\n\nGitHub Pages等のURLか、同一サーバー上のパスを指定してください。');
-                if (btn) { btn.disabled = false; btn.textContent = '読み込む'; }
-            }
-        }
-
-        function updateFileStatusUI(fileName) {
-            const btnOpen = document.getElementById('btn-open-file');
-            const statusDiv = document.getElementById('file-status');
-            const nameSpan = document.getElementById('file-name-display');
-            if (fileName) {
-                if (btnOpen) btnOpen.style.display = 'none';
-                if (statusDiv) { statusDiv.style.display = 'flex'; }
-                if (nameSpan) nameSpan.textContent = fileName;
-            } else {
-                if (btnOpen) btnOpen.style.display = 'flex';
-                if (statusDiv) statusDiv.style.display = 'none';
-            }
-        }
-
-        async function openJsonFile() {
-            if (!FS_SUPPORTED) {
-                // フォールバック: 通常のfile input
-                importStatsFileFallback();
-                return;
-            }
-            try {
-                const [handle] = await window.showOpenFilePicker({
-                    types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
-                    multiple: false
-                });
-                _fileHandle = handle;
-                await loadFromFileHandle();
-            } catch (e) {
-                if (e.name !== 'AbortError') alert('ファイルを開けませんでした: ' + e.message);
-            }
-        }
-
-        async function loadFromFileHandle() {
-            if (!_fileHandle) return;
-            const file = await _fileHandle.getFile();
-            const text = await file.text();
-            try {
-                const data = JSON.parse(text);
-                _jsonData = data;
-                const newArchives = data.archives || [];
-                const newMembers = data.members || [];
-
-                // Merge archives
-                const existingIds = new Set(state.archives.map(a => a.id));
-                let addedCount = 0;
-                newArchives.forEach(arc => {
-                    if (!existingIds.has(arc.id)) { state.archives.push(arc); addedCount++; }
-                });
-                state.archives.sort((a, b) => new Date(b.id) - new Date(a.id));
-
-                if (newMembers.length > 0) {
-                    state.members = [...newMembers];
-                    state.activePlayers = newMembers.slice(0, state.totalPlayers);
-                }
-                save();
-                updateFileStatusUI(file.name);
-
-                // Show summary
-                const infoDiv = document.getElementById('import-info');
-                const totalRounds = newArchives.reduce((s, a) => s + a.history.length, 0);
-                infoDiv.style.display = 'block';
-                infoDiv.innerHTML = `
-                    <div class="stat-card" style="border-left:4px solid var(--emerald-500);padding:14px 16px;">
-                        <div style="font-size:11px;font-weight:800;color:var(--emerald-700);margin-bottom:6px;">✅ ${file.name} を読込みました</div>
-                        <div style="font-size:10px;color:var(--slate-500);line-height:1.8;">
-                            📅 セッション数: <b>${newArchives.length}</b>件（新規: <b>${addedCount}</b>件）<br>
-                            🀄 総半荘数: <b>${totalRounds}</b>回<br>
-                            👥 プレイヤー: ${[...new Set(newArchives.flatMap(a => a.players))].join(', ')}
-                        </div>
-                    </div>`;
-
-                render();
-                drawTrendChart();
-            } catch (e) {
-                alert('JSONの解析に失敗しました: ' + e.message);
-            }
-        }
-
-        async function saveToJsonFile() {
-            if (!_fileHandle) {
-                alert('先にJSONファイルを開いてください。');
-                return;
-            }
-            try {
-                // 元のJSONデータ構造を維持しつつarchivesとmembersを更新
-                const saveData = _jsonData ? { ..._jsonData } : {};
-                saveData.archives = [...state.archives].sort((a, b) => new Date(a.id) - new Date(b.id));
-                saveData.members = state.members;
-
-                const writable = await _fileHandle.createWritable();
-                await writable.write(JSON.stringify(saveData, null, 4));
-                await writable.close();
-
-                const btn = document.getElementById('btn-save-json');
-                if (btn) {
-                    btn.textContent = '✅ 保存済み';
-                    btn.style.background = 'var(--emerald-700)';
-                    setTimeout(() => { btn.textContent = '💾 保存'; btn.style.background = 'var(--emerald-600)'; }, 2000);
-                }
-            } catch (e) {
-                if (e.name === 'NotAllowedError') {
-                    // 権限が失効した場合は再リクエスト
-                    const perm = await _fileHandle.requestPermission({ mode: 'readwrite' });
-                    if (perm === 'granted') { saveToJsonFile(); }
-                } else {
-                    alert('保存に失敗しました: ' + e.message);
-                }
-            }
-        }
 
         function save() {
             localStorage.setItem('mj-members', JSON.stringify(state.members));
             localStorage.setItem('mj-history', JSON.stringify(state.history));
             localStorage.setItem('mj-chips', JSON.stringify(state.chips));
-            localStorage.setItem('mj-archives-v5', JSON.stringify(state.archives));
+            localStorage.setItem('mj-archives-v7', JSON.stringify(state.archives));
             localStorage.setItem('mj-mult-s', state.scoreMult);
             localStorage.setItem('mj-mult-c', state.chipMult);
             localStorage.setItem('mj-rate-s', state.scoreRate);
@@ -1274,7 +281,210 @@
             localStorage.setItem('mj-base-fee', state.baseFee);
         }
 
-        /* ── UI Transitions ── */
+        /* ── CSV Parsing Engine ── */
+        function parseCsv(text) {
+            const lines = text.split(/\r\n|\n|\r/).filter(l => l.trim().length > 0);
+            if (lines.length === 0) return [];
+            const delimiter = lines[0].includes('\t') ? '\t' : ',';
+            const headers = lines[0].split(delimiter).map(h => h.trim().replace(/^["']|["']$/g, ''));
+
+            const rows = [];
+            for (let i = 1; i < lines.length; i++) {
+                const cols = lines[i].split(delimiter).map(c => c.trim().replace(/^["']|["']$/g, ''));
+                if (cols.length >= headers.length) {
+                    const row = {};
+                    headers.forEach((h, idx) => row[h] = cols[idx]);
+                    rows.push(row);
+                }
+            }
+            return rows;
+        }
+
+        function buildArchivesFromSetResRows(scoreRows) {
+            const sessionMap = new Map();
+            scoreRows.forEach(r => {
+                const rawDate = (r.date || '').trim();
+                const date = rawDate.replace(/-/g, '/');
+                const memberGroup = (r.member || 'General').trim();
+                const sessionKey = `${date}_${memberGroup}`;
+
+                if (!sessionMap.has(sessionKey)) {
+                    sessionMap.set(sessionKey, {
+                        id: `${date.replace(/\//g, '-')}_${memberGroup}`,
+                        date: date,
+                        group: memberGroup,
+                        rule: r.rule || '',
+                        roundsMap: new Map(),
+                        playersSet: new Set(),
+                        chips: {}
+                    });
+                }
+
+                const s = sessionMap.get(sessionKey);
+                const matchNum = parseInt(r.match || '1');
+                if (!s.roundsMap.has(matchNum)) s.roundsMap.set(matchNum, []);
+
+                const pName = r.name ? r.name.trim() : '';
+                if (pName) {
+                    s.playersSet.add(pName);
+                    const rawVal = r.score !== '' && r.score !== undefined && !isNaN(Number(r.score)) ? Number(r.score) : undefined;
+                    s.roundsMap.get(matchNum).push({
+                        name: pName,
+                        finalScore: parseFloat(r.point || '0'),
+                        raw: rawVal,
+                        rank: parseInt(r.rank || '0')
+                    });
+                }
+            });
+
+            const archives = [];
+            sessionMap.forEach(s => {
+                const history = [];
+                const sortedMatches = [...s.roundsMap.keys()].sort((a, b) => a - b);
+                sortedMatches.forEach(m => history.push(s.roundsMap.get(m)));
+
+                archives.push({
+                    id: s.id,
+                    date: s.date,
+                    group: s.group,
+                    players: [...s.playersSet],
+                    history: history,
+                    chips: s.chips || {}
+                });
+            });
+
+            archives.sort((a, b) => new Date(b.date) - new Date(a.date));
+            return archives;
+        }
+
+        function mergeChipsIntoArchives(chipRows) {
+            let updateCount = 0;
+            chipRows.forEach(r => {
+                const date = (r.date || '').replace(/-/g, '/').trim();
+                const group = (r.member || '').trim();
+
+                state.archives.forEach(arc => {
+                    const dateMatch = arc.date === date;
+                    const groupMatch = !group || arc.group === group;
+                    if (dateMatch && groupMatch) {
+                        if (!arc.chips) arc.chips = {};
+                        if (r.name && r.chip !== undefined) {
+                            arc.chips[r.name.trim()] = Number(r.chip) || 0;
+                            updateCount++;
+                        } else {
+                            Object.keys(r).forEach(k => {
+                                if (k !== 'date' && k !== 'member') {
+                                    arc.chips[k.trim()] = Number(r[k]) || 0;
+                                    updateCount++;
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+            return updateCount;
+        }
+
+        /* ── Auto & File Loaders ── */
+        async function autoLoadBothCsvs() {
+            const btn = document.getElementById('btn-auto-load');
+            if (btn) { btn.disabled = true; btn.textContent = '読み込み中…'; }
+
+            try {
+                // Try multiple paths (direct path or result/ folder)
+                const fetchWithFallback = async (filenames) => {
+                    for (const fn of filenames) {
+                        try {
+                            const res = await fetch(fn + '?_t=' + Date.now());
+                            if (res.ok) return await res.text();
+                        } catch (e) {}
+                    }
+                    throw new Error(`ファイルが見つかりません: ${filenames[0]}`);
+                };
+
+                const [scoreText, chipText] = await Promise.all([
+                    fetchWithFallback(['set_res_new.csv', 'result/set_res_new.csv']),
+                    fetchWithFallback(['chip.csv', 'result/chip.csv'])
+                ]);
+
+                const scoreRows = parseCsv(scoreText);
+                const chipRows = parseCsv(chipText);
+
+                state.archives = buildArchivesFromSetResRows(scoreRows);
+                const chipUpdates = mergeChipsIntoArchives(chipRows);
+
+                const allPlayers = [...new Set(state.archives.flatMap(a => a.players))];
+                if (allPlayers.length > 0) {
+                    state.members = allPlayers;
+                    state.activePlayers = allPlayers.slice(0, state.totalPlayers);
+                }
+                save();
+
+                const infoDiv = document.getElementById('import-info');
+                const totalRounds = state.archives.reduce((s, a) => s + a.history.length, 0);
+                infoDiv.style.display = 'block';
+                infoDiv.innerHTML = `
+                    <div class="stat-card" style="border-left:4px solid var(--emerald-500);padding:14px 16px;">
+                        <div style="font-size:11px;font-weight:800;color:var(--emerald-700);margin-bottom:6px;">✅ CSV読込完了</div>
+                        <div style="font-size:10px;color:var(--slate-500);line-height:1.8;">
+                            📅 <b>${state.archives.length}</b> セッション / 🀄 <b>${totalRounds}</b> 半荘<br>
+                            🪙 チップ反映: <b>${chipUpdates}</b> 件<br>
+                            👥 プレイヤー: ${allPlayers.join(', ')}
+                        </div>
+                    </div>`;
+
+                render();
+                drawTrendChart();
+
+                if (btn) { btn.textContent = '✅ 読込完了'; setTimeout(() => { btn.disabled = false; btn.textContent = '🔄 set_res_new.csv & chip.csv を直接読込'; }, 2000); }
+            } catch (e) {
+                alert('読み込みに失敗しました:\n' + e.message + '\n\n端末内のファイルを選択ボタンをご利用ください。');
+                if (btn) { btn.disabled = false; btn.textContent = '🔄 set_res_new.csv & chip.csv を直接読込'; }
+            }
+        }
+
+        function importScoreCsv(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = () => {
+                const scoreRows = parseCsv(reader.result);
+                const prevChips = new Map();
+                state.archives.forEach(a => { if (a.chips) prevChips.set(a.id, a.chips); });
+
+                state.archives = buildArchivesFromSetResRows(scoreRows);
+                state.archives.forEach(a => { if (prevChips.has(a.id)) a.chips = prevChips.get(a.id); });
+
+                const allPlayers = [...new Set(state.archives.flatMap(a => a.players))];
+                if (allPlayers.length > 0) {
+                    state.members = allPlayers;
+                    state.activePlayers = allPlayers.slice(0, state.totalPlayers);
+                }
+                save();
+                render();
+                drawTrendChart();
+                alert(`${file.name} を読み込みました（${state.archives.length}セッション）`);
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        function importChipCsv(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = () => {
+                const chipRows = parseCsv(reader.result);
+                const count = mergeChipsIntoArchives(chipRows);
+                save();
+                render();
+                alert(`${file.name} を反映しました（${count}件更新）`);
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        /* ── UI Transitions & Filter ── */
         function switchTab(view) {
             state.view = view;
             document.getElementById('view-game').style.display = view === 'game' ? 'block' : 'none';
@@ -1285,37 +495,436 @@
             if (view === 'stats') {
                 drawTrendChart();
                 renderNewWidgets();
-                initUrlLoader();
             }
         }
 
-        /* ── Core Logic ── */
+        function getFilteredArchives() {
+            if (!state.selectedGroup || state.selectedGroup === 'ALL') return state.archives;
+            return state.archives.filter(a => a.group === state.selectedGroup);
+        }
+
+        function getStatsPlayers() {
+            const archives = getFilteredArchives();
+            const seen = new Set();
+            const players = [];
+            [...archives].reverse().forEach(arc => {
+                arc.history.forEach(round => {
+                    round.forEach(p => {
+                        if (p.rank !== undefined && !seen.has(p.name)) {
+                            seen.add(p.name);
+                            players.push(p.name);
+                        }
+                    });
+                });
+            });
+            return players.length > 0 ? players : state.members;
+        }
+
+        function renderStats() {
+            renderGroupSelector();
+
+            const summary = document.getElementById('stats-summary-container');
+            summary.innerHTML = '<div class="stat-card"><div class="stat-card-title">Lifetime Stats</div><div class="stat-grid" id="stats-grid"></div></div>';
+
+            const grid = summary.querySelector('#stats-grid');
+            const totalScores = {};
+            const archives = getFilteredArchives();
+
+            archives.forEach(a => {
+                const sessionChips = a.chips || {};
+                a.history.forEach(round => {
+                    round.forEach(p => {
+                        if (!totalScores[p.name]) totalScores[p.name] = { score: 0, games: 0, wins: 0, chips: 0 };
+                        if (p.rank !== undefined) {
+                            totalScores[p.name].score += p.finalScore;
+                            totalScores[p.name].games++;
+                            if (p.rank === 1) totalScores[p.name].wins++;
+                        }
+                    });
+                });
+                Object.entries(sessionChips).forEach(([name, val]) => {
+                    if (!totalScores[name]) totalScores[name] = { score: 0, games: 0, wins: 0, chips: 0 };
+                    totalScores[name].chips += Number(val || 0);
+                });
+            });
+
+            getStatsPlayers().forEach(name => {
+                const s = totalScores[name] || { score: 0, games: 0, wins: 0, chips: 0 };
+                const avg = s.games > 0 ? (s.score / s.games).toFixed(2) : '0.00';
+                const rate = s.games > 0 ? Math.round((s.wins / s.games) * 100) : 0;
+
+                const item = document.createElement('div');
+                item.className = 'stat-item';
+                item.style.cursor = 'pointer';
+                item.onclick = () => openPlayerModal(name);
+                item.innerHTML = `
+                    <span class="stat-label">${name}</span>
+                    <span class="stat-val" style="color:${s.score >= 0 ? 'var(--orange-500)' : 'var(--blue-500)'}">
+                        ${s.score.toFixed(1)} <span style="font-size:10px; color:${s.chips >= 0 ? 'var(--emerald-500)' : '#f43f5e'};">(${s.chips >= 0 ? '+' : ''}${s.chips}c)</span>
+                    </span>
+                    <span class="stat-label">Avg: ${avg} / Top: ${rate}%</span>
+                `;
+                grid.appendChild(item);
+            });
+
+            // Archive History List
+            const arcList = document.getElementById('archive-list');
+            arcList.innerHTML = archives.length === 0 ? '<div style="text-align:center;padding:20px;font-size:12px;color:var(--slate-400)">No data yet.</div>' : '';
+            archives.forEach((arc, idx) => {
+                const card = document.createElement('div');
+                card.className = 'history-card';
+                card.innerHTML = `
+                    <div class="history-header">
+                        <span>📅 ${arc.date} <span style="color:var(--emerald-400);margin-left:6px;">[${arc.group || 'General'}]</span></span>
+                        <span style="color:red;cursor:pointer;" onclick="deleteArchive(${idx})">DELETE</span>
+                    </div>
+                    <div class="history-results"></div>
+                `;
+                const resCont = card.querySelector('.history-results');
+                arc.players.forEach(p => {
+                    const total = arc.history.reduce((sum, r) => sum + (r.find(e => e.name === p)?.finalScore || 0), 0);
+                    const b = document.createElement('span');
+                    b.className = 'res-badge';
+                    b.style.color = total > 0 ? 'var(--orange-400)' : 'var(--blue-400)';
+                    const chipVal = arc.chips?.[p] || 0;
+                    const chipStr = chipVal !== 0 ? ` (${chipVal > 0 ? '+' : ''}${chipVal}c)` : '';
+                    b.textContent = `${p}: ${total.toFixed(1)}${chipStr}`;
+                    resCont.appendChild(b);
+                });
+                arcList.appendChild(card);
+            });
+
+            renderNewWidgets();
+        }
+
+        function renderGroupSelector() {
+            const cont = document.getElementById('group-selector-container');
+            if (!cont) return;
+            const groups = ['ALL', ...new Set(state.archives.map(a => a.group).filter(Boolean))];
+            if (groups.length <= 1) { cont.innerHTML = ''; return; }
+
+            const pills = groups.map(g => {
+                const active = (state.selectedGroup || 'ALL') === g ? 'active' : '';
+                return `<button class="player-pill ${active}" onclick="setGroupFilter('${g}')">${g}</button>`;
+            }).join('');
+
+            cont.innerHTML = `
+                <div class="group-filter-card">
+                    <div class="player-selector-label">🏷️ Group / Member Filter</div>
+                    <div class="player-selector-pills">${pills}</div>
+                </div>`;
+        }
+
+        function setGroupFilter(group) {
+            state.selectedGroup = group;
+            _selectedStatsPlayer = null;
+            render();
+            drawTrendChart();
+        }
+
+        /* ── Trend Chart ── */
+        function drawTrendChart() {
+            const canvas = document.getElementById('chart-trend');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.offsetWidth;
+            const h = canvas.offsetHeight;
+            canvas.width = w * 2; canvas.height = h * 2;
+            ctx.scale(2, 2);
+
+            const archives = getFilteredArchives();
+            if (archives.length === 0) return;
+
+            const players = getStatsPlayers();
+            const colors = ['#fb923c', '#60a5fa', '#34d399', '#a78bfa', '#f43f5e', '#fbbf24'];
+
+            let data = players.map(() => [0]);
+            [...archives].reverse().forEach(arc => {
+                players.forEach((name, i) => {
+                    const sessionTotal = arc.history.reduce((sum, r) => sum + (r.find(e => e.name === name)?.finalScore || 0), 0);
+                    const lastVal = data[i][data[i].length - 1];
+                    data[i].push(lastVal + sessionTotal);
+                });
+            });
+
+            const maxPoints = Math.max(...data.flat(), 50);
+            const minPoints = Math.min(...data.flat(), -50);
+            const range = maxPoints - minPoints || 1;
+            const stepX = w / (data[0].length - 1 || 1);
+
+            ctx.clearRect(0, 0, w, h);
+            ctx.strokeStyle = '#e2e8f0';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            const zeroY = h - ((0 - minPoints) / range) * h;
+            ctx.moveTo(0, zeroY); ctx.lineTo(w, zeroY);
+            ctx.stroke();
+
+            data.forEach((points, pi) => {
+                ctx.strokeStyle = colors[pi % colors.length];
+                ctx.lineWidth = 3;
+                ctx.lineJoin = 'round';
+                ctx.beginPath();
+                points.forEach((p, i) => {
+                    const x = i * stepX;
+                    const y = h - ((p - minPoints) / range) * h;
+                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                });
+                ctx.stroke();
+            });
+        }
+
+        function getPlayerRounds(name) {
+            const rounds = [];
+            const archives = getFilteredArchives();
+            [...archives].reverse().forEach(arc => {
+                arc.history.forEach(round => {
+                    const p = round.find(r => r.name === name && r.rank !== undefined);
+                    if (p) rounds.push({ finalScore: p.finalScore, rank: p.rank, date: arc.date, arcId: arc.id });
+                });
+            });
+            return rounds;
+        }
+
+        function aggregateByDate(name) {
+            const map = new Map();
+            const archives = getFilteredArchives();
+            [...archives].reverse().forEach(arc => {
+                const dateKey = arc.date;
+                if (!map.has(dateKey)) map.set(dateKey, { date: dateKey, games: 0, total: 0, tops: 0, rankSum: 0 });
+                const entry = map.get(dateKey);
+                arc.history.forEach(round => {
+                    const p = round.find(r => r.name === name && r.rank !== undefined);
+                    if (p) {
+                        entry.games++;
+                        entry.total += p.finalScore;
+                        entry.rankSum += p.rank;
+                        if (p.rank === 1) entry.tops++;
+                    }
+                });
+            });
+            return [...map.values()]
+                .filter(e => e.games > 0)
+                .map(e => ({ ...e, avg: e.games > 0 ? e.total / e.games : 0, avgRank: e.games > 0 ? e.rankSum / e.games : 0 }))
+                .reverse();
+        }
+
+        function aggregateByMonth(name) {
+            const map = new Map();
+            const archives = getFilteredArchives();
+            [...archives].reverse().forEach(arc => {
+                const parts = arc.date.replace(/\//g, '-').split('-');
+                const month = `${parts[0]}/${String(parts[1]).padStart(2, '0')}`;
+                if (!map.has(month)) map.set(month, { month, total: 0, games: 0 });
+                const entry = map.get(month);
+                arc.history.forEach(round => {
+                    const p = round.find(r => r.name === name && r.rank !== undefined);
+                    if (p) { entry.total += p.finalScore; entry.games++; }
+                });
+            });
+            return [...map.values()].filter(e => e.games > 0);
+        }
+
+        function getRecentStats(name, count = 20) {
+            const all = getPlayerRounds(name);
+            const recent = all.slice(-count);
+            if (recent.length === 0) return null;
+
+            const total = recent.reduce((s, r) => s + r.finalScore, 0);
+            const avg = total / recent.length;
+            const tops = recent.filter(r => r.rank === 1).length;
+            const lasts = recent.filter(r => r.rank === 4).length;
+            const avgRank = recent.reduce((s, r) => s + r.rank, 0) / recent.length;
+
+            let consecTop = 0, consecLast = 0;
+            for (let i = recent.length - 1; i >= 0; i--) {
+                if (recent[i].rank === 1) consecTop++; else break;
+            }
+            for (let i = recent.length - 1; i >= 0; i--) {
+                if (recent[i].rank === 4) consecLast++; else break;
+            }
+
+            return { recent, total, avg, tops, lasts, avgRank, consecTop, consecLast };
+        }
+
+        function renderRecentStats(name) {
+            const cont = document.getElementById('recent-stats-container');
+            if (!cont) return;
+            const stats = getRecentStats(name, 20);
+            if (!stats || stats.recent.length === 0) { cont.innerHTML = ''; return; }
+
+            const { recent, avg, tops, lasts, avgRank, consecTop, consecLast } = stats;
+            let badge = '';
+            if (consecTop >= 3) badge = `<div class="alert-badge hot">🔥 ${consecTop}連続トップ中！ 絶好調</div>`;
+            else if (consecTop === 2) badge = `<div class="alert-badge hot">🔥 2連続トップ！ 好調</div>`;
+            else if (consecLast >= 3) badge = `<div class="alert-badge cold">🧊 ${consecLast}連続ラス… 要注意</div>`;
+            else if (consecLast === 2) badge = `<div class="alert-badge cold">🧊 2連続ラス。</div>`;
+            else if (avgRank <= 2.0) badge = `<div class="alert-badge hot">📈 平均順位 ${avgRank.toFixed(2)} 位 – 好調</div>`;
+            else if (avgRank >= 3.0) badge = `<div class="alert-badge cold">📉 平均順位 ${avgRank.toFixed(2)} 位 – 苦戦</div>`;
+            else badge = `<div class="alert-badge neutral">📊 直近 ${recent.length} 局 平均順位 ${avgRank.toFixed(2)} 位</div>`;
+
+            const dots = recent.map(r => `<div class="rank-dot r${r.rank}">${r.rank}</div>`).join('');
+            const avgColor = avg >= 0 ? 'var(--orange-500)' : 'var(--blue-500)';
+
+            cont.innerHTML = `
+                <div class="recent-alert-card">
+                    <div class="recent-alert-title">⚡ Recent ${recent.length} Games · ${name}</div>
+                    ${badge}
+                    <div class="recent-rank-dots">${dots}</div>
+                    <div class="recent-mini-stats">
+                        <div class="recent-mini-item">
+                            <span class="recent-mini-val" style="color:${avgColor}">${avg >= 0 ? '+' : ''}${avg.toFixed(2)}</span>
+                            <span class="recent-mini-label">Avg/Game</span>
+                        </div>
+                        <div class="recent-mini-item">
+                            <span class="recent-mini-val" style="color:var(--orange-500)">${Math.round((tops / recent.length) * 100)}%</span>
+                            <span class="recent-mini-label">Top Rate</span>
+                        </div>
+                        <div class="recent-mini-item">
+                            <span class="recent-mini-val" style="color:var(--blue-500)">${Math.round((lasts / recent.length) * 100)}%</span>
+                            <span class="recent-mini-label">Last Rate</span>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        function renderMonthlyChart(name) {
+            const cont = document.getElementById('monthly-chart-container');
+            if (!cont) return;
+            const monthlyData = aggregateByMonth(name);
+            if (monthlyData.length === 0) { cont.innerHTML = ''; return; }
+
+            cont.innerHTML = `
+                <div class="monthly-chart-card">
+                    <div class="monthly-chart-title">📅 Monthly Score · ${name}</div>
+                    <div class="monthly-chart-wrap">
+                        <canvas id="chart-monthly"></canvas>
+                    </div>
+                </div>`;
+
+            requestAnimationFrame(() => {
+                const canvas = document.getElementById('chart-monthly');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                const dpr = window.devicePixelRatio || 2;
+                const w = canvas.offsetWidth;
+                const h = canvas.offsetHeight;
+                canvas.width = w * dpr; canvas.height = h * dpr;
+                ctx.scale(dpr, dpr);
+
+                const n = monthlyData.length;
+                const values = monthlyData.map(d => d.total);
+                const absMax = Math.max(Math.abs(Math.max(...values, 1)), Math.abs(Math.min(...values, -1)));
+                const padL = 4, padR = 4, padT = 20, padB = 30;
+                const chartW = w - padL - padR;
+                const chartH = h - padT - padB;
+                const barW = Math.max(4, Math.floor(chartW / n) - 4);
+                const gap = (chartW - barW * n) / (n + 1);
+                const zeroY = padT + chartH / 2;
+                const toBarH = v => absMax > 0 ? Math.abs(v) / absMax * (chartH / 2 - 4) : 2;
+
+                ctx.strokeStyle = 'rgba(100,116,139,0.2)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(padL, zeroY); ctx.lineTo(w - padR, zeroY);
+                ctx.stroke();
+
+                monthlyData.forEach((d, i) => {
+                    const x = padL + gap + i * (barW + gap);
+                    const bh = Math.max(2, toBarH(d.total));
+                    const isPos = d.total >= 0;
+                    const y = isPos ? zeroY - bh : zeroY;
+
+                    ctx.fillStyle = isPos ? 'rgba(16,185,129,0.85)' : 'rgba(96,165,250,0.85)';
+                    ctx.fillRect(x, y, barW, bh);
+
+                    ctx.fillStyle = isPos ? '#059669' : '#3b82f6';
+                    ctx.font = 'bold 8px JetBrains Mono';
+                    ctx.textAlign = 'center';
+                    ctx.fillText((isPos ? '+' : '') + d.total.toFixed(0), x + barW / 2, isPos ? y - 3 : y + bh + 10);
+
+                    ctx.fillStyle = '#94a3b8';
+                    ctx.font = '700 7px Inter';
+                    ctx.fillText(d.month.split('/')[1] + '月', x + barW / 2, h - padB + 14);
+                });
+            });
+        }
+
+        function renderDailySummary(name) {
+            const cont = document.getElementById('daily-summary-container');
+            if (!cont) return;
+            const daily = aggregateByDate(name);
+            if (daily.length === 0) { cont.innerHTML = ''; return; }
+
+            const rows = daily.map(d => `<tr>
+                <td>${d.date}</td>
+                <td>${d.games}</td>
+                <td class="${d.total > 0 ? 'score-pos' : d.total < 0 ? 'score-neg' : 'score-zero'}">${d.total > 0 ? '+' : ''}${d.total.toFixed(1)}</td>
+                <td class="${d.avg > 0 ? 'score-pos' : d.avg < 0 ? 'score-neg' : 'score-zero'}">${d.avg > 0 ? '+' : ''}${d.avg.toFixed(2)}</td>
+                <td>${d.tops}</td>
+                <td>${d.avgRank.toFixed(2)}</td>
+            </tr>`).join('');
+
+            cont.innerHTML = `
+                <div class="daily-summary-card">
+                    <div class="daily-summary-title">📋 Session Summary · ${name}</div>
+                    <div style="overflow-x:auto;">
+                        <table class="daily-table">
+                            <thead><tr><th>Date</th><th>Games</th><th>Total</th><th>Avg</th><th>🥇</th><th>Avg Rank</th></tr></thead>
+                            <tbody>${rows}</tbody>
+                        </table>
+                    </div>
+                </div>`;
+        }
+
+        let _selectedStatsPlayer = null;
+        function renderNewWidgets(selectedName) {
+            const players = getStatsPlayers();
+            const selectorCont = document.getElementById('player-selector-container');
+
+            if (!players || players.length === 0) {
+                if (selectorCont) selectorCont.innerHTML = '';
+                document.getElementById('recent-stats-container').innerHTML = '';
+                document.getElementById('monthly-chart-container').innerHTML = '';
+                document.getElementById('daily-summary-container').innerHTML = '';
+                _selectedStatsPlayer = null;
+                return;
+            }
+
+            if (selectedName && players.includes(selectedName)) _selectedStatsPlayer = selectedName;
+            else if (!_selectedStatsPlayer || !players.includes(_selectedStatsPlayer)) _selectedStatsPlayer = players[0];
+
+            const target = _selectedStatsPlayer;
+            if (selectorCont) {
+                const pills = players.map(name => {
+                    const active = name === target ? 'active' : '';
+                    return `<button class="player-pill ${active}" onclick="renderNewWidgets('${name.replace(/'/g, "\\'")}')">${name}</button>`;
+                }).join('');
+                selectorCont.innerHTML = `<div class="player-selector-card"><div class="player-selector-label">👤 Select Player</div><div class="player-selector-pills">${pills}</div></div>`;
+            }
+
+            renderRecentStats(target);
+            renderMonthlyChart(target);
+            renderDailySummary(target);
+        }
+
+        /* ── Game Panel Core ── */
         function calculateScore() {
             let participants = state.activePlayers.map(name => ({
-                name,
-                rawPoint: parseInt(state.currentPoints[name] || 0)
-            }));
-            participants.sort((a, b) => b.rawPoint - a.rawPoint);
+                name, rawPoint: parseInt(state.currentPoints[name] || 0)
+            })).sort((a, b) => b.rawPoint - a.rawPoint);
 
-            // 30,000 baseline, round to nearest 1k
-            const getBase = (p) => Math.round((p - 30000) / 1000);
-
-            // Handle ties for Uma
-            let results = [];
-            let rank = 1;
+            const getBase = p => Math.round((p - 30000) / 1000);
+            let results = [], rank = 1;
             for (let i = 0; i < participants.length; i++) {
                 let group = [participants[i]];
-                while (i + 1 < participants.length && participants[i + 1].rawPoint === participants[i].rawPoint) {
-                    group.push(participants[++i]);
-                }
+                while (i + 1 < participants.length && participants[i + 1].rawPoint === participants[i].rawPoint) group.push(participants[++i]);
                 let sumUma = 0;
                 for (let j = 0; j < group.length; j++) sumUma += state.uma[rank + j];
                 let avgUma = sumUma / group.length;
                 group.forEach(p => results.push({ ...p, rank, score: getBase(p.rawPoint) + avgUma }));
                 rank += group.length;
             }
-
-            // Top gets the "sweep" (remaining balance to ensure zero-sum)
             let othersTotal = results.filter(r => r.rank !== 1).reduce((s, r) => s + r.score, 0);
             let topCount = results.filter(r => r.rank === 1).length;
             results.forEach(r => { if (r.rank === 1) r.score = (othersTotal * -1) / topCount; });
@@ -1329,52 +938,32 @@
             else state.history.push(round);
 
             state.currentPoints = {};
-            save();
-            render();
+            save(); render();
         }
 
-        async function archiveSession() {
-            if (!confirm("セッションを終了して保存しますか？（現在の履歴はリセットされます）")) return;
-
+        function archiveSession() {
+            if (!confirm("セッションを終了して保存しますか？")) return;
             const session = {
                 id: new Date().toISOString(),
                 date: new Date().toLocaleDateString('ja-JP'),
+                group: 'Current',
                 players: [...state.activePlayers],
                 history: [...state.history],
-                chips: { ...state.chips },
-                mults: { s: state.scoreMult, c: state.chipMult }
+                chips: { ...state.chips }
             };
-
             state.archives.unshift(session);
             state.history = [];
             state.chips = {};
             save();
             switchTab('stats');
-
-            // JSONファイルが開かれていれば自動保存
-            if (_fileHandle) {
-                await saveToJsonFile();
-            } else {
-                // ファイルが開かれていない場合はダウンロードで保存
-                const saveData = { members: state.members, archives: [...state.archives].sort((a,b)=>new Date(a.id)-new Date(b.id)) };
-                const blob = new Blob([JSON.stringify(saveData, null, 4)], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `yar_result_${new Date().toISOString().slice(0,10)}.json`;
-                a.click();
-                URL.revokeObjectURL(url);
-            }
         }
 
-        /* ── Rendering ── */
         function render() {
             if (state.view === 'game') renderGame();
             else renderStats();
         }
 
         function renderGame() {
-            // Uma bar
             const umaCont = document.getElementById('uma-container');
             umaCont.innerHTML = `<div class="uma-bar"><span class="uma-label">Uma</span><div class="uma-chips" id="uma-list"></div></div>`;
             for (let i = 1; i <= state.gameMode; i++) {
@@ -1384,25 +973,22 @@
                 umaCont.querySelector('#uma-list').appendChild(chip);
             }
 
-            // Rate bar
             const panelCont = document.getElementById('main-panel-container');
             panelCont.innerHTML = `
-                <!-- Rate Bar -->
                 <div class="uma-bar" style="gap:12px;">
                     <span class="uma-label" style="white-space:nowrap">Rate</span>
                     <div class="uma-chip" style="gap:4px">
-                        <span style="font-size:9px;color:var(--slate-400);white-space:nowrap">スコア</span>
-                        <input type="number" style="width:52px;color:var(--emerald-700);font-weight:700;font-size:13px;background:transparent;border:none;outline:none;text-align:center;" value="${state.scoreRate}" onchange="state.scoreRate=parseFloat(this.value)||0;save();if(state.history.length>0)renderHistoryTable();">
-                        <span style="font-size:9px;color:var(--slate-400);white-space:nowrap">円/点</span>
+                        <span style="font-size:9px;color:var(--slate-400)">スコア</span>
+                        <input type="number" style="width:52px;color:var(--emerald-700);font-weight:700;" value="${state.scoreRate}" onchange="state.scoreRate=parseFloat(this.value)||0;save();if(state.history.length>0)renderHistoryTable();">
+                        <span style="font-size:9px;color:var(--slate-400)">円/点</span>
                     </div>
                     <div class="uma-chip" style="gap:4px">
-                        <span style="font-size:9px;color:var(--slate-400);white-space:nowrap">チップ</span>
-                        <input type="number" style="width:52px;color:#7c3aed;font-weight:700;font-size:13px;background:transparent;border:none;outline:none;text-align:center;" value="${state.chipRate}" onchange="state.chipRate=parseFloat(this.value)||0;save();if(state.history.length>0)renderHistoryTable();">
-                        <span style="font-size:9px;color:var(--slate-400);white-space:nowrap">円/枚</span>
+                        <span style="font-size:9px;color:var(--slate-400)">チップ</span>
+                        <input type="number" style="width:52px;color:#7c3aed;font-weight:700;" value="${state.chipRate}" onchange="state.chipRate=parseFloat(this.value)||0;save();if(state.history.length>0)renderHistoryTable();">
+                        <span style="font-size:9px;color:var(--slate-400)">円/枚</span>
                     </div>
                 </div>
 
-                <!-- Entry Panel -->
                 <div class="panel">
                     <div class="panel-header" style="margin-bottom:12px">
                         <span class="panel-title">${state.editingIndex !== null ? 'EDIT ROUND' : 'ENTRY'}</span>
@@ -1412,10 +998,9 @@
                         </div>
                     </div>
 
-                    <!-- 参加人数セレクター -->
                     ${state.editingIndex === null ? `
-                    <div style="display:flex;align-items:center;gap:8px;background:var(--slate-50);border-radius:16px;padding:8px 12px;border:1px solid var(--slate-100);margin-bottom:16px;">
-                        <span style="font-size:10px;font-weight:900;color:var(--slate-400);text-transform:uppercase;letter-spacing:1px;white-space:nowrap">参加人数:</span>
+                    <div style="display:flex;align-items:center;gap:8px;background:var(--slate-50);border-radius:16px;padding:8px 12px;margin-bottom:16px;">
+                        <span style="font-size:10px;font-weight:900;color:var(--slate-400)">参加人数:</span>
                         <div style="display:flex;gap:6px">
                             ${[4,5,6].map(n => `<button onclick="setTotalPlayers(${n})" style="width:36px;height:36px;border-radius:12px;border:${state.totalPlayers===n?'none':'1px solid var(--slate-200)'};background:${state.totalPlayers===n?'var(--emerald-600)':'#fff'};color:${state.totalPlayers===n?'#fff':'var(--slate-400)'};font-size:11px;font-weight:900;cursor:pointer;">${n}人</button>`).join('')}
                         </div>
@@ -1442,96 +1027,84 @@
                 plist.appendChild(row);
             });
 
-            // Summary Table
             if (state.history.length > 0) renderHistoryTable();
         }
 
         function renderHistoryTable() {
             const cont = document.getElementById('history-container');
-            const feePerPerson = (state.baseFee > 0 && state.totalPlayers > 0)
-                ? Math.ceil(state.baseFee / state.totalPlayers) : 0;
+            const feePerPerson = (state.baseFee > 0 && state.totalPlayers > 0) ? Math.ceil(state.baseFee / state.totalPlayers) : 0;
 
             cont.innerHTML = `
                 <div class="summary-panel">
-                    <!-- スコア表（横スクロール対応） -->
                     <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
                         <table class="final-table" style="color:#fff;min-width:${Math.max(280, 90 + state.history.length * 56 + 72)}px">
                             <thead id="h-head"></thead>
                             <tbody id="h-body"></tbody>
                         </table>
                     </div>
-
-                    <!-- チップ入力 -->
                     <div style="margin-top:20px; border-top:1px solid rgba(255,255,255,0.1); padding-top:16px;">
-                        <div style="font-size:10px; font-weight:900; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;">Chip Input</div>
+                        <div style="font-size:10px; font-weight:900; color:rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom:12px;">Chip Input</div>
                         <div id="chip-input-container" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:10px;"></div>
                     </div>
-
-                    <!-- 場代入力 -->
                     <div style="margin-top:16px;border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;">
                         <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.05);border-radius:12px;padding:10px 14px;">
-                            <span style="font-size:10px;font-weight:900;color:#fbbf24;white-space:nowrap;">🏠 場代</span>
-                            <input type="number" placeholder="0" value="${state.baseFee || ''}" min="0"
-                                style="width:88px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:8px;color:#fcd34d;text-align:center;font-family:'JetBrains Mono';font-size:13px;font-weight:700;outline:none;padding:4px 8px;"
+                            <span style="font-size:10px;font-weight:900;color:#fbbf24;">🏠 場代</span>
+                            <input type="number" placeholder="0" value="${state.baseFee || ''}"
+                                style="width:88px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:8px;color:#fcd34d;text-align:center;"
                                 oninput="state.baseFee=parseFloat(this.value)||0;save();renderHistoryTable();">
                             <span style="font-size:10px;color:rgba(255,255,255,0.4);">円 ÷ ${state.totalPlayers}人</span>
-                            ${feePerPerson > 0 ? `<span style="font-size:12px;font-weight:900;color:#fbbf24;font-family:'JetBrains Mono';margin-left:auto;">= ${feePerPerson.toLocaleString()}円/人</span>` : ''}
                         </div>
                     </div>
-
-                    <!-- 最終金額 -->
                     <div style="margin-top:16px;border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;">
-                        <div style="font-size:10px;font-weight:900;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;">💴 Final Amount</div>
+                        <div style="font-size:10px;font-weight:900;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:12px;">💴 Final Amount</div>
                         <div id="final-amount-container"></div>
                     </div>
-
                     <button class="btn-save-session" onclick="archiveSession()">FINALIZE &amp; SAVE SESSION</button>
                 </div>
             `;
 
-            // Head row（Player列を sticky に）
             const head = cont.querySelector('#h-head');
             const thr = document.createElement('tr');
-            const thPlayer = document.createElement('th');
-            thPlayer.style.cssText = 'text-align:left;position:sticky;left:0;background:#0f172a;z-index:1;min-width:72px;padding-right:4px;';
-            thPlayer.textContent = 'Player';
-            thr.appendChild(thPlayer);
+            thr.innerHTML = `<th style="text-align:left;position:sticky;left:0;background:#0f172a;z-index:1;min-width:72px;">Player</th>`;
             state.history.forEach((_, i) => {
                 const th = document.createElement('th');
-                th.style.cssText = 'min-width:52px;cursor:pointer;';
                 th.textContent = `#${i + 1}`;
                 th.onclick = () => editRound(i);
                 thr.appendChild(th);
             });
-            thr.appendChild(el('th', { style: 'background:rgba(255,255,255,0.1);min-width:64px' }, 'TOTAL'));
+            const thTot = document.createElement('th');
+            thTot.textContent = 'TOTAL';
+            thr.appendChild(thTot);
             head.appendChild(thr);
 
             const body = cont.querySelector('#h-body');
             state.members.forEach(name => {
                 const tr = document.createElement('tr');
-                const tdName = document.createElement('td');
-                tdName.style.cssText = 'position:sticky;left:0;background:#0f172a;z-index:1;font-weight:700;min-width:72px;padding-right:4px;';
-                tdName.textContent = name;
-                tr.appendChild(tdName);
+                tr.innerHTML = `<td style="position:sticky;left:0;background:#0f172a;z-index:1;font-weight:700;">${name}</td>`;
                 let total = 0;
                 state.history.forEach(round => {
                     const s = (round.find(r => r.name === name) || {}).finalScore || 0;
                     total += s;
-                    tr.appendChild(el('td', { style: (s > 0 ? 'color:var(--orange-400)' : s < 0 ? 'color:var(--blue-400)' : 'opacity:0.3') + ';min-width:52px' }, s.toFixed(1)));
+                    const td = document.createElement('td');
+                    td.style.color = s > 0 ? 'var(--orange-400)' : s < 0 ? 'var(--blue-400)' : 'rgba(255,255,255,0.3)';
+                    td.textContent = s.toFixed(1);
+                    tr.appendChild(td);
                 });
-                tr.appendChild(el('td', { style: 'font-weight:900;background:rgba(255,255,255,0.1);min-width:64px' }, total.toFixed(1)));
+                const tdTotal = document.createElement('td');
+                tdTotal.style.fontWeight = '900';
+                tdTotal.textContent = total.toFixed(1);
+                tr.appendChild(tdTotal);
                 body.appendChild(tr);
             });
 
-            // Chip Inputs（totalPlayers人分のみ）
             const chipCont = cont.querySelector('#chip-input-container');
             state.members.slice(0, state.totalPlayers).forEach(name => {
                 const item = document.createElement('div');
-                item.style.cssText = 'background:rgba(255,255,255,0.05); padding:10px; border-radius:12px; display:flex; align-items:center; gap:8px;';
+                item.style.cssText = 'background:rgba(255,255,255,0.05); padding:8px 10px; border-radius:12px; display:flex; align-items:center;';
                 item.innerHTML = `
-                    <span style="font-size:11px; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${name}</span>
-                    <input type="number" class="chip-field" data-name="${name}" placeholder="0"
-                        style="width:50px; background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,0.2); color:#c4b5fd; text-align:right; font-family:'JetBrains Mono'; font-size:14px; outline:none;"
+                    <span style="font-size:11px; flex:1;">${name}</span>
+                    <input type="number" placeholder="0"
+                        style="width:50px; background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,0.2); color:#c4b5fd; text-align:right;"
                         value="${state.chips[name] || ''}"
                         oninput="state.chips['${name}']=Number(this.value);renderFinalAmounts();">
                 `;
@@ -1544,8 +1117,7 @@
         function renderFinalAmounts() {
             const cont = document.getElementById('final-amount-container');
             if (!cont) return;
-            const feePerPerson = (state.baseFee > 0 && state.totalPlayers > 0)
-                ? Math.ceil(state.baseFee / state.totalPlayers) : 0;
+            const feePerPerson = (state.baseFee > 0 && state.totalPlayers > 0) ? Math.ceil(state.baseFee / state.totalPlayers) : 0;
             cont.innerHTML = '';
             state.members.slice(0, state.totalPlayers).forEach(name => {
                 const total = state.history.reduce((s, r) => s + ((r.find(p => p.name === name) || {}).finalScore || 0), 0);
@@ -1553,26 +1125,12 @@
                 const finalAmt = total * state.scoreRate + chip * state.chipRate;
                 const netAmt = finalAmt - feePerPerson;
                 const row = document.createElement('div');
-                row.style.cssText = 'padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);';
+                row.style.cssText = 'padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.06); display:flex; justify-content:space-between; align-items:center;';
                 row.innerHTML = `
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.8);width:56px;flex-shrink:0;">${name}</span>
-                        <div style="flex:1;text-align:right;">
-                            <div style="font-size:9px;color:rgba(255,255,255,0.35);font-family:'JetBrains Mono';">
-                                ${total > 0 ? '+' : ''}${total.toFixed(1)}pt × ${state.scoreRate}${chip !== 0 ? ` + ${chip}枚 × ${state.chipRate}` : ''}
-                            </div>
-                            <div style="font-size:13px;font-weight:900;font-family:'JetBrains Mono';color:${finalAmt >= 0 ? 'var(--orange-400)' : 'var(--blue-400)'}">
-                                ${finalAmt >= 0 ? '+' : ''}${Math.round(finalAmt).toLocaleString()}円
-                            </div>
-                        </div>
+                    <span style="font-size:12px;font-weight:700;">${name}</span>
+                    <div style="font-size:13px;font-weight:900;font-family:'JetBrains Mono';color:${netAmt >= 0 ? 'var(--orange-400)' : 'var(--blue-400)'}">
+                        ${netAmt >= 0 ? '+' : ''}${Math.round(netAmt).toLocaleString()}円
                     </div>
-                    ${feePerPerson > 0 ? `
-                    <div style="display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:4px;">
-                        <span style="font-size:9px;color:rgba(255,255,255,0.3);font-family:'JetBrains Mono';">場代 -${feePerPerson.toLocaleString()}円</span>
-                        <div style="font-size:15px;font-weight:900;font-family:'JetBrains Mono';padding:2px 10px;border-radius:8px;background:${netAmt >= 0 ? 'rgba(251,146,60,0.12)' : 'rgba(96,165,250,0.12)'};color:${netAmt >= 0 ? 'var(--orange-400)' : 'var(--blue-400)'}">
-                            ${netAmt >= 0 ? '+' : ''}${Math.round(netAmt).toLocaleString()}円
-                        </div>
-                    </div>` : ''}
                 `;
                 cont.appendChild(row);
             });
@@ -1580,538 +1138,13 @@
 
         function setTotalPlayers(n) {
             state.totalPlayers = n;
-            // Remove active players beyond limit
             state.activePlayers = state.activePlayers.filter((_, i) => i < n);
-            save();
-            render();
+            save(); render();
         }
 
-        /* ── Archives内の全プレイヤーを重複なしで返す（members空の場合に使用） ── */
-        function getStatsPlayers() {
-            if (state.members && state.members.length > 0) return state.members;
-            // archives の history から全プレイヤーを順序保持で抽出
-            const seen = new Set();
-            const players = [];
-            [...state.archives].reverse().forEach(arc => {
-                arc.history.forEach(round => {
-                    round.forEach(p => {
-                        if (p.rank !== undefined && !seen.has(p.name)) {
-                            seen.add(p.name);
-                            players.push(p.name);
-                        }
-                    });
-                });
-            });
-            return players;
-        }
-
-        function renderStats() {
-            const summary = document.getElementById('stats-summary-container');
-            summary.innerHTML = '<div class="stat-card"><div class="stat-card-title">Lifetime Stats</div><div class="stat-grid" id="stats-grid"></div></div>';
-
-            const grid = summary.querySelector('#stats-grid');
-            const totalScores = {};
-            let totalGames = 0;
-
-            state.archives.forEach(a => {
-                totalGames += a.history.length;
-                const sessionChips = a.chips || {};
-                a.history.forEach(round => {
-                    round.forEach(p => {
-                        if (!totalScores[p.name]) totalScores[p.name] = { score: 0, games: 0, wins: 0, chips: 0 };
-                        if (p.rank !== undefined) {
-                            totalScores[p.name].score += p.finalScore;
-                            totalScores[p.name].games++;
-                            if (p.rank === 1) totalScores[p.name].wins++;
-                        }
-                    });
-                });
-                // Add chips once per archive
-                Object.entries(sessionChips).forEach(([name, val]) => {
-                    if (!totalScores[name]) totalScores[name] = { score: 0, games: 0, wins: 0, chips: 0 };
-                    totalScores[name].chips += Number(val || 0);
-                });
-            });
-
-            getStatsPlayers().forEach(name => {
-                const s = totalScores[name] || { score: 0, games: 0, wins: 0 };
-                const avg = s.games > 0 ? (s.score / s.games).toFixed(2) : '0.00';
-                const rate = s.games > 0 ? Math.round((s.wins / s.games) * 100) : 0;
-
-                const item = document.createElement('div');
-                item.className = 'stat-item';
-                item.style.cursor = 'pointer';
-                item.onclick = () => openPlayerModal(name);
-                item.innerHTML = `
-                    <span class="stat-label">${name}</span>
-                    <span class="stat-val" style="color:${s.score >= 0 ? 'var(--orange-500)' : 'var(--blue-500)'}">${s.score.toFixed(1)} <span style="font-size:10px; color:${s.chips >= 0 ? 'var(--emerald-500)' : 'var(--rose-500)'};">(${s.chips >= 0 ? '+' : ''}${s.chips})</span></span>
-                    <span class="stat-label">Avg: ${avg} / Top: ${rate}%</span>
-                `;
-                grid.appendChild(item);
-            });
-
-            // Archive Cards
-            const arcList = document.getElementById('archive-list');
-            arcList.innerHTML = state.archives.length === 0 ? '<div style="text-align:center;padding:20px;font-size:12px;color:var(--slate-400)">No data yet.</div>' : '';
-            state.archives.forEach((arc, idx) => {
-                const card = document.createElement('div');
-                card.className = 'history-card';
-                card.innerHTML = `
-                    <div class="history-header">
-                        <span>📅 ${arc.date}</span>
-                        <span style="color:red" onclick="deleteArchive(${idx})">DELETE</span>
-                    </div>
-                    <div class="history-results"></div>
-                    <div style="margin-top:10px; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">
-                        <div style="font-size:9px; font-weight:900; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:2px; margin-bottom:8px;">Chip</div>
-                        <div class="chip-inputs-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:6px;"></div>
-                    </div>
-                `;
-                const resCont = card.querySelector('.history-results');
-                arc.players.forEach(p => {
-                    const total = arc.history.reduce((sum, r) => sum + (r.find(e => e.name === p)?.finalScore || 0), 0);
-                    if (total === 0 && !arc.history.some(r => r.some(e => e.name === p && e.rank !== undefined))) return;
-                    const b = document.createElement('span');
-                    b.className = 'res-badge';
-                    b.style.color = total > 0 ? 'var(--orange-400)' : 'var(--blue-400)';
-                    const chipVal = arc.chips?.[p] || 0;
-                    const chipStr = chipVal !== 0 ? ` (${chipVal > 0 ? '+' : ''}${chipVal}c)` : '';
-                    b.textContent = `${p}: ${total.toFixed(1)}${chipStr}`;
-                    resCont.appendChild(b);
-                });
-                // Chip inputs per player
-                const chipGrid = card.querySelector('.chip-inputs-grid');
-                arc.players.forEach(p => {
-                    const div = document.createElement('div');
-                    div.style.cssText = 'display:flex; align-items:center; gap:6px; background:rgba(255,255,255,0.05); padding:6px 8px; border-radius:8px;';
-                    const currentVal = (arc.chips && arc.chips[p] !== undefined) ? arc.chips[p] : '';
-                    div.innerHTML = `
-                        <span style="font-size:11px; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${p}</span>
-                        <input type="number" placeholder="0"
-                            style="width:52px; background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,0.2); color:#fff; text-align:right; font-family:'JetBrains Mono'; font-size:13px; outline:none;"
-                            value="${currentVal}"
-                            onchange="updateArchiveChip(${idx}, '${p.replace(/'/g, "\\'")}'  , this.value)">
-                    `;
-                    chipGrid.appendChild(div);
-                });
-                arcList.appendChild(card);
-            });
-
-            // 新規ウィジェットを描画
-            renderNewWidgets();
-        }
-
-        /* ── Canvas Chart (No Libraries) ── */
-        function drawTrendChart() {
-            const canvas = document.getElementById('chart-trend');
-            const ctx = canvas.getContext('2d');
-            const w = canvas.offsetWidth;
-            const h = canvas.offsetHeight;
-            canvas.width = w * 2; canvas.height = h * 2; // Hi-DPI
-            ctx.scale(2, 2);
-
-            if (state.archives.length === 0) return;
-
-            const players = getStatsPlayers();
-            const colors = ['#fb923c', '#60a5fa', '#34d399', '#a78bfa', '#f43f5e', '#fbbf24'];
-
-            // Calculate cumulative points over sessions
-            let data = players.map(() => [0]);
-            [...state.archives].reverse().forEach(arc => {
-                players.forEach((name, i) => {
-                    const sessionTotal = arc.history.reduce((sum, r) => sum + (r.find(e => e.name === name)?.finalScore || 0), 0);
-                    const lastVal = data[i][data[i].length - 1];
-                    data[i].push(lastVal + sessionTotal);
-                });
-            });
-
-            const maxPoints = Math.max(...data.flat(), 50);
-            const minPoints = Math.min(...data.flat(), -50);
-            const range = maxPoints - minPoints;
-            const stepX = w / (data[0].length - 1);
-
-            ctx.clearRect(0, 0, w, h);
-
-            // Grid lines
-            ctx.strokeStyle = '#e2e8f0';
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            const zeroY = h - ((0 - minPoints) / range) * h;
-            ctx.moveTo(0, zeroY); ctx.lineTo(w, zeroY);
-            ctx.stroke();
-
-            // Lines
-            data.forEach((points, pi) => {
-                ctx.strokeStyle = colors[pi % colors.length];
-                ctx.lineWidth = 3;
-                ctx.lineJoin = 'round';
-                ctx.beginPath();
-                points.forEach((p, i) => {
-                    const x = i * stepX;
-                    const y = h - ((p - minPoints) / range) * h;
-                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-                });
-                ctx.stroke();
-            });
-        }
-
-        /* ══════════════════════════════════════════
-           § 5.1 新規可視化機能 – データ集計ロジック
-        ══════════════════════════════════════════ */
-
-        /** 対象プレイヤーの全対局レコードを時系列順（古→新）で返す */
-        function getPlayerRounds(name) {
-            const rounds = [];
-            [...state.archives].reverse().forEach(arc => {
-                arc.history.forEach(round => {
-                    const p = round.find(r => r.name === name && r.rank !== undefined);
-                    if (p) rounds.push({ finalScore: p.finalScore, rank: p.rank, date: arc.date, arcId: arc.id });
-                });
-            });
-            return rounds;
-        }
-
-        /**
-         * aggregateByDate(name) – 日付ごとに集計
-         * 返値: [{ date, games, total, avg, tops, avgRank }]（新しい日付順）
-         */
-        function aggregateByDate(name) {
-            const map = new Map();
-            [...state.archives].reverse().forEach(arc => {
-                const dateKey = arc.date;
-                if (!map.has(dateKey)) map.set(dateKey, { date: dateKey, games: 0, total: 0, tops: 0, rankSum: 0 });
-                const entry = map.get(dateKey);
-                arc.history.forEach(round => {
-                    const p = round.find(r => r.name === name && r.rank !== undefined);
-                    if (p) {
-                        entry.games++;
-                        entry.total += p.finalScore;
-                        entry.rankSum += p.rank;
-                        if (p.rank === 1) entry.tops++;
-                    }
-                });
-            });
-            return [...map.values()]
-                .filter(e => e.games > 0)
-                .map(e => ({ ...e, avg: e.games > 0 ? e.total / e.games : 0, avgRank: e.games > 0 ? e.rankSum / e.games : 0 }))
-                .reverse(); // 新しい日付順
-        }
-
-        /**
-         * aggregateByMonth(name) – 月ごとに合計スコアを集計
-         * 返値: [{ month:'YYYY/MM', total, games }]（古い月順）
-         */
-        function aggregateByMonth(name) {
-            const map = new Map();
-            [...state.archives].reverse().forEach(arc => {
-                // arc.date は "YYYY/M/D" 形式を想定
-                const parts = arc.date.replace(/\//g, '-').split('-');
-                const month = `${parts[0]}/${String(parts[1]).padStart(2, '0')}`;
-                if (!map.has(month)) map.set(month, { month, total: 0, games: 0 });
-                const entry = map.get(month);
-                arc.history.forEach(round => {
-                    const p = round.find(r => r.name === name && r.rank !== undefined);
-                    if (p) { entry.total += p.finalScore; entry.games++; }
-                });
-            });
-            return [...map.values()].filter(e => e.games > 0);
-        }
-
-        /**
-         * getRecentStats(name, count=20) – 直近 count 局の統計・アラート判定
-         */
-        function getRecentStats(name, count = 20) {
-            const all = getPlayerRounds(name);
-            const recent = all.slice(-count);
-            if (recent.length === 0) return null;
-
-            const total = recent.reduce((s, r) => s + r.finalScore, 0);
-            const avg = total / recent.length;
-            const tops = recent.filter(r => r.rank === 1).length;
-            const lasts = recent.filter(r => r.rank === 4).length;
-            const avgRank = recent.reduce((s, r) => s + r.rank, 0) / recent.length;
-
-            // 連続トップ / 連続ラス判定
-            let consecTop = 0, consecLast = 0;
-            for (let i = recent.length - 1; i >= 0; i--) {
-                if (recent[i].rank === 1) consecTop++; else break;
-            }
-            for (let i = recent.length - 1; i >= 0; i--) {
-                if (recent[i].rank === 4) consecLast++; else break;
-            }
-
-            return { recent, total, avg, tops, lasts, avgRank, consecTop, consecLast };
-        }
-
-        /* ══════════════════════════════════════════
-           § 5.1 新規可視化機能 – レンダリング関数
-        ══════════════════════════════════════════ */
-
-        /** 直近20局の調子サマリーカードを描画 */
-        function renderRecentStats(name) {
-            const cont = document.getElementById('recent-stats-container');
-            if (!cont) return;
-
-            const stats = getRecentStats(name, 20);
-            if (!stats || stats.length === 0) { cont.innerHTML = ''; return; }
-
-            const { recent, avg, tops, lasts, avgRank, consecTop, consecLast } = stats;
-
-            // アラートバッジ判定
-            let badge = '';
-            if (consecTop >= 3) {
-                badge = `<div class="alert-badge hot">🔥 ${consecTop}連続トップ中！ 絶好調です</div>`;
-            } else if (consecTop === 2) {
-                badge = `<div class="alert-badge hot">🔥 2連続トップ！ 好調です</div>`;
-            } else if (consecLast >= 3) {
-                badge = `<div class="alert-badge cold">🧊 ${consecLast}連続ラス… 要注意</div>`;
-            } else if (consecLast === 2) {
-                badge = `<div class="alert-badge cold">🧊 2連続ラス。 流れに気をつけて</div>`;
-            } else if (avgRank <= 2.0) {
-                badge = `<div class="alert-badge hot">📈 直近の平均順位 ${avgRank.toFixed(2)} 位 – 好調キープ</div>`;
-            } else if (avgRank >= 3.0) {
-                badge = `<div class="alert-badge cold">📉 直近の平均順位 ${avgRank.toFixed(2)} 位 – 苦しい展開</div>`;
-            } else {
-                badge = `<div class="alert-badge neutral">📊 直近 ${recent.length} 局 平均順位 ${avgRank.toFixed(2)} 位</div>`;
-            }
-
-            // 順位ドット（直近の古い方から並べる）
-            const dots = recent.map(r => `<div class="rank-dot r${r.rank}">${r.rank}</div>`).join('');
-
-            const avgColor = avg >= 0 ? 'var(--orange-500)' : 'var(--blue-500)';
-            const topRate = recent.length > 0 ? Math.round((tops / recent.length) * 100) : 0;
-            const lastRate = recent.length > 0 ? Math.round((lasts / recent.length) * 100) : 0;
-
-            cont.innerHTML = `
-                <div class="recent-alert-card">
-                    <div class="recent-alert-title">⚡ Recent ${recent.length} Games · ${name}</div>
-                    ${badge}
-                    <div class="recent-rank-dots">${dots}</div>
-                    <div class="recent-mini-stats">
-                        <div class="recent-mini-item">
-                            <span class="recent-mini-val" style="color:${avgColor}">${avg >= 0 ? '+' : ''}${avg.toFixed(2)}</span>
-                            <span class="recent-mini-label">Avg/Game</span>
-                        </div>
-                        <div class="recent-mini-item">
-                            <span class="recent-mini-val" style="color:var(--orange-500)">${topRate}%</span>
-                            <span class="recent-mini-label">Top Rate</span>
-                        </div>
-                        <div class="recent-mini-item">
-                            <span class="recent-mini-val" style="color:var(--blue-500)">${lastRate}%</span>
-                            <span class="recent-mini-label">Last Rate</span>
-                        </div>
-                    </div>
-                </div>`;
-        }
-
-        /** 月別スコア推移棒グラフをCanvasで描画 */
-        function renderMonthlyChart(name) {
-            const cont = document.getElementById('monthly-chart-container');
-            if (!cont) return;
-
-            const monthlyData = aggregateByMonth(name);
-            if (monthlyData.length === 0) { cont.innerHTML = ''; return; }
-
-            cont.innerHTML = `
-                <div class="monthly-chart-card">
-                    <div class="monthly-chart-title">📅 Monthly Score · ${name}</div>
-                    <div class="monthly-chart-wrap">
-                        <canvas id="chart-monthly"></canvas>
-                    </div>
-                </div>`;
-
-            requestAnimationFrame(() => {
-                const canvas = document.getElementById('chart-monthly');
-                if (!canvas) return;
-                const ctx = canvas.getContext('2d');
-                const dpr = window.devicePixelRatio || 2;
-                const w = canvas.offsetWidth;
-                const h = canvas.offsetHeight;
-                canvas.width = w * dpr;
-                canvas.height = h * dpr;
-                ctx.scale(dpr, dpr);
-
-                const n = monthlyData.length;
-                const values = monthlyData.map(d => d.total);
-                const maxV = Math.max(...values, 1);
-                const minV = Math.min(...values, -1);
-                const absMax = Math.max(Math.abs(maxV), Math.abs(minV));
-
-                const padL = 4, padR = 4, padT = 20, padB = 30;
-                const chartW = w - padL - padR;
-                const chartH = h - padT - padB;
-                const barW = Math.max(4, Math.floor(chartW / n) - 4);
-                const gap = (chartW - barW * n) / (n + 1);
-
-                // ゼロライン Y座標
-                const zeroY = padT + chartH / 2 + (absMax > 0 ? 0 : 0);
-                const toBarH = v => absMax > 0 ? Math.abs(v) / absMax * (chartH / 2 - 4) : 2;
-
-                // グリッド（ゼロライン）
-                ctx.strokeStyle = 'rgba(100,116,139,0.2)';
-                ctx.lineWidth = 1;
-                ctx.setLineDash([4, 3]);
-                ctx.beginPath();
-                ctx.moveTo(padL, zeroY); ctx.lineTo(w - padR, zeroY);
-                ctx.stroke();
-                ctx.setLineDash([]);
-
-                // 棒グラフ描画
-                monthlyData.forEach((d, i) => {
-                    const x = padL + gap + i * (barW + gap);
-                    const bh = Math.max(2, toBarH(d.total));
-                    const isPos = d.total >= 0;
-                    const y = isPos ? zeroY - bh : zeroY;
-
-                    // グラデーション
-                    const grad = ctx.createLinearGradient(0, y, 0, y + bh);
-                    if (isPos) {
-                        grad.addColorStop(0, 'rgba(16,185,129,0.9)');
-                        grad.addColorStop(1, 'rgba(16,185,129,0.4)');
-                    } else {
-                        grad.addColorStop(0, 'rgba(96,165,250,0.4)');
-                        grad.addColorStop(1, 'rgba(96,165,250,0.9)');
-                    }
-                    ctx.fillStyle = grad;
-
-                    // 角丸バー
-                    const r = Math.min(4, barW / 2);
-                    ctx.beginPath();
-                    if (isPos) {
-                        ctx.moveTo(x + r, y);
-                        ctx.lineTo(x + barW - r, y);
-                        ctx.quadraticCurveTo(x + barW, y, x + barW, y + r);
-                        ctx.lineTo(x + barW, y + bh);
-                        ctx.lineTo(x, y + bh);
-                        ctx.lineTo(x, y + r);
-                        ctx.quadraticCurveTo(x, y, x + r, y);
-                    } else {
-                        ctx.moveTo(x, y);
-                        ctx.lineTo(x + barW, y);
-                        ctx.lineTo(x + barW, y + bh - r);
-                        ctx.quadraticCurveTo(x + barW, y + bh, x + barW - r, y + bh);
-                        ctx.lineTo(x + r, y + bh);
-                        ctx.quadraticCurveTo(x, y + bh, x, y + bh - r);
-                        ctx.lineTo(x, y);
-                    }
-                    ctx.closePath();
-                    ctx.fill();
-
-                    // 値ラベル（バーの上/下）
-                    ctx.fillStyle = isPos ? '#059669' : '#3b82f6';
-                    ctx.font = `bold 8px JetBrains Mono, monospace`;
-                    ctx.textAlign = 'center';
-                    const label = (isPos ? '+' : '') + d.total.toFixed(0);
-                    const labelY = isPos ? y - 3 : y + bh + 10;
-                    ctx.fillText(label, x + barW / 2, labelY);
-
-                    // 月ラベル（X軸）
-                    ctx.fillStyle = '#94a3b8';
-                    ctx.font = `700 7px Inter, sans-serif`;
-                    // "YYYY/MM" → "MM月" 表示
-                    const mLabel = d.month.split('/')[1] + '月';
-                    ctx.fillText(mLabel, x + barW / 2, h - padB + 14);
-                });
-            });
-        }
-
-        /** 日別集計テーブルを描画 */
-        function renderDailySummary(name) {
-            const cont = document.getElementById('daily-summary-container');
-            if (!cont) return;
-
-            const daily = aggregateByDate(name);
-            if (daily.length === 0) { cont.innerHTML = ''; return; }
-
-            const rows = daily.map(d => {
-                const scoreClass = d.total > 0 ? 'score-pos' : d.total < 0 ? 'score-neg' : 'score-zero';
-                const avgClass = d.avg > 0 ? 'score-pos' : d.avg < 0 ? 'score-neg' : 'score-zero';
-                return `<tr>
-                    <td>${d.date}</td>
-                    <td>${d.games}</td>
-                    <td class="${scoreClass}">${d.total > 0 ? '+' : ''}${d.total.toFixed(1)}</td>
-                    <td class="${avgClass}">${d.avg > 0 ? '+' : ''}${d.avg.toFixed(2)}</td>
-                    <td>${d.tops}</td>
-                    <td>${d.avgRank.toFixed(2)}</td>
-                </tr>`;
-            }).join('');
-
-            cont.innerHTML = `
-                <div class="daily-summary-card">
-                    <div class="daily-summary-title">📋 Session Summary · ${name}</div>
-                    <div style="overflow-x:auto;">
-                        <table class="daily-table">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Games</th>
-                                    <th>Total</th>
-                                    <th>Avg</th>
-                                    <th>🥇</th>
-                                    <th>Avg Rank</th>
-                                </tr>
-                            </thead>
-                            <tbody>${rows}</tbody>
-                        </table>
-                    </div>
-                </div>`;
-        }
-
-        /** 現在選択中のプレイヤー名を保持（永続化しない） */
-        let _selectedStatsPlayer = null;
-
-        /** プレイヤー選択ピルUIを描画し、各ウィジェットを指定プレイヤーで更新 */
-        function renderNewWidgets(selectedName) {
-            const players = getStatsPlayers();
-            const selectorCont = document.getElementById('player-selector-container');
-
-            if (!players || players.length === 0) {
-                if (selectorCont) selectorCont.innerHTML = '';
-                document.getElementById('recent-stats-container').innerHTML = '';
-                document.getElementById('monthly-chart-container').innerHTML = '';
-                document.getElementById('daily-summary-container').innerHTML = '';
-                _selectedStatsPlayer = null;
-                return;
-            }
-
-            // 選択プレイヤー決定（引数 > 保持値 > 先頭）
-            if (selectedName && players.includes(selectedName)) {
-                _selectedStatsPlayer = selectedName;
-            } else if (!_selectedStatsPlayer || !players.includes(_selectedStatsPlayer)) {
-                _selectedStatsPlayer = players[0];
-            }
-
-            const target = _selectedStatsPlayer;
-
-            // ── プレイヤー選択ピルを描画 ──
-            if (selectorCont) {
-                const pills = players.map(name => {
-                    const active = name === target ? 'active' : '';
-                    return `<button class="player-pill ${active}" onclick="renderNewWidgets('${name.replace(/'/g, "\\'")}')">
-                        ${name}
-                    </button>`;
-                }).join('');
-
-                selectorCont.innerHTML = `
-                    <div class="player-selector-card">
-                        <div class="player-selector-label">👤 Select Player</div>
-                        <div class="player-selector-pills">${pills}</div>
-                    </div>`;
-            }
-
-            // ── 各ウィジェット描画 ──
-            renderRecentStats(target);
-            renderMonthlyChart(target);
-            renderDailySummary(target);
-        }
-
-        /* ── Helpers ── */
         function togglePlayer(name) {
-            if (state.activePlayers.includes(name)) {
-                state.activePlayers = state.activePlayers.filter(p => p !== name);
-            } else if (state.activePlayers.length < state.gameMode) {
-                state.activePlayers.push(name);
-            }
+            if (state.activePlayers.includes(name)) state.activePlayers = state.activePlayers.filter(p => p !== name);
+            else if (state.activePlayers.length < state.gameMode) state.activePlayers.push(name);
             render();
         }
 
@@ -2128,235 +1161,78 @@
             state.activePlayers = round.filter(r => r.raw !== undefined).map(r => r.name);
             state.currentPoints = {};
             round.forEach(r => { if (r.raw !== undefined) state.currentPoints[r.name] = r.raw; });
-            render(); // editRound uses raw for currentPoints (score input), keep as-is
+            render();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function updateArchiveChip(idx, name, value) {
-            if (!state.archives[idx].chips) state.archives[idx].chips = {};
-            state.archives[idx].chips[name] = Number(value) || 0;
-            save();
-            renderStats();
+        function deleteArchive(idx) {
+            if (confirm("この履歴を削除しますか？")) {
+                state.archives.splice(idx, 1);
+                save(); render(); drawTrendChart();
+            }
+        }
+
+        function exportData() {
+            const blob = new Blob([JSON.stringify(state.archives, null, 4)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `mj_score_backup_${new Date().toISOString().slice(0,10)}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
         }
 
         function openPlayerModal(name) {
-            // ── Collect data ──
-            const rounds = [];       // { finalScore, rank, sessionDate }
-            const sessionTotals = []; // cumulative per session
+            const rounds = [];
             let chipTotal = 0;
+            const archives = getFilteredArchives();
 
-            state.archives.forEach(arc => {
-                let sessionScore = 0;
+            archives.forEach(arc => {
                 arc.history.forEach(round => {
                     const p = round.find(r => r.name === name && r.rank !== undefined);
-                    if (p) {
-                        rounds.push({ finalScore: p.finalScore, rank: p.rank, date: arc.date });
-                        sessionScore += p.finalScore;
-                    }
+                    if (p) rounds.push({ finalScore: p.finalScore, rank: p.rank, date: arc.date });
                 });
-                if (arc.history.some(r => r.some(p => p.name === name && p.rank !== undefined))) {
-                    sessionTotals.push({ date: arc.date, score: sessionScore });
-                }
                 chipTotal += Number(arc.chips?.[name] || 0);
             });
 
             const totalScore = rounds.reduce((s, r) => s + r.finalScore, 0);
             const games = rounds.length;
             const avg = games > 0 ? (totalScore / games) : 0;
-
-            // Rank stats
             const rankColors = ['', '#fb923c', '#60a5fa', '#94a3b8', '#475569'];
             const rankData = [1, 2, 3, 4].map(rank => {
                 const rs = rounds.filter(r => r.rank === rank);
-                return {
-                    rank,
-                    count: rs.length,
-                    avg: rs.length > 0 ? rs.reduce((s, r) => s + r.finalScore, 0) / rs.length : null
-                };
+                return { rank, count: rs.length, avg: rs.length > 0 ? rs.reduce((s, r) => s + r.finalScore, 0) / rs.length : null };
             });
 
-            const bestRound = rounds.reduce((b, r) => r.finalScore > (b?.finalScore ?? -Infinity) ? r : b, null);
-            const worstRound = rounds.reduce((w, r) => r.finalScore < (w?.finalScore ?? Infinity) ? r : w, null);
-
-            // ── Build modal HTML ──
             const content = document.getElementById('modal-content');
-            content.innerHTML = '';
-
-            // Header
-            const scoreColor = totalScore >= 0 ? 'var(--orange-400)' : 'var(--blue-400)';
-            const chipColor = chipTotal >= 0 ? 'var(--emerald-400)' : '#f87171';
             content.innerHTML = `
                 <div style="margin-bottom:20px;">
-                    <div style="font-size:22px; font-weight:900; letter-spacing:-1px; margin-bottom:4px;">${name}</div>
-                    <div style="font-size:12px; color:rgba(255,255,255,0.4);">${games}戦 / ${state.archives.filter(a => a.history.some(r => r.some(p => p.name === name && p.rank !== undefined))).length}セッション</div>
+                    <div style="font-size:22px; font-weight:900;">${name}</div>
+                    <div style="font-size:12px; color:rgba(255,255,255,0.4);">${games}戦 / グループ: ${state.selectedGroup}</div>
                 </div>
                 <div class="modal-stat-grid">
                     <div class="modal-stat-item">
-                        <span class="modal-stat-val" style="color:${scoreColor}">${totalScore.toFixed(1)}</span>
+                        <span class="modal-stat-val" style="color:${totalScore >= 0 ? 'var(--orange-400)' : 'var(--blue-400)'}">${totalScore.toFixed(1)}</span>
                         <span class="modal-stat-label">Total</span>
                     </div>
                     <div class="modal-stat-item">
-                        <span class="modal-stat-val" style="color:${avg >= 0 ? 'var(--orange-400)' : 'var(--blue-400)'}">${avg.toFixed(2)}</span>
+                        <span class="modal-stat-val">${avg.toFixed(2)}</span>
                         <span class="modal-stat-label">Avg/Game</span>
                     </div>
                     <div class="modal-stat-item">
-                        <span class="modal-stat-val" style="color:${chipColor}">${chipTotal >= 0 ? '+' : ''}${chipTotal}</span>
+                        <span class="modal-stat-val" style="color:${chipTotal >= 0 ? 'var(--emerald-400)' : '#f87171'}">${chipTotal >= 0 ? '+' : ''}${chipTotal}</span>
                         <span class="modal-stat-label">Chips</span>
                     </div>
                 </div>
+                <div class="modal-section-title">Rank Distribution</div>
+                ${rankData.map(rd => `
+                    <div class="rank-bar-row">
+                        <span class="rank-bar-label" style="color:${rankColors[rd.rank]}">${rd.rank}位</span>
+                        <div class="rank-bar-bg"><div class="rank-bar-fill" style="width:${games > 0 ? (rd.count/games*100) : 0}%; background:${rankColors[rd.rank]};"></div></div>
+                        <span class="rank-bar-count">${rd.count}回</span>
+                    </div>
+                `).join('')}
             `;
-
-            // Score trend chart (canvas)
-            if (sessionTotals.length > 1) {
-                const secTitle1 = document.createElement('div');
-                secTitle1.className = 'modal-section-title';
-                secTitle1.textContent = 'Score Trend (per session)';
-                content.appendChild(secTitle1);
-
-                const wrap = document.createElement('div');
-                wrap.style.cssText = 'width:100%; height:160px; position:relative; margin-bottom:4px;';
-                const canvas = document.createElement('canvas');
-                canvas.id = 'modal-chart';
-                canvas.style.cssText = 'width:100%; height:100%;';
-                wrap.appendChild(canvas);
-                content.appendChild(wrap);
-
-                // Draw after DOM insert
-                requestAnimationFrame(() => {
-                    const ctx = canvas.getContext('2d');
-                    const w = canvas.offsetWidth;
-                    const h = canvas.offsetHeight;
-                    canvas.width = w * 2; canvas.height = h * 2;
-                    ctx.scale(2, 2);
-
-                    // Cumulative data
-                    const cumData = [0];
-                    sessionTotals.slice().reverse().forEach(s => cumData.push(cumData[cumData.length - 1] + s.score));
-
-                    const maxV = Math.max(...cumData, 10);
-                    const minV = Math.min(...cumData, -10);
-                    const range = maxV - minV || 1;
-                    const stepX = w / (cumData.length - 1);
-                    const toY = v => h - ((v - minV) / range) * (h - 16) - 8;
-
-                    // Zero line
-                    ctx.strokeStyle = 'rgba(255,255,255,0.12)';
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    const zy = toY(0);
-                    ctx.moveTo(0, zy); ctx.lineTo(w, zy);
-                    ctx.stroke();
-
-                    // Gradient fill
-                    const grad = ctx.createLinearGradient(0, 0, 0, h);
-                    grad.addColorStop(0, 'rgba(251,146,60,0.3)');
-                    grad.addColorStop(1, 'rgba(251,146,60,0)');
-                    ctx.beginPath();
-                    cumData.forEach((v, i) => {
-                        const x = i * stepX, y = toY(v);
-                        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-                    });
-                    ctx.lineTo((cumData.length - 1) * stepX, h);
-                    ctx.lineTo(0, h);
-                    ctx.closePath();
-                    ctx.fillStyle = grad;
-                    ctx.fill();
-
-                    // Line
-                    ctx.strokeStyle = '#fb923c';
-                    ctx.lineWidth = 2.5;
-                    ctx.lineJoin = 'round';
-                    ctx.beginPath();
-                    cumData.forEach((v, i) => {
-                        const x = i * stepX, y = toY(v);
-                        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-                    });
-                    ctx.stroke();
-
-                    // Dots
-                    cumData.forEach((v, i) => {
-                        const x = i * stepX, y = toY(v);
-                        ctx.beginPath();
-                        ctx.arc(x, y, 3, 0, Math.PI * 2);
-                        ctx.fillStyle = '#fb923c';
-                        ctx.fill();
-                    });
-
-                    // Final value label
-                    const lastV = cumData[cumData.length - 1];
-                    ctx.fillStyle = lastV >= 0 ? '#fb923c' : '#60a5fa';
-                    ctx.font = 'bold 11px JetBrains Mono, monospace';
-                    ctx.textAlign = 'right';
-                    ctx.fillText(lastV.toFixed(1), w - 2, toY(lastV) - 6);
-                });
-            }
-
-            // Rank distribution
-            const secTitle2 = document.createElement('div');
-            secTitle2.className = 'modal-section-title';
-            secTitle2.textContent = 'Rank Distribution';
-            content.appendChild(secTitle2);
-
-            rankData.forEach(rd => {
-                const pct = games > 0 ? (rd.count / games) * 100 : 0;
-                const row = document.createElement('div');
-                row.className = 'rank-bar-row';
-                row.innerHTML = `
-                    <span class="rank-bar-label" style="color:${rankColors[rd.rank]}">${rd.rank}位</span>
-                    <div class="rank-bar-bg">
-                        <div class="rank-bar-fill" style="width:${pct.toFixed(1)}%; background:${rankColors[rd.rank]};"></div>
-                    </div>
-                    <span class="rank-bar-count">${rd.count}回 ${pct.toFixed(0)}%</span>
-                `;
-                content.appendChild(row);
-            });
-
-            // Per-rank average table
-            const secTitle3 = document.createElement('div');
-            secTitle3.className = 'modal-section-title';
-            secTitle3.textContent = 'Avg Score by Rank';
-            content.appendChild(secTitle3);
-
-            const table = document.createElement('table');
-            table.className = 'rank-avg-table';
-            table.innerHTML = `
-                <thead><tr>
-                    <th>Rank</th><th>Count</th><th>Avg Score</th><th>Rate</th>
-                </tr></thead>
-                <tbody>${rankData.map(rd => `
-                    <tr>
-                        <td style="color:${rankColors[rd.rank]}; font-weight:900;">${rd.rank}位</td>
-                        <td>${rd.count}</td>
-                        <td style="color:${rd.avg === null ? 'rgba(255,255,255,0.3)' : rd.avg >= 0 ? 'var(--orange-400)' : 'var(--blue-400)'}">
-                            ${rd.avg === null ? '—' : rd.avg.toFixed(2)}
-                        </td>
-                        <td style="color:rgba(255,255,255,0.5)">${games > 0 ? ((rd.count / games) * 100).toFixed(1) : 0}%</td>
-                    </tr>
-                `).join('')}</tbody>
-            `;
-            content.appendChild(table);
-
-            // Best / Worst
-            if (bestRound || worstRound) {
-                const secTitle4 = document.createElement('div');
-                secTitle4.className = 'modal-section-title';
-                secTitle4.textContent = 'Best / Worst Game';
-                content.appendChild(secTitle4);
-
-                const bwGrid = document.createElement('div');
-                bwGrid.style.cssText = 'display:grid; grid-template-columns:1fr 1fr; gap:8px;';
-                bwGrid.innerHTML = `
-                    <div class="modal-stat-item">
-                        <span class="modal-stat-val" style="color:var(--orange-400)">${bestRound ? '+' + bestRound.finalScore.toFixed(1) : '—'}</span>
-                        <span class="modal-stat-label">Best</span>
-                    </div>
-                    <div class="modal-stat-item">
-                        <span class="modal-stat-val" style="color:var(--blue-400)">${worstRound ? worstRound.finalScore.toFixed(1) : '—'}</span>
-                        <span class="modal-stat-label">Worst</span>
-                    </div>
-                `;
-                content.appendChild(bwGrid);
-            }
 
             document.getElementById('player-modal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -2368,116 +1244,18 @@
             document.body.style.overflow = '';
         }
 
-        function deleteArchive(idx) {
-            if (confirm("この履歴を完全に削除しますか？")) {
-                state.archives.splice(idx, 1);
-                save(); render(); drawTrendChart();
-            }
-        }
-
         function resetAll() {
-            if (confirm("全てのデータをリセットしますか？（アーカイブ含む）")) {
+            if (confirm("全データをリセットしますか？")) {
                 localStorage.clear();
                 location.reload();
             }
         }
 
-        function el(tag, attrs, text) {
-            const e = document.createElement(tag);
-            if (attrs) Object.entries(attrs).forEach(([k, v]) => {
-                if (k.startsWith('on')) e[k] = () => eval(v);
-                else e.setAttribute(k, v);
-            });
-            if (text) e.textContent = text;
-            return e;
-        }
-
-        /* ── IO ── */
-        function exportData() {
-            const saveData = _jsonData ? { ..._jsonData } : {};
-            saveData.archives = [...state.archives].sort((a, b) => new Date(a.id) - new Date(b.id));
-            saveData.members = state.members;
-            const blob = new Blob([JSON.stringify(saveData, null, 4)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `yar_result_${new Date().toISOString().slice(0, 10)}.json`;
-            a.click();
-            URL.revokeObjectURL(url);
-        }
-
-        function importData() {
-            openJsonFile();
-        }
-
-        // フォールバック用（File System Access API非対応時）
-        function importStatsFileFallback() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = '.json';
-            input.onchange = e => {
-                const file = e.target.files[0];
-                if (!file) return;
-                const reader = new FileReader();
-                reader.onload = () => {
-                    try {
-                        const data = JSON.parse(reader.result);
-                        _jsonData = data;
-                        const newArchives = data.archives || [];
-                        const newMembers = data.members || [];
-
-                        if (newArchives.length === 0) {
-                            alert('このJSONにはアーカイブデータがありません。');
-                            return;
-                        }
-
-                        const existingIds = new Set(state.archives.map(a => a.id));
-                        let addedCount = 0;
-                        newArchives.forEach(arc => {
-                            if (!existingIds.has(arc.id)) { state.archives.push(arc); addedCount++; }
-                        });
-                        state.archives.sort((a, b) => new Date(b.id) - new Date(a.id));
-
-                        if (newMembers.length > 0) {
-                            state.members = [...newMembers];
-                            state.activePlayers = newMembers.slice(0, state.totalPlayers);
-                        }
-                        save();
-                        updateFileStatusUI(file.name);
-
-                        const infoDiv = document.getElementById('import-info');
-                        const totalRounds = newArchives.reduce((s, a) => s + a.history.length, 0);
-                        infoDiv.style.display = 'block';
-                        infoDiv.innerHTML = `
-                            <div class="stat-card" style="border-left:4px solid var(--emerald-500);padding:14px 16px;">
-                                <div style="font-size:11px;font-weight:800;color:var(--emerald-700);margin-bottom:6px;">✅ ${file.name} を読込みました（※ブラウザ制限により上書き保存不可）</div>
-                                <div style="font-size:10px;color:var(--slate-500);line-height:1.8;">
-                                    📅 セッション数: <b>${newArchives.length}</b>件（新規: <b>${addedCount}</b>件）<br>
-                                    🀄 総半荘数: <b>${totalRounds}</b>回<br>
-                                    👥 プレイヤー: ${[...new Set(newArchives.flatMap(a => a.players))].join(', ')}
-                                </div>
-                            </div>`;
-                        render();
-                        drawTrendChart();
-                    } catch (err) {
-                        alert('JSONファイルの読込に失敗しました: ' + err.message);
-                    }
-                };
-                reader.readAsText(file);
-            };
-            input.click();
-        }
-
-        // Init
+        // 初期化：STATSタブ表示時に自動でCSV読み込みを試行
         render();
-        // STATSタブが最初から表示されている場合にURLローダーを初期化
-        if (state.view === 'stats') initUrlLoader();
-
-        // Service Worker 登録（PWA対応）
+        autoLoadBothCsvs();
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then(reg => console.log('SW registered:', reg.scope))
-                .catch(err => console.log('SW registration failed:', err));
+            navigator.serviceWorker.register('sw.js').catch(console.error);
         }
     </script>
 </body>
