@@ -280,6 +280,18 @@
             localStorage.setItem('mj-total-players', state.totalPlayers);
             localStorage.setItem('mj-base-fee', state.baseFee);
         }
+        /* ── 日付正規化ヘルパー ── */
+        function normalizeDate(d) {
+            if (!d) return '';
+            const parts = d.toString().trim().replace(/-/g, '/').split('/');
+            if (parts.length === 3) {
+                const y = parts[0];
+                const m = String(parseInt(parts[1], 10));
+                const day = String(parseInt(parts[2], 10));
+                return `${y}/${m}/${day}`;
+            }
+            return d.toString().trim().replace(/-/g, '/');
+        }
 
         /* ── CSV Parsing Engine ── */
         function parseCsv(text) {
@@ -303,9 +315,9 @@
         function buildArchivesFromSetResRows(scoreRows) {
             const sessionMap = new Map();
             scoreRows.forEach(r => {
-                const rawDate = (r.date || '').trim();
-                const date = rawDate.replace(/-/g, '/');
-                const memberGroup = (r.member || 'General').trim();
+                const rawDate = (r.date || r.Date || '').trim();
+                const date = normalizeDate(rawDate);
+                const memberGroup = (r.member || r.Member || r.group || 'General').trim();
                 const sessionKey = `${date}_${memberGroup}`;
 
                 if (!sessionMap.has(sessionKey)) {
@@ -313,7 +325,7 @@
                         id: `${date.replace(/\//g, '-')}_${memberGroup}`,
                         date: date,
                         group: memberGroup,
-                        rule: r.rule || '',
+                        rule: r.rule || r.Rule || '',
                         roundsMap: new Map(),
                         playersSet: new Set(),
                         chips: {}
@@ -321,18 +333,18 @@
                 }
 
                 const s = sessionMap.get(sessionKey);
-                const matchNum = parseInt(r.match || '1');
+                const matchNum = parseInt(r.match || r.Match || '1', 10);
                 if (!s.roundsMap.has(matchNum)) s.roundsMap.set(matchNum, []);
 
-                const pName = r.name ? r.name.trim() : '';
+                const pName = (r.name || r.Name || r.player || r.Player || '').trim();
                 if (pName) {
                     s.playersSet.add(pName);
                     const rawVal = r.score !== '' && r.score !== undefined && !isNaN(Number(r.score)) ? Number(r.score) : undefined;
                     s.roundsMap.get(matchNum).push({
                         name: pName,
-                        finalScore: parseFloat(r.point || '0'),
+                        finalScore: parseFloat(r.point || r.Point || r.score || '0'),
                         raw: rawVal,
-                        rank: parseInt(r.rank || '0')
+                        rank: parseInt(r.rank || r.Rank || '0', 10)
                     });
                 }
             });
@@ -360,25 +372,45 @@
         function mergeChipsIntoArchives(chipRows) {
             let updateCount = 0;
             chipRows.forEach(r => {
-                const date = (r.date || '').replace(/-/g, '/').trim();
-                const group = (r.member || '').trim();
+                const rawDate = r.date || r.Date || '';
+                const date = normalizeDate(rawDate);
+                const group = (r.member || r.Member || r.group || '').trim();
+                
+                // カラム名の取得（縦持ち: name & chip / 横持ち: プレイヤー名カラム）
+                const nameKey = Object.keys(r).find(k => /^(name|player|user)$/i.test(k.trim()));
+                const chipKey = Object.keys(r).find(k => /^(chip|chips|point|pt)$/i.test(k.trim()));
 
-                state.archives.forEach(arc => {
-                    const dateMatch = arc.date === date;
+                const targetArchives = state.archives.filter(arc => {
+                    const dateMatch = !date || normalizeDate(arc.date) === date;
                     const groupMatch = !group || arc.group === group;
-                    if (dateMatch && groupMatch) {
-                        if (!arc.chips) arc.chips = {};
-                        if (r.name && r.chip !== undefined) {
-                            arc.chips[r.name.trim()] = Number(r.chip) || 0;
+                    return dateMatch && groupMatch;
+                });
+
+                if (targetArchives.length === 0) return;
+
+                targetArchives.forEach(arc => {
+                    if (!arc.chips) arc.chips = {};
+
+                    if (nameKey && chipKey) {
+                        // 縦持ち形式 (date, member, name, chip)
+                        const pName = (r[nameKey] || '').trim();
+                        const chipVal = Number(r[chipKey]) || 0;
+                        if (pName) {
+                            arc.chips[pName] = (arc.chips[pName] || 0) + chipVal;
                             updateCount++;
-                        } else {
-                            Object.keys(r).forEach(k => {
-                                if (k !== 'date' && k !== 'member') {
-                                    arc.chips[k.trim()] = Number(r[k]) || 0;
+                        }
+                    } else {
+                        // 横持ち形式 (date, member, Hamada, Yamamoto, ...)
+                        Object.keys(r).forEach(k => {
+                            const trimmedKey = k.trim();
+                            if (!/^(date|member|group|rule|match)$/i.test(trimmedKey)) {
+                                const val = Number(r[k]);
+                                if (!isNaN(val)) {
+                                    arc.chips[trimmedKey] = (arc.chips[trimmedKey] || 0) + val;
                                     updateCount++;
                                 }
-                            });
-                        }
+                            }
+                        });
                     }
                 });
             });
@@ -1032,6 +1064,10 @@
 
         function renderHistoryTable() {
             const cont = document.getElementById('history-container');
+            if (!cont) return;
+
+            // 参加対象のメンバーのみ（先頭から totalPlayers 人分）を取得
+            const currentSessionMembers = state.members.slice(0, state.totalPlayers);
             const feePerPerson = (state.baseFee > 0 && state.totalPlayers > 0) ? Math.ceil(state.baseFee / state.totalPlayers) : 0;
 
             cont.innerHTML = `
@@ -1063,6 +1099,7 @@
                 </div>
             `;
 
+            // テーブルヘッダー
             const head = cont.querySelector('#h-head');
             const thr = document.createElement('tr');
             thr.innerHTML = `<th style="text-align:left;position:sticky;left:0;background:#0f172a;z-index:1;min-width:72px;">Player</th>`;
@@ -1077,28 +1114,38 @@
             thr.appendChild(thTot);
             head.appendChild(thr);
 
+            // テーブルボディ（参加メンバーのみ描画）
             const body = cont.querySelector('#h-body');
-            state.members.forEach(name => {
+            currentSessionMembers.forEach(name => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `<td style="position:sticky;left:0;background:#0f172a;z-index:1;font-weight:700;">${name}</td>`;
                 let total = 0;
                 state.history.forEach(round => {
-                    const s = (round.find(r => r.name === name) || {}).finalScore || 0;
+                    const match = round.find(r => r.name === name);
+                    const s = match ? match.finalScore : 0;
                     total += s;
                     const td = document.createElement('td');
-                    td.style.color = s > 0 ? 'var(--orange-400)' : s < 0 ? 'var(--blue-400)' : 'rgba(255,255,255,0.3)';
-                    td.textContent = s.toFixed(1);
+                    // ラウンド不参加（抜け番など）の場合は '-' または薄い表示
+                    if (!match || match.raw === undefined) {
+                        td.style.color = 'rgba(255,255,255,0.2)';
+                        td.textContent = '-';
+                    } else {
+                        td.style.color = s > 0 ? 'var(--orange-400)' : s < 0 ? 'var(--blue-400)' : 'rgba(255,255,255,0.4)';
+                        td.textContent = s > 0 ? `+${s.toFixed(1)}` : s.toFixed(1);
+                    }
                     tr.appendChild(td);
                 });
                 const tdTotal = document.createElement('td');
                 tdTotal.style.fontWeight = '900';
-                tdTotal.textContent = total.toFixed(1);
+                tdTotal.style.color = total > 0 ? 'var(--orange-400)' : total < 0 ? 'var(--blue-400)' : '#fff';
+                tdTotal.textContent = total > 0 ? `+${total.toFixed(1)}` : total.toFixed(1);
                 tr.appendChild(tdTotal);
                 body.appendChild(tr);
             });
 
+            // チップ入力欄（参加メンバーのみ描画）
             const chipCont = cont.querySelector('#chip-input-container');
-            state.members.slice(0, state.totalPlayers).forEach(name => {
+            currentSessionMembers.forEach(name => {
                 const item = document.createElement('div');
                 item.style.cssText = 'background:rgba(255,255,255,0.05); padding:8px 10px; border-radius:12px; display:flex; align-items:center;';
                 item.innerHTML = `
@@ -1112,6 +1159,35 @@
             });
 
             renderFinalAmounts();
+        }
+
+        function renderFinalAmounts() {
+            const cont = document.getElementById('final-amount-container');
+            if (!cont) return;
+
+            // 参加対象のメンバーのみ取得
+            const currentSessionMembers = state.members.slice(0, state.totalPlayers);
+            const feePerPerson = (state.baseFee > 0 && state.totalPlayers > 0) ? Math.ceil(state.baseFee / state.totalPlayers) : 0;
+            
+            cont.innerHTML = '';
+            currentSessionMembers.forEach(name => {
+                const total = state.history.reduce((s, r) => {
+                    const match = r.find(p => p.name === name);
+                    return s + ((match && match.raw !== undefined) ? match.finalScore : 0);
+                }, 0);
+                const chip = Number(state.chips[name] || 0);
+                const finalAmt = total * state.scoreRate + chip * state.chipRate;
+                const netAmt = finalAmt - feePerPerson;
+                const row = document.createElement('div');
+                row.style.cssText = 'padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.06); display:flex; justify-content:space-between; align-items:center;';
+                row.innerHTML = `
+                    <span style="font-size:12px;font-weight:700;">${name}</span>
+                    <div style="font-size:13px;font-weight:900;font-family:'JetBrains Mono';color:${netAmt >= 0 ? 'var(--orange-400)' : 'var(--blue-400)'}">
+                        ${netAmt >= 0 ? '+' : ''}${Math.round(netAmt).toLocaleString()}円
+                    </div>
+                `;
+                cont.appendChild(row);
+            });
         }
 
         function renderFinalAmounts() {
