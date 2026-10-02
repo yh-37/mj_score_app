@@ -1240,8 +1240,17 @@
             const cont = document.getElementById('history-container');
             if (!cont) return;
 
-            // 参加対象のメンバーのみ（先頭から totalPlayers 人分）を取得
-            const currentSessionMembers = state.members.slice(0, state.totalPlayers);
+            // 参加対象のメンバーのみを取得（履歴に一度でもスコアが記録されたメンバー）
+            const activeMemberSet = new Set();
+            state.history.forEach(round => {
+                round.forEach(p => {
+                    if (p.raw !== undefined) {
+                        activeMemberSet.add(p.name);
+                    }
+                });
+            });
+            // 元のメンバー配列の順序を保ったまま、参加した人のみを抽出
+            const currentSessionMembers = state.members.filter(name => activeMemberSet.has(name));
 
             cont.innerHTML = `
                 <div class="summary-panel">
@@ -1338,8 +1347,17 @@
             const cont = document.getElementById('final-amount-container');
             if (!cont) return;
 
-            // 参加対象のメンバーのみ取得
-            const currentSessionMembers = state.members.slice(0, state.totalPlayers);
+            // 参加対象のメンバーのみ取得（履歴に一度でもスコアが記録されたメンバー）
+            const activeMemberSet = new Set();
+            state.history.forEach(round => {
+                round.forEach(p => {
+                    if (p.raw !== undefined) {
+                        activeMemberSet.add(p.name);
+                    }
+                });
+            });
+            const currentSessionMembers = state.members.filter(name => activeMemberSet.has(name));
+
             const feePerPerson = (state.baseFee > 0 && state.totalPlayers > 0) ? Math.ceil(state.baseFee / state.totalPlayers) : 0;
             
             cont.innerHTML = '';
